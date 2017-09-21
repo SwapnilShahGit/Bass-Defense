@@ -1,0 +1,1 @@
+Text File so that the assets folder is not empty
