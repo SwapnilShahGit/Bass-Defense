@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Prehistoric Era.unity
+=======
+- path: Assets/Level1.unity
+>>>>>>> origin/James
   isLoaded: 1
   isActive: 1
