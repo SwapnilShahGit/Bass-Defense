@@ -19,6 +19,8 @@ public class MapGenerator : MonoBehaviour {
     public int height;
     Dictionary<Color32, GameObject[]> spriteDictionary;
 
+	float tileSpacing;
+
     void Start() {
         if(mapSprite != null && tileSprites != null) {
             width = mapSprite.width;
@@ -28,6 +30,12 @@ public class MapGenerator : MonoBehaviour {
             foreach(TileSprite tileSprite in tileSprites) {
                 spriteDictionary.Add(tileSprite.color, tileSprite.spriteArray);
             }
+
+			GameObject sprite = tileSprites [0].spriteArray [0];
+			Vector2 sprite_size = sprite.GetComponent<SpriteRenderer>().sprite.rect.size;
+			Vector2 local_sprite_size = sprite_size / sprite.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
+
+			tileSpacing = local_sprite_size.x;
         }
         GenerateMap();
     }
@@ -40,7 +48,6 @@ public class MapGenerator : MonoBehaviour {
                 SpawnTile(pixelColors[(y * width) + x], x, y);
             }
         }
-        Debug.Log("done");
     }
 
     void SpawnTile(Color32 color, int x, int y) {
@@ -51,7 +58,7 @@ public class MapGenerator : MonoBehaviour {
                 idx = UnityEngine.Random.Range(0, spriteArray.Length);
             }
             GameObject tilePrefab = spriteArray[idx];
-            Vector2 tilePosition = new Vector2(-width / 2 + 0.5f + x, -height / 2 + 0.5f + y);
+			Vector2 tilePosition = new Vector2(-width / 2 + (x * tileSpacing), -height / 2 + (y * tileSpacing));
             GameObject tileSprite = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as GameObject;
         }
         else {
