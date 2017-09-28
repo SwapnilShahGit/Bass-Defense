@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     public static GameObject player;
+    public static int money = 0;
     public Transform transform;
     private Vector2 target;
     public int moving = 0;
