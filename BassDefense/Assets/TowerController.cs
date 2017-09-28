@@ -12,7 +12,10 @@ public abstract class TowerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
+    void OnTriggerStay2D()
+    {
+            
+    }
 }
