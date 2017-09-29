@@ -8,6 +8,6 @@ public class build : MonoBehaviour {
 
     void OnMouseUp()
     {
-        PlayerController.placeTower();
+		
     }
 }

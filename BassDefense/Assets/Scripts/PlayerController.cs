@@ -3,30 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    public static GameObject player;
-    public static int money = 0;
-    public Transform transform;
     private Vector2 target;
-    public int moving = 0;
-    public static GameObject tower;
-    public static GameObject buildable;
-    public static GameObject activeAbility;
+	private Vector3 position;
+
+    public int moving;
+	public int money;
     public static string mode = "Slashy";
-	// Use this for initialization
+
 	void Start () {
-        buildable = GameObject.FindGameObjectWithTag("Buildable"); // temp
-        tower = GameObject.FindGameObjectWithTag("Tower"); //temp
-        player = GameObject.FindGameObjectWithTag("Player");
-        
+		moving = 0;
+		money = 100;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
         if (moving == 1)
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(target);
-            transform.position = Vector2.MoveTowards(transform.position, pos, 2.0f * Time.deltaTime);
+			this.transform.position = Vector2.MoveTowards(this.transform.position, pos, 2.0f * Time.deltaTime);
         }
         if (mode == "Slashy"){
 
@@ -56,14 +50,4 @@ public class PlayerController : MonoBehaviour {
         }
         
 	}
-
-
-    public static void placeTower()
-    {
-        tower.transform.position = (buildable.transform.position);
-    }
-
-
-
-    
 }

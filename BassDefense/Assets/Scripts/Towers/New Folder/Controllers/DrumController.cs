@@ -60,10 +60,7 @@ public class DrumController : TowerController {
     
     void improve()
     {
-        if (PlayerController.money >= cost)
-        {
             level++;
             damage++;
-        }
     }
 }
