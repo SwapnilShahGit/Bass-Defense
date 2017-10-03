@@ -1,46 +1,46 @@
 # =============== #
 # Unity generated #
 # =============== #
-/BassDefense/*.apk
-/BassDefense/*.stackdump
-/BassDefense/*.unitypackage
-/BassDefense/[Aa]ssets/AssetStoreTools*
-/BassDefense/[Bb]uild
-/BassDefense/[Bb]uilds/
-/BassDefense/[Ll]ibrary/
-/BassDefense/[Ll]ocal[Cc]ache/
-/BassDefense/[Oo]bj/
-/BassDefense/[Tt]emp/
-/BassDefense/sysinfo.txt
+BassDefense/*.apk
+BassDefense/*.stackdump
+BassDefense/*.unitypackage
+BassDefense/[Aa]ssets/AssetStoreTools*
+BassDefense/[Bb]uild
+BassDefense/[Bb]uilds/
+BassDefense/[Ll]ibrary/
+BassDefense/[Ll]ocal[Cc]ache/
+BassDefense/[Oo]bj/
+BassDefense/[Tt]emp/
+BassDefense/sysinfo.txt
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
-/BassDefense/*.booproj
-/BassDefense/*.csproj
-/BassDefense/*.pidb
-/BassDefense/*.pidb.meta
-/BassDefense/*.sln*
-/BassDefense/*.suo
-/BassDefense/*.svd
-/BassDefense/*.tmp
-/BassDefense/*.unityproj
-/BassDefense/*.user
-/BassDefense/*.userprefs
-/BassDefense/.consulo/
-/BassDefense/.vs/
-/BassDefense/[Ee]xported[Oo]bj/
+BassDefense/*.booproj
+BassDefense/*.csproj
+BassDefense/*.pidb
+BassDefense/*.pidb.meta
+BassDefense/*.sln*
+BassDefense/*.suo
+BassDefense/*.svd
+BassDefense/*.tmp
+BassDefense/*.unityproj
+BassDefense/*.user
+BassDefense/*.userprefs
+BassDefense/.consulo/
+BassDefense/.vs/
+BassDefense/[Ee]xported[Oo]bj/
 
 # ============ #
 # OS generated #
 # ============ #
-/BassDefense/._*
-/BassDefense/.DS_Store*
-/BassDefense/.Spotlight-V100
-/BassDefense/.Trashes
-/BassDefense/[Dd]esktop.ini
-/BassDefense/[Tt]humbs.db
-/BassDefense/Corridor/Library/metadata/
-/BassDefense/Corridor/Library/ShaderCache/
-/BassDefense/ehthumbs.db
-/BassDefense/Icon?
+BassDefense/._*
+BassDefense/.DS_Store*
+BassDefense/.Spotlight-V100
+BassDefense/.Trashes
+BassDefense/[Dd]esktop.ini
+BassDefense/[Tt]humbs.db
+BassDefense/Corridor/Library/metadata/
+BassDefense/Corridor/Library/ShaderCache/
+BassDefense/ehthumbs.db
+BassDefense/Icon?
