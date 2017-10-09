@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 		moving = 0;
-		money = 100;
+		money = 0;
 	}
 
 	void Update () {
