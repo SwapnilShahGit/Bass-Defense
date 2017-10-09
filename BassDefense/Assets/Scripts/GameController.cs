@@ -14,4 +14,11 @@ public class GameController : MonoBehaviour {
 	void Update() {
 		
 	}
+
+    public void end()
+    {
+        Destroy(player);
+
+    }
+
 }

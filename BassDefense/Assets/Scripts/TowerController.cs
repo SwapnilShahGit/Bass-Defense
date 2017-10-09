@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TowerController : MonoBehaviour {
+public class TowerController : MonoBehaviour {
     GameObject tower;
-       
+    public List<GameObject> targets;
+    public bool pinrange = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,9 +14,30 @@ public abstract class TowerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	}
-
-    void OnTriggerStay2D()
+    /*
+    void OnTriggerStay2D(Collider2D other)
     {
-            
+        if (other.gameObject.tag.Equals("enemy"))
+        {
+            targets.Add(other.gameObject);
+            Debug.Log("target added");
+        }
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            pinrange = true;
+        }
     }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag.Equals("enemy"))
+        {
+            targets.Remove(other.gameObject);
+            Debug.Log("target removed");
+        }
+        if (other.gameObject.tag.Equals("Player")){
+            pinrange = false;
+        }
+    }
+    */
 }

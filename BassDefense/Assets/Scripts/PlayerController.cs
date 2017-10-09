@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    private Vector2 target;
+    public GameObject player;
+    public static Vector2 target;
+
+    
 	private Vector3 position;
-	public GameObject tower;
-    public int moving;
-	public int money;
+	public static GameObject tower;
+    public static int moving;
+	public static int money;
     public static string mode = "Slashy";
 
 	void Start () {
@@ -18,6 +21,8 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown ("e")) {
 			mode = "Build";
+            tower = (GameObject)Resources.Load("Drum");
+           
 		}
 
         if (moving == 1)
@@ -53,4 +58,9 @@ public class PlayerController : MonoBehaviour {
         }
         
 	}
+
+    void Harmonize()
+    {
+
+    }
 }
