@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Level1.unity
+- path: Assets/Scenes/Prehistoric Era.unity
   isLoaded: 1
   isActive: 1
