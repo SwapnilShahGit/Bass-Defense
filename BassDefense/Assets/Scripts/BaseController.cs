@@ -19,7 +19,7 @@ public class BaseController : MonoBehaviour {
         hpBar.transform.localScale = new Vector3(origscalex * hp / maxhp,4,1);
         if (hp <= 0)
         {
-            gameController.end();
+            gameController.End();
         }
 	}
 }
