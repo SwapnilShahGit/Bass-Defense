@@ -16,7 +16,7 @@ public class BulletBehaviour : MonoBehaviour {
         
         if (target != null)
         {
-            this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, target.transform.position, 8.0f * Time.deltaTime);
+            this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, target.transform.position, 8.0f * Time.deltaTime);
             oldpos = target.transform.position;
 
             if (Vector3.Distance(this.transform.position, target.transform.position) == 0)
@@ -32,7 +32,7 @@ public class BulletBehaviour : MonoBehaviour {
         }
         else
         {
-            this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, oldpos, 8.0f * Time.deltaTime);
+            this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, oldpos, 8.0f * Time.deltaTime);
             if (Vector3.Distance(this.transform.position, oldpos) == 0){
                 Destroy(this.gameObject);
             }
