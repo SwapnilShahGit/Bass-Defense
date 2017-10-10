@@ -24,6 +24,12 @@ public class PlayerController : MonoBehaviour {
             tower = (GameObject)Resources.Load("Drum");
            
 		}
+        if (Input.GetKeyDown("q"))
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Flute");
+
+        }
 
         if (moving == 1)
         {

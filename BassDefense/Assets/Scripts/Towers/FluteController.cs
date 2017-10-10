@@ -12,6 +12,7 @@ public class FluteController : TowerController
     int onCD = 0;
     float time = 0;
     float timeint = 0;
+    List<GameObject> bullets;
 
     // Use this for initialization
     void Start()
@@ -35,9 +36,7 @@ public class FluteController : TowerController
             }
             else
             {
-           
-                    Debug.Log("Damaging enemy");
-                    target.GetComponent<EnemyController>().hp -= damage;
+                    shoot(target); 
                     onCD = 1;
                     time = Time.time;
                     //add effect
@@ -61,7 +60,19 @@ public class FluteController : TowerController
             Debug.Log("target removed");
         }
     }
+
+    void shoot(GameObject enemy)
+    {
+            GameObject b = Instantiate((GameObject)Resources.Load("Bullet"));
+            b.transform.position = this.gameObject.transform.position;
+            if (b.GetComponent<BulletBehaviour>() != null && enemy != null)
+            {
+                b.GetComponent<BulletBehaviour>().target = enemy;
+                b.GetComponent<BulletBehaviour>().dmg = damage;
+            }
     
+
+    }
 
 }
 
