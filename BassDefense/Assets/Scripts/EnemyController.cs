@@ -29,6 +29,8 @@ public class EnemyController : MonoBehaviour {
         }
         if (hp <= 0)
         {
+            FloatingTextController.bounty(bounty, this.transform.position.x, this.transform.position.y);
+            PlayerController.money += bounty;
             Destroy(enemy);
 
         }
