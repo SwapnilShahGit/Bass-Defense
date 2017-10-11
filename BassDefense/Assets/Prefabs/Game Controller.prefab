@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1748399196551062, guid: 9863d4b3bcf276d49ae647e7e7a8b5cc,
     type: 2}
-  mapSprite: {fileID: 2800000, guid: 471839f538386724094327985b03817a, type: 3}
+  mapSprite: {fileID: 2800000, guid: 82338d147d16ab44b8eacd7dcbbddb37, type: 3}
   tileSprites:
   - color:
       serializedVersion: 2
@@ -63,7 +63,7 @@ MonoBehaviour:
     - {fileID: 4737601461035942, guid: fb7418c959a21f042a3dd429099e56a4, type: 2}
   - color:
       serializedVersion: 2
-      rgba: 4279389052
+      rgba: 4278203263
     spriteArray:
     - {fileID: 4859769885850814, guid: b21dc1b98883f7948a671c93fa913aaf, type: 2}
   - color:
@@ -71,6 +71,16 @@ MonoBehaviour:
       rgba: 4282400832
     spriteArray:
     - {fileID: 4098297371415242, guid: 75bd7b94ff480f1419be2f1083b3b96f, type: 2}
+  - color:
+      serializedVersion: 2
+      rgba: 4286611584
+    spriteArray:
+    - {fileID: 4756862727595204, guid: e934ce2aa015d924487b08693f29d766, type: 2}
+  - color:
+      serializedVersion: 2
+      rgba: 4278217471
+    spriteArray:
+    - {fileID: 4924279557554184, guid: 698e6cf045003c04ba768395b740a5dc, type: 2}
   basePrefab: {fileID: 1756896376898766, guid: 5c06eba588adf6a47918de9086ad0a4b, type: 2}
   onGameStart:
     m_PersistentCalls:
