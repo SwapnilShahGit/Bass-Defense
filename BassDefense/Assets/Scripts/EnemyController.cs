@@ -10,17 +10,21 @@ public class EnemyController : MonoBehaviour {
     public int damage = 25;
     public GameObject enemy;
     public GameObject pBase;
-    public GameObject hpBar;
+    public Transform hpBarPrefab;
+    public Transform healthBarHolder;
+    Transform hpBar;
     float origscalex;
 	// Use this for initialization
 	void Start () {
         maxhp = hp;
-        origscalex = hpBar.transform.localScale.x;
+        hpBar = Instantiate(hpBarPrefab, healthBarHolder.position, healthBarHolder.rotation) as Transform;
+        hpBar.parent = transform;
+        origscalex = hpBar.localScale.x;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        hpBar.transform.localScale = new Vector3(origscalex * hp / maxhp, 0.5f, 1);
+        hpBar.localScale = new Vector3(origscalex * hp / maxhp, 0.5f, 1);
         if (Vector2.Distance(this.gameObject.transform.position,pBase.transform.position)<1.5f)
         {
             pBase.GetComponent<BaseController>().hp -= damage;

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tower
+  - Buildable
+  - enemy
+  - Spawn
   layers:
   - Default
   - TransparentFX

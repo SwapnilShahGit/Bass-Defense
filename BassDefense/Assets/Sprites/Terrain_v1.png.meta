@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 923a22cea69496041875b38bb35b5b5f
-timeCreated: 1506483258
+timeCreated: 1507683139
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 898
+  spritePixelsToUnits: 1024
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
@@ -83,9 +83,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 902
-        width: 898
-        height: 898
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -96,10 +96,10 @@ TextureImporter:
       name: Terrain_v1_1
       rect:
         serializedVersion: 2
-        x: 902
-        y: 902
-        width: 898
-        height: 898
+        x: 1024
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 899
-        height: 899
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,10 +124,10 @@ TextureImporter:
       name: Terrain_v1_3
       rect:
         serializedVersion: 2
-        x: 902
+        x: 1024
         y: 0
-        width: 898
-        height: 898
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4098297371415242}
   - component: {fileID: 212975206472134064}
+  - component: {fileID: 114085954849547994}
   m_Layer: 0
   m_Name: Cave
   m_TagString: Spawn
@@ -40,6 +41,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114085954849547994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1214272528054784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840e610eb04ff4d4bbb0a7c4fb5db2ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1148131846045596, guid: 6983228fc921eb342b6b7ba3f566dbed,
+    type: 2}
+  spawnTime: 5
 --- !u!212 &212975206472134064
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -77,7 +92,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.94814813, y: 0.94814813}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

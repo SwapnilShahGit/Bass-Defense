@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class TileSprite {
@@ -24,6 +25,15 @@ public class GameController : MonoBehaviour {
     float tileSpacing;
     Transform mapHolder;
 
+    // Base variables
+    public GameObject basePrefab;
+
+    //Events
+    public UnityEvent onGameStart;
+    public UnityEvent onGameEnd;
+
+    GameObject home;
+
     void Start() {
         // Generate the map
         if(mapSprite != null && tileSprites != null) {
@@ -33,18 +43,22 @@ public class GameController : MonoBehaviour {
             GenerateMapFromRandom();
         }
 
+        // Create a base object
+        home = Instantiate(basePrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+
         // Create a player object
-        player = Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+        player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+
+        onGameStart.Invoke();
     }
 
 	void Update() {
 		
 	}
 
-    public void End()
-    {
+    public void End() {
+        onGameEnd.Invoke();
         Destroy(player);
-
     }
 
     void GenerateMapFromSprite() {
@@ -57,16 +71,6 @@ public class GameController : MonoBehaviour {
         foreach(TileSprite tileSprite in tileSprites) {
             spriteDictionary.Add(tileSprite.color, tileSprite.spriteArray);
         }
-
-        /*
-        // Get the size of a tile
-        Transform sprite = tileSprites[0].spriteArray[0];
-        Vector2 sprite_size = sprite.GetComponent<SpriteRenderer>().sprite.rect.size;
-        Vector2 local_sprite_size = sprite_size / sprite.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
-
-        // Get the spacing needed between tile coordinates in game
-        tileSpacing = local_sprite_size.x;
-        */
 
         GenerateMap();
     }
@@ -102,7 +106,6 @@ public class GameController : MonoBehaviour {
                 idx = UnityEngine.Random.Range(0, spriteArray.Length);
             }
             Transform tilePrefab = spriteArray[idx];
-            //Vector2 tilePosition = new Vector2(-width / 2 + (x * tileSpacing), -height / 2 + (y * tileSpacing));
             Vector2 tilePosition = new Vector2(-width / 2 + x, -height / 2 + y);
             Transform tileSprite = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as Transform;
             tileSprite.parent = mapHolder;
