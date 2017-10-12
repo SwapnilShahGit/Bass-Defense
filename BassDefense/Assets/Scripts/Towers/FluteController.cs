@@ -8,7 +8,7 @@ public class FluteController : TowerController
     public int upgrade = 10;
     public int damage = 6;
     public int level = 1;
-    public float cd = 0.5f;
+    public float cd = 0.8f;
     int onCD = 0;
     float time = 0;
     float timeint = 0;

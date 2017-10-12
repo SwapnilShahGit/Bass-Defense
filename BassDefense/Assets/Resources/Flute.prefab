@@ -56,7 +56,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 15
 --- !u!114 &114521062992572766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
   upgrade: 10
   damage: 6
   level: 1
-  cd: 0.5
+  cd: 0.8
 --- !u!212 &212918521065569858
 SpriteRenderer:
   m_ObjectHideFlags: 1

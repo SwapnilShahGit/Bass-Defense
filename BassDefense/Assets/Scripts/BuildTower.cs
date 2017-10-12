@@ -6,6 +6,7 @@ public class BuildTower : MonoBehaviour
 {
     int building = 0;
     public GameObject player;
+    int placed = 0;
     Color old;
     // Use this for initialization
     void Start()
@@ -20,6 +21,7 @@ public class BuildTower : MonoBehaviour
         {
             
             GameObject d = Instantiate(PlayerController.tower, this.transform);
+            placed = 1;
             d.transform.localScale = new Vector3(0.50f, 0.50f, 1);
             building = 0;
             PlayerController.moving = 0;
@@ -37,6 +39,7 @@ public class BuildTower : MonoBehaviour
         }
 
 
+
     }
     void OnMouseExit()
     {
@@ -45,7 +48,7 @@ public class BuildTower : MonoBehaviour
     }
     void OnMouseUp()
     {
-        if (PlayerController.mode == "Build")
+        if (PlayerController.mode == "Build" && placed == 0)
         {
             PlayerController.target = this.gameObject.transform.position;
             PlayerController.moving = 2;
@@ -55,6 +58,10 @@ public class BuildTower : MonoBehaviour
             
             
             //d.transform.localScale -= new Vector3(0.95f,0.95f,0);
+        }
+        if (placed == 1)
+        {
+            //upgrade
         }
 
     }
