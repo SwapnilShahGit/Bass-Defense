@@ -22,11 +22,7 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         hpBar.localScale = new Vector3(2f,(origscaley*hp/maxhp), 1);
-        if (Vector2.Distance(this.gameObject.transform.position,pBase.transform.position)<1.5f)
-        {
-            pBase.GetComponent<BaseController>().hp -= damage;
-            Destroy(enemy);
-        }
+        
         if (hp <= 0)
         {
             FloatingTextController.bounty(bounty, this.transform.position.x, this.transform.position.y);
@@ -34,6 +30,7 @@ public class EnemyController : MonoBehaviour {
             Destroy(enemy);
 
         }
+        
         enemy.GetComponent<Transform>().position = Vector2.MoveTowards(enemy.GetComponent<Transform>().position, pBase.transform.position, speed * Time.deltaTime);
 	}
 }

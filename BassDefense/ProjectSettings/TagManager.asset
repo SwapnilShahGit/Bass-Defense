@@ -8,6 +8,7 @@ TagManager:
   - Buildable
   - enemy
   - Spawn
+  - Base
   layers:
   - Default
   - TransparentFX
