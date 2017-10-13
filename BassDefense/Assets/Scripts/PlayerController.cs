@@ -1,8 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
+    // UI tingz
+    public Text playerHealthText;
+    public Text playerMoneyText;
+
+
     public static GameObject player;
     public static Vector2 target;
 
@@ -11,14 +17,20 @@ public class PlayerController : MonoBehaviour {
 	public static GameObject tower;
     public static int moving;
 	public static int money;
+    public static int health;
     public static string mode = "Slashy";
 
 	void Start () {
 		moving = 0;
-		money = 0;
-	}
+		money = 1;
+        health = 99;
+        playerHealthText = GameObject.Find("PlayerHealth").GetComponent<Text>();
+        playerMoneyText = GameObject.Find("Money").GetComponent<Text>();
+        playerHealthText.text = "Health: " + health;
+        playerMoneyText.text = "Money: " + money;
+    }
 
-	void Update () {
+    void Update () {
 		if (Input.GetKeyDown ("e")) {
 			mode = "Build";
             tower = (GameObject)Resources.Load("Drum");
@@ -68,8 +80,7 @@ public class PlayerController : MonoBehaviour {
                 target = Input.mousePosition;
             }
         }
-        
-	}
+    }
 
     public bool isClose()
     {

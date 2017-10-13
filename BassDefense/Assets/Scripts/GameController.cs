@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class TileSprite {
@@ -13,7 +14,6 @@ public class GameController : MonoBehaviour {
 
     // player variables
 	public GameObject playerPrefab;
-
     GameObject player;
 
     // Map variables
@@ -34,9 +34,26 @@ public class GameController : MonoBehaviour {
 
     GameObject home;
 
+    // UI variables
+    public float levelStartDelay = 2f;                          // Num seconds to have overlay display
+    private string timeperiod = "60,000 Years Ago";
+    private Text timeperiodText;                                //Text to display current age/year
+    private GameObject loadingOverlay;                          //Image to block out level as levels are being set up, background for playerHealthText.
+    private Text playerHealthText;
+
     void Start() {
+
+        //Get a reference to our canvas things and show stuff
+        loadingOverlay = GameObject.Find("LoadingOverlay");
+        timeperiodText = GameObject.Find("YearText").GetComponent<Text>();
+
+        timeperiodText.text = timeperiod;
+        loadingOverlay.SetActive(true);
+        Invoke("HideLoadingOverlay", levelStartDelay);
+
+
         // Generate the map
-        if(mapSprite != null && tileSprites != null) {
+        if (mapSprite != null && tileSprites != null) {
             GenerateMapFromSprite();
         }
         else {
@@ -52,7 +69,14 @@ public class GameController : MonoBehaviour {
         onGameStart.Invoke();
     }
 
-	void Update() {
+    //Hides black image used between levels
+    void HideLoadingOverlay()
+    {
+        //Disable the loadingOverlay gameObject.
+        loadingOverlay.SetActive(false);
+    }
+
+    void Update() {
 		
 	}
 
