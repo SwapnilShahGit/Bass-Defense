@@ -11,7 +11,7 @@ public class TileSprite {
 }
 
 public class GameController : MonoBehaviour {
-
+    
     // player variables
 	public GameObject playerPrefab;
     GameObject player;
@@ -28,7 +28,10 @@ public class GameController : MonoBehaviour {
     // Base variables
     public GameObject basePrefab;
 
-    //Events
+    // Generate from sprite?
+    public bool generateFromSprite;
+
+    // Events
     public UnityEvent onGameStart;
     public UnityEvent onGameEnd;
 
@@ -42,7 +45,13 @@ public class GameController : MonoBehaviour {
     private Text playerHealthText;
 
     void Start() {
+        // Add each sprite into the dictionary for quick referencing
+        spriteDictionary = new Dictionary<Color32, Transform[]>();
+        foreach(TileSprite tileSprite in tileSprites) {
+            spriteDictionary.Add(tileSprite.color, tileSprite.spriteArray);
+        }
 
+        Vector2 baseStart = new Vector2(0, 0);
         //Get a reference to our canvas things and show stuff
         loadingOverlay = GameObject.Find("LoadingOverlay");
         timeperiodText = GameObject.Find("YearText").GetComponent<Text>();
@@ -51,67 +60,62 @@ public class GameController : MonoBehaviour {
         loadingOverlay.SetActive(true);
         Invoke("HideLoadingOverlay", levelStartDelay);
 
-
         // Generate the map
-        if (mapSprite != null && tileSprites != null) {
+        if(generateFromSprite && mapSprite != null && tileSprites != null) {
             GenerateMapFromSprite();
         }
         else {
-            GenerateMapFromRandom();
+            ProceduralGenerator gen = GenerateMapFromRandom();
+            baseStart = new Vector2(-width / 2 + gen.GetBaseLocationX() - 0.5f, -height / 2 + gen.GetBaseLocationY() - 0.5f);
         }
 
         // Create a base object
-        home = Instantiate(basePrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        home = Instantiate(basePrefab, baseStart, Quaternion.identity) as GameObject;
 
         // Create a player object
-        player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        player = Instantiate(playerPrefab, baseStart, Quaternion.identity) as GameObject;
 
         onGameStart.Invoke();
     }
 
     //Hides black image used between levels
-    void HideLoadingOverlay()
-    {
+    void HideLoadingOverlay() {
         //Disable the loadingOverlay gameObject.
         loadingOverlay.SetActive(false);
     }
-
-    void Update() {
-		
-	}
-
     public void End() {
         onGameEnd.Invoke();
         Destroy(player);
     }
 
     void GenerateMapFromSprite() {
+        Camera.main.orthographicSize = 8;
+        Camera.main.transform.position = new Vector3(0f, 0f, -10f);
+
         // Get the dimensions of the map from sprite size
         width = mapSprite.width;
         height = mapSprite.height;
 
-        // Add each sprite into the dictionary for quick referencing
-        spriteDictionary = new Dictionary<Color32, Transform[]>();
-        foreach(TileSprite tileSprite in tileSprites) {
-            spriteDictionary.Add(tileSprite.color, tileSprite.spriteArray);
-        }
-
-        GenerateMap();
+        Color32[] pixelColors = mapSprite.GetPixels32();
+        GenerateMap(pixelColors);
     }
 
-    void GenerateMapFromRandom() {
-        
-        GenerateMap();
+    ProceduralGenerator GenerateMapFromRandom() {
+        Camera.main.orthographicSize = 9;
+        Camera.main.transform.position = new Vector3(-0.5f, -0.5f, -10f);
+
+        ProceduralGenerator mapGen = GetComponent<ProceduralGenerator>();
+        width = mapGen.GetWidth();
+        height = mapGen.GetHeight();
+        Color32[] colorMap = mapGen.GenerateMap();
+        GenerateMap(colorMap);
+        return mapGen;
     }
 
 
-    void GenerateMap() {
+    void GenerateMap(Color32[] pixelColors) {
         mapHolder = new GameObject("Generated Map").transform;
         mapHolder.parent = transform;
-
-        Debug.Log("Generating Map (" + width + "," + height + ")");
-        // Get an array of pixel colors from the sprite map
-        Color32[] pixelColors = mapSprite.GetPixels32();
 
         // Match each color in the array with a corresponding tile and create it in the game world
         for(int y = 0; y < height; y++) {
