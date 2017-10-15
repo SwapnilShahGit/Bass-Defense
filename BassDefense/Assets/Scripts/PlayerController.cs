@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour {
         health = 99;
         playerHealthText = GameObject.Find("PlayerHealth").GetComponent<Text>();
         playerMoneyText = GameObject.Find("Money").GetComponent<Text>();
-        playerHealthText.text = "Health: " + health;
-        playerMoneyText.text = "Money: " + money;
+        playerHealthText.text = health.ToString();
+        playerMoneyText.text = money.ToString();
     }
 
     void Update () {
@@ -80,6 +80,8 @@ public class PlayerController : MonoBehaviour {
                 target = Input.mousePosition;
             }
         }
+        playerHealthText.text = health.ToString();
+        playerMoneyText.text = money.ToString();
     }
 
     public bool isClose()

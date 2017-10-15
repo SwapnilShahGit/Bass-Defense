@@ -26,7 +26,7 @@ public class BaseController : MonoBehaviour {
 
         damageFlash = GameObject.Find("DamageFlash").GetComponent<Image>();
         baseHealthText = GameObject.Find("BaseHealth").GetComponent<Text>();
-        baseHealthText.text = "Base Health: " + hp;
+        baseHealthText.text = hp.ToString();
 
         hpBar = this.gameObject.transform.GetChild(0);
         origscalex = hpBar.localScale.x;
@@ -58,7 +58,7 @@ public class BaseController : MonoBehaviour {
         {
             hp -= coll.gameObject.GetComponent<EnemyController>().damage;
             Destroy(coll.gameObject);
-            baseHealthText.text = "Base Health: " + hp;
+            baseHealthText.text = hp.ToString();
             damaged = true;
         }
     }
