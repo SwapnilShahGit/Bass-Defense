@@ -61,8 +61,8 @@ public class GameController : MonoBehaviour
 
         Vector2 baseStart = new Vector2(0, 0);
         //Get a reference to our canvas things and show stuff
-        loadingOverlay = GameObject.Find("LoadingOverlay");
-        timeperiodText = GameObject.Find("YearText").GetComponent<Text>();
+        loadingOverlay = GameObject.Find("Overlay");
+        timeperiodText = GameObject.Find("OverlayText").GetComponent<Text>();
 
         timeperiodText.text = timeperiod;
         loadingOverlay.SetActive(true);
@@ -96,6 +96,16 @@ public class GameController : MonoBehaviour
         //Disable the loadingOverlay gameObject.
         loadingOverlay.SetActive(false);
     }
+
+    void Update()
+    {
+        if (BaseController.hp <= 0)
+        {
+            loadingOverlay.SetActive(true);
+            timeperiodText.text = "You Lose";
+        }
+    }
+
     public void End()
     {
         onGameEnd.Invoke();

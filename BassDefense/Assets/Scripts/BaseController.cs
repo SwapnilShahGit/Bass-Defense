@@ -16,7 +16,7 @@ public class BaseController : MonoBehaviour {
     public UnityEvent OnBaseDestroyed;
 
     public int maxhp = 100;
-    int hp;
+    public static int hp;
     Transform hpBar;
     float origscalex;
  
