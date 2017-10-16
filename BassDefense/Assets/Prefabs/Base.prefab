@@ -53,7 +53,7 @@ Transform:
   m_GameObject: {fileID: 1398414221817446}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.65, z: 0}
-  m_LocalScale: {x: 250, y: 2, z: 1}
+  m_LocalScale: {x: 400, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 4693246155185378}
   m_RootOrder: 0
@@ -66,7 +66,7 @@ Transform:
   m_GameObject: {fileID: 1756896376898766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 4066688329500622}
   m_Father: {fileID: 0}
@@ -98,6 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79180d2ac5b9464498025b30d941fbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealthText: {fileID: 0}
+  damageFlash: {fileID: 0}
+  damaged: 0
+  flashSpeed: 100000
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   OnBaseDestroyed:
     m_PersistentCalls:
       m_Calls:
@@ -116,7 +121,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   maxhp: 100
-  hp: 100
 --- !u!212 &212343064880770986
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -149,14 +153,16 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 52e9f028247b8f249a167e94f06d9061, type: 3}
-  m_Color: {r: 0.28676468, g: 0.06536547, b: 0.06536547, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 576472473df9d8040908ebc34ee5ac2d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212640696997041408
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -197,3 +203,5 @@ SpriteRenderer:
   m_Size: {x: 0.01, y: 0.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
