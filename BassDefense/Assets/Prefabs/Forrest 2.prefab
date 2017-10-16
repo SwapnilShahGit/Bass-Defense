@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212299420232409374}
   - component: {fileID: 61885546095763976}
   - component: {fileID: 114577561974786600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forrest 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5,22 +5,27 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class TileSprite {
+public class TileSprite
+{
     public Color32 color;
-    public Transform[] spriteArray;
+    public GameObject[] spriteArray;
 }
 
-public class GameController : MonoBehaviour {
-    
+[System.Serializable]
+public class StartEvent : UnityEvent<float, Transform> { }
+
+public class GameController : MonoBehaviour
+{
+
     // player variables
-	public GameObject playerPrefab;
+    public GameObject playerPrefab;
     GameObject player;
 
     // Map variables
     public Texture2D mapSprite;
     public TileSprite[] tileSprites;
 
-    Dictionary<Color32, Transform[]> spriteDictionary;
+    Dictionary<Color32, GameObject[]> spriteDictionary;
     int width, height;
     float tileSpacing;
     Transform mapHolder;
@@ -32,10 +37,11 @@ public class GameController : MonoBehaviour {
     public bool generateFromSprite;
 
     // Events
-    public UnityEvent onGameStart;
+    public StartEvent onGameStart;
     public UnityEvent onGameEnd;
 
-    GameObject home;
+    // Navigation
+    public Grid grid;
 
     // UI variables
     public float levelStartDelay = 2f;                          // Num seconds to have overlay display
@@ -44,10 +50,12 @@ public class GameController : MonoBehaviour {
     private GameObject loadingOverlay;                          //Image to block out level as levels are being set up, background for playerHealthText.
     private Text playerHealthText;
 
-    void Start() {
+    void Start()
+    {
         // Add each sprite into the dictionary for quick referencing
-        spriteDictionary = new Dictionary<Color32, Transform[]>();
-        foreach(TileSprite tileSprite in tileSprites) {
+        spriteDictionary = new Dictionary<Color32, GameObject[]>();
+        foreach (TileSprite tileSprite in tileSprites)
+        {
             spriteDictionary.Add(tileSprite.color, tileSprite.spriteArray);
         }
 
@@ -61,34 +69,41 @@ public class GameController : MonoBehaviour {
         Invoke("HideLoadingOverlay", levelStartDelay);
 
         // Generate the map
-        if(generateFromSprite && mapSprite != null && tileSprites != null) {
+        if (generateFromSprite && mapSprite != null && tileSprites != null)
+        {
             GenerateMapFromSprite();
         }
-        else {
+        else
+        {
             ProceduralGenerator gen = GenerateMapFromRandom();
             baseStart = new Vector2(-width / 2 + gen.GetBaseLocationX() - 0.5f, -height / 2 + gen.GetBaseLocationY() - 0.5f);
         }
 
+        grid.StartCreatingGrid();
+
         // Create a base object
-        home = Instantiate(basePrefab, baseStart, Quaternion.identity) as GameObject;
+        Transform home = Instantiate(basePrefab, baseStart, Quaternion.identity).transform as Transform;
 
         // Create a player object
         player = Instantiate(playerPrefab, baseStart, Quaternion.identity) as GameObject;
 
-        onGameStart.Invoke();
+        onGameStart.Invoke(levelStartDelay + 1f, home);
     }
 
     //Hides black image used between levels
-    void HideLoadingOverlay() {
+    void HideLoadingOverlay()
+    {
         //Disable the loadingOverlay gameObject.
         loadingOverlay.SetActive(false);
     }
-    public void End() {
+    public void End()
+    {
         onGameEnd.Invoke();
         Destroy(player);
     }
 
-    void GenerateMapFromSprite() {
+    void GenerateMapFromSprite()
+    {
         Camera.main.orthographicSize = 8;
         Camera.main.transform.position = new Vector3(0f, 0f, -10f);
 
@@ -100,7 +115,8 @@ public class GameController : MonoBehaviour {
         GenerateMap(pixelColors);
     }
 
-    ProceduralGenerator GenerateMapFromRandom() {
+    ProceduralGenerator GenerateMapFromRandom()
+    {
         Camera.main.orthographicSize = 9;
         Camera.main.transform.position = new Vector3(-0.5f, -0.5f, -10f);
 
@@ -113,32 +129,46 @@ public class GameController : MonoBehaviour {
     }
 
 
-    void GenerateMap(Color32[] pixelColors) {
+    void GenerateMap(Color32[] pixelColors)
+    {
         mapHolder = new GameObject("Generated Map").transform;
         mapHolder.parent = transform;
 
         // Match each color in the array with a corresponding tile and create it in the game world
-        for(int y = 0; y < height; y++) {
-            for(int x = 0; x < width; x++) {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
                 SpawnTile(pixelColors[(y * width) + x], x, y);
             }
         }
         Debug.Log("Done Generating Map");
     }
 
-    void SpawnTile(Color32 color, int x, int y) {
-        if(spriteDictionary.ContainsKey(color)) {
-            Transform[] spriteArray = spriteDictionary[color];
+    void SpawnTile(Color32 color, int x, int y)
+    {
+        if (spriteDictionary.ContainsKey(color))
+        {
+            GameObject[] spriteArray = spriteDictionary[color];
             int idx = 0;
-            if(spriteArray.Length > 1) {
+            if (spriteArray.Length > 1)
+            {
                 idx = UnityEngine.Random.Range(0, spriteArray.Length);
             }
-            Transform tilePrefab = spriteArray[idx];
+            GameObject tilePrefab = spriteArray[idx];
             Vector2 tilePosition = new Vector2(-width / 2 + x, -height / 2 + y);
-            Transform tileSprite = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as Transform;
-            tileSprite.parent = mapHolder;
+            GameObject tileSprite = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as GameObject;
+            tileSprite.transform.parent = mapHolder;
+
+            EnemySpawner spawner = tileSprite.GetComponent<EnemySpawner>();
+            if (spawner != null)
+            {
+                onGameStart.AddListener(spawner.StartSpawning);
+                onGameEnd.AddListener(spawner.StopSpawning);
+            }
         }
-        else {
+        else
+        {
             Debug.LogError("No sprite for color: " + color.ToString());
         }
 

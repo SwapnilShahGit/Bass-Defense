@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212761821572236806}
   - component: {fileID: 61394924184417598}
   - component: {fileID: 114335934430304388}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forrest 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,3 +119,5 @@ SpriteRenderer:
   m_Size: {x: 0.94814813, y: 0.94814813}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0

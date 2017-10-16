@@ -2,38 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : MonoBehaviour
+{
 
-    public GameObject enemyPrefab;
+    public EnemyController enemyPrefab;
     public float spawnTime;
-    float nextSpawnTime;
-    bool isSpawning = false;
 
-    void Start() {
-        StartSpawning();
-    }
+    Transform playerBase;
 
-
-    void Update () {
-        if(isSpawning) {
-            if(nextSpawnTime <= 0) {
-                nextSpawnTime = spawnTime;
-
-                Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-            }
-            else {
-                nextSpawnTime -= Time.deltaTime;
-            }
-        }
-	}
-
-    public void StartSpawning() {
+    public void StartSpawning(float start, Transform pBase)
+    {
         Debug.Log("Started Spawning");
-        isSpawning = true;
+        playerBase = pBase;
+        InvokeRepeating("SpawnEnemy", start, spawnTime);
     }
 
-    public void StopSpawning() {
-        nextSpawnTime = spawnTime;
-        isSpawning = false;
+    public void StopSpawning()
+    {
+        Debug.Log("Stoped Spawning");
+        CancelInvoke();
+    }
+
+    void SpawnEnemy()
+    {
+        EnemyController e = Instantiate(enemyPrefab, transform.position, Quaternion.identity) as EnemyController;
+        e.GoToTarget(playerBase.position);
     }
 }

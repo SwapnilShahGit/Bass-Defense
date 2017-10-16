@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066688329500622}
   - component: {fileID: 212640696997041408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BaseHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 212343064880770986}
   - component: {fileID: 114411895212337972}
   - component: {fileID: 58903166454743556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Base
   m_TagString: Base
   m_Icon: {fileID: 0}
