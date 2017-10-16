@@ -46,6 +46,7 @@ public class BuildTower : MonoBehaviour
 
         this.gameObject.GetComponent<SpriteRenderer>().color = old;
     }
+
     void OnMouseUp()
     {
         if (PlayerController.mode == "Build" && placed == 0)
@@ -53,10 +54,7 @@ public class BuildTower : MonoBehaviour
             PlayerController.target = this.gameObject.transform.position;
             PlayerController.moving = 2;
             building = 1;
-            
-                
-            
-            
+            print("BUILDING ON MOUSUP");
             //d.transform.localScale -= new Vector3(0.95f,0.95f,0);
         }
         if (placed == 1)
