@@ -7,11 +7,8 @@ using UnityEngine.UI;
 [System.Serializable]
 public class TileSprite {
     public Color32 color;
-    public GameObject[] spriteArray;
+    public Transform[] spriteArray;
 }
-
-[System.Serializable]
-public class StartEvent : UnityEvent<float, Transform> { }
 
 public class GameController : MonoBehaviour {
     
@@ -23,7 +20,7 @@ public class GameController : MonoBehaviour {
     public Texture2D mapSprite;
     public TileSprite[] tileSprites;
 
-    Dictionary<Color32, GameObject[]> spriteDictionary;
+    Dictionary<Color32, Transform[]> spriteDictionary;
     int width, height;
     float tileSpacing;
     Transform mapHolder;
@@ -35,11 +32,10 @@ public class GameController : MonoBehaviour {
     public bool generateFromSprite;
 
     // Events
-    public StartEvent onGameStart;
+    public UnityEvent onGameStart;
     public UnityEvent onGameEnd;
 
-    // Navigation
-    public Grid grid;
+    GameObject home;
 
     // UI variables
     public float levelStartDelay = 2f;                          // Num seconds to have overlay display
@@ -50,7 +46,7 @@ public class GameController : MonoBehaviour {
 
     void Start() {
         // Add each sprite into the dictionary for quick referencing
-        spriteDictionary = new Dictionary<Color32, GameObject[]>();
+        spriteDictionary = new Dictionary<Color32, Transform[]>();
         foreach(TileSprite tileSprite in tileSprites) {
             spriteDictionary.Add(tileSprite.color, tileSprite.spriteArray);
         }
@@ -73,15 +69,13 @@ public class GameController : MonoBehaviour {
             baseStart = new Vector2(-width / 2 + gen.GetBaseLocationX() - 0.5f, -height / 2 + gen.GetBaseLocationY() - 0.5f);
         }
 
-        grid.StartCreatingGrid();
-
         // Create a base object
-        Transform home = Instantiate(basePrefab, baseStart, Quaternion.identity).transform as Transform;
+        home = Instantiate(basePrefab, baseStart, Quaternion.identity) as GameObject;
 
         // Create a player object
         player = Instantiate(playerPrefab, baseStart, Quaternion.identity) as GameObject;
 
-        onGameStart.Invoke(levelStartDelay + 1f, home);
+        onGameStart.Invoke();
     }
 
     //Hides black image used between levels
@@ -134,21 +128,15 @@ public class GameController : MonoBehaviour {
 
     void SpawnTile(Color32 color, int x, int y) {
         if(spriteDictionary.ContainsKey(color)) {
-            GameObject[] spriteArray = spriteDictionary[color];
+            Transform[] spriteArray = spriteDictionary[color];
             int idx = 0;
             if(spriteArray.Length > 1) {
                 idx = UnityEngine.Random.Range(0, spriteArray.Length);
             }
-            GameObject tilePrefab = spriteArray[idx];
+            Transform tilePrefab = spriteArray[idx];
             Vector2 tilePosition = new Vector2(-width / 2 + x, -height / 2 + y);
-            GameObject tileSprite = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as GameObject;
-            tileSprite.transform.parent = mapHolder;
-
-            EnemySpawner spawner = tileSprite.GetComponent<EnemySpawner>();
-            if(spawner != null) {
-                onGameStart.AddListener(spawner.StartSpawning);
-                onGameEnd.AddListener(spawner.StopSpawning);
-            }
+            Transform tileSprite = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as Transform;
+            tileSprite.parent = mapHolder;
         }
         else {
             Debug.LogError("No sprite for color: " + color.ToString());

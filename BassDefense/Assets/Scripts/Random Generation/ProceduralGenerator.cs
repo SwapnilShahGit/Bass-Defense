@@ -322,8 +322,8 @@ public class ProceduralGenerator : MonoBehaviour {
                 Coord firstCoord = edge[0];
                 int currentIdx = (firstCoord.y * mapWidth) + firstCoord.x;
                 Color32 firstColor = colorPaths[currentIdx];
-                //Debug.Log(firstColor);
-                //Debug.Log("edge first coord: " + edge[0].x + ", " + edge[0].y);
+                Debug.Log(firstColor);
+                Debug.Log("edge first coord: " + edge[0].x + ", " + edge[0].y);
                 if(!visitedColors.Contains(firstColor)) {
                     if(!VisitColor(edge, 0, edge.Count, firstColor)) {
                         Debug.LogError("Could not form path");

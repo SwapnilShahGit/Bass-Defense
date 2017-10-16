@@ -9,13 +9,9 @@ public class EnemyController : MonoBehaviour {
     public float speed = 2;
     public int damage = 25;
     public GameObject enemy;
-
+    public GameObject pBase;
     Transform hpBar;
     float origscaley;
-
-    Vector3[] path;
-    int targetIndex;
-
 	// Use this for initialization
 	void Start () {
         hpBar = transform.GetChild(0);
@@ -30,43 +26,11 @@ public class EnemyController : MonoBehaviour {
         if (hp <= 0)
         {
             FloatingTextController.bounty(bounty, this.transform.position.x, this.transform.position.y);
-            //PlayerController.money += bounty;
+            PlayerController.money += bounty;
             Destroy(enemy);
 
         }
+        
+        enemy.GetComponent<Transform>().position = Vector2.MoveTowards(enemy.GetComponent<Transform>().position, pBase.transform.position, speed * Time.deltaTime);
 	}
-
-    public void GoToTarget(Vector3 target) {
-        PathRequestManager.RequestPath(transform.position, target, OnPathFound, true);
-    }
-
-    public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
-        if(pathSuccessful) {
-            path = newPath;
-            if(this != null) {
-                StopCoroutine("FollowPath");
-                StartCoroutine("FollowPath");
-            }
-        }
-        else {
-            Debug.Log("Path unsuccessful");
-        }
-    }
-
-    IEnumerator FollowPath() {
-        Vector3 currentWaypoint = path[0];
-
-        while(true) {
-            if(transform.position == currentWaypoint) {
-                targetIndex++;
-                if(targetIndex >= path.Length) {
-                    yield break;
-                }
-                currentWaypoint = path[targetIndex];
-            }
-
-            transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
-            yield return null;
-        }
-    }
 }

@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour {
     void Update () {
 		if (Input.GetKeyDown ("e")) {
 			mode = "Build";
-            print("BUILDING");
             tower = (GameObject)Resources.Load("Drum");
            
 		}

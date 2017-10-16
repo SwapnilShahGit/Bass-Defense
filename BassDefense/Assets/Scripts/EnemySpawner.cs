@@ -4,24 +4,36 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    public EnemyController enemyPrefab;
+    public GameObject enemyPrefab;
     public float spawnTime;
+    float nextSpawnTime;
+    bool isSpawning = false;
 
-    Transform playerBase;
+    void Start() {
+        StartSpawning();
+    }
 
-    public void StartSpawning(float start, Transform pBase) {
+
+    void Update () {
+        if(isSpawning) {
+            if(nextSpawnTime <= 0) {
+                nextSpawnTime = spawnTime;
+
+                Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            }
+            else {
+                nextSpawnTime -= Time.deltaTime;
+            }
+        }
+	}
+
+    public void StartSpawning() {
         Debug.Log("Started Spawning");
-        playerBase = pBase;
-        InvokeRepeating("SpawnEnemy", start, spawnTime);
+        isSpawning = true;
     }
 
     public void StopSpawning() {
-        Debug.Log("Stoped Spawning");
-        CancelInvoke();
-    }
-
-    void SpawnEnemy() {
-        EnemyController e = Instantiate(enemyPrefab, transform.position, Quaternion.identity) as EnemyController;
-        e.GoToTarget(playerBase.position);
+        nextSpawnTime = spawnTime;
+        isSpawning = false;
     }
 }

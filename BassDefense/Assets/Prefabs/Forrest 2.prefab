@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4737601461035942}
   - component: {fileID: 212299420232409374}
   - component: {fileID: 61885546095763976}
-  m_Layer: 9
+  - component: {fileID: 114577561974786600}
+  m_Layer: 0
   m_Name: Forrest 2
-  m_TagString: Off Path
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,6 +67,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.899, y: 0.899}
   m_EdgeRadius: 0
+--- !u!114 &114577561974786600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427872433548728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc62b670f2398944d9e39a7ed2ae41fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1748399196551062, guid: 9863d4b3bcf276d49ae647e7e7a8b5cc, type: 2}
 --- !u!212 &212299420232409374
 SpriteRenderer:
   m_ObjectHideFlags: 1

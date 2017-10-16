@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212918521065569858}
   - component: {fileID: 58051416336404388}
   - component: {fileID: 114455971400128516}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Drum
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -115,5 +115,3 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
