@@ -8,87 +8,141 @@ public class PlayerController : MonoBehaviour {
     public Text playerHealthText;
     public Text playerMoneyText;
 
+    Vector2 target;
+    Vector3[] path;
+    int targetIndex;
+    int towerIdx;
+    bool goingToBuild;
+    string mode = "Slashy";
 
-    public static GameObject player;
-    public static Vector2 target;
 
-    
-	private Vector3 position;
-	public static GameObject tower;
-    public static int moving;
-	public static int money;
-    public static int health;
-    public static string mode = "Slashy";
+    BuildTowerPreview preview;
+    public int speed;
+	public GameObject[] towerSprites;
+	public int money;
+    public int health;
 
 	void Start () {
-		moving = 0;
+        preview = (BuildTowerPreview)FindObjectOfType(typeof(BuildTowerPreview));
+        towerIdx = 0;
+
 		money = 1;
         health = 99;
         playerHealthText = GameObject.Find("PlayerHealth").GetComponent<Text>();
         playerMoneyText = GameObject.Find("Money").GetComponent<Text>();
-        playerHealthText.text = "Health: " + health;
-        playerMoneyText.text = "Money: " + money;
+        playerHealthText.text = health.ToString();
+        playerMoneyText.text = money.ToString();
     }
 
     void Update () {
+        // Change Tower
 		if (Input.GetKeyDown ("e")) {
-			mode = "Build";
-            tower = (GameObject)Resources.Load("Drum");
-           
+            EnterBuildMode();
+            towerIdx = 0;
 		}
-        if (Input.GetKeyDown("q"))
-        {
-            mode = "Build";
-            tower = (GameObject)Resources.Load("Flute");
-
-        }
-        if (moving == 2)
-        {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, target, 4.0f * Time.deltaTime);
+        if (Input.GetKeyDown("q")) {
+            EnterBuildMode();
+            towerIdx = 1;
         }
 
-        if (moving == 1)
-        {
-            Vector2 pos = Camera.main.ScreenToWorldPoint(target);
-			this.transform.position = Vector2.MoveTowards(this.transform.position, pos, 4.0f * Time.deltaTime);
+        // Change Mode
+        if(Input.GetKeyDown("f")) {
+            if(mode == "Build") {
+                ExitBuildMode();
+            }
+            else {
+                EnterBuildMode();
+            }
         }
+
+
         if (mode == "Slashy"){
 
-            if (Input.GetMouseButton(1))
-            {
-                moving = 1;
+            // Move
+            if (Input.GetMouseButton(1)){
                 target = Input.mousePosition;
+                GoToTarget(target);
             }
 
+            // Attack
             if (Input.GetMouseButton(0))
             {
                 
                 //cast(activeAbility);
             }
         }
-        else if (mode == "Build")
-        {
-            if (Input.GetMouseButton(0))
-            {
+        else if (mode == "Build") {
 
+            if(goingToBuild) {
+                if((Vector2)transform.position == target) {
+                    preview.BuildTower();
+                    goingToBuild = false;
+                }
             }
 
-            else if (Input.GetMouseButton(1))
-            {
-                mode = "Slashy";
-                moving = 1;
+            if (Input.GetMouseButton(0)){
+                if(goingToBuild) {
+                    preview.DiscardPlacedTemplate();
+                }
+
+                goingToBuild = true;
                 target = Input.mousePosition;
+                GoToTarget(target);
             }
+
+            if (Input.GetMouseButton(1)){
+                goingToBuild = false;
+                ExitBuildMode();
+                target = Input.mousePosition;
+                GoToTarget(target);
+            }
+        }
+        playerHealthText.text = health.ToString();
+        playerMoneyText.text = money.ToString();
+    }
+
+    void EnterBuildMode() {
+        mode = "Build";
+        preview.DiscardPlacedTemplate();
+        preview.InstantiateTemplate(towerIdx);
+    }
+
+    void ExitBuildMode() {
+        mode = "Slashy";
+        preview.DestroyTemplate();
+    }
+
+    public void GoToTarget(Vector3 target) {
+        PathRequestManager.RequestPath(transform.position, target, OnPathFound, false);
+    }
+
+    public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
+        if(pathSuccessful) {
+            path = newPath;
+            if(this != null) {
+                StopCoroutine("FollowPath");
+                StartCoroutine("FollowPath");
+            }
+        }
+        else {
+            Debug.Log("Path unsuccessful");
         }
     }
 
-    public bool isClose()
-    {
-        if (Vector2.Distance(this.transform.position, target) < 6f)
-        {
-            return true;
-        }else{
-            return false;
+    IEnumerator FollowPath() {
+        Vector3 currentWaypoint = path[0];
+
+        while(true) {
+            if(transform.position == currentWaypoint) {
+                targetIndex++;
+                if(targetIndex >= path.Length) {
+                    yield break;
+                }
+                currentWaypoint = path[targetIndex];
+            }
+
+            transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+            yield return null;
         }
     }
 
