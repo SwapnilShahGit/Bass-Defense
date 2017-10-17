@@ -117,6 +117,7 @@ public class GameController : MonoBehaviour
         {
             print("dead");
             timeperiodText.text = "";
+            textRemove.text = "You Lose";
             loadingOverlay.SetActive(true);
             lossTextRemove.SetActive(true);
         }
