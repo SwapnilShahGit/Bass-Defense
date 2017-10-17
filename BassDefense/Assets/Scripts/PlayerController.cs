@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 		moving = 0;
-		money = 1;
-        health = 99;
+		money = 5;
+        health = 100;
         playerHealthText = GameObject.Find("PlayerHealth").GetComponent<Text>();
         playerMoneyText = GameObject.Find("Money").GetComponent<Text>();
         playerHealthText.text = health.ToString();

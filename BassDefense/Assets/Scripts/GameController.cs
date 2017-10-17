@@ -47,8 +47,9 @@ public class GameController : MonoBehaviour
     public float levelStartDelay = 2f;                          // Num seconds to have overlay display
     private string timeperiod = "60,000 Years Ago";
     private Text timeperiodText;                                //Text to display current age/year
+    private GameObject lossTextRemove;                               
     private GameObject loadingOverlay;                          //Image to block out level as levels are being set up, background for playerHealthText.
-    private Text playerHealthText;
+    private Text textRemove;
 
     void Start()
     {
@@ -59,14 +60,21 @@ public class GameController : MonoBehaviour
             spriteDictionary.Add(tileSprite.color, tileSprite.spriteArray);
         }
 
+        print("starting");
+
         Vector2 baseStart = new Vector2(0, 0);
         //Get a reference to our canvas things and show stuff
         loadingOverlay = GameObject.Find("Overlay");
         timeperiodText = GameObject.Find("OverlayText").GetComponent<Text>();
+        lossTextRemove = GameObject.Find("Loss");
+        textRemove = GameObject.Find("Loss").GetComponent<Text>();
 
+        lossTextRemove.SetActive(false);
         timeperiodText.text = timeperiod;
+
         loadingOverlay.SetActive(true);
         Invoke("HideLoadingOverlay", levelStartDelay);
+
 
         // Generate the map
         if (generateFromSprite && mapSprite != null && tileSprites != null)
@@ -97,17 +105,47 @@ public class GameController : MonoBehaviour
         loadingOverlay.SetActive(false);
     }
 
+    public void Restart()
+    {
+        End();
+        Start();
+    }
+
     void Update()
     {
         if (BaseController.hp <= 0)
         {
+            print("dead");
+            timeperiodText.text = "";
             loadingOverlay.SetActive(true);
-            timeperiodText.text = "You Lose";
+            lossTextRemove.SetActive(true);
+        }
+        if (PlayerController.money >= 100)
+        {
+            print("win");
+            textRemove.text = "Congratulations, you win!";
+            timeperiodText.text = "";
+            loadingOverlay.SetActive(true);
+            lossTextRemove.SetActive(true);
+
         }
     }
 
     public void End()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
+        for (var i = 0; i < enemies.Length; i++)
+        {
+            Destroy(enemies[i]);
+            print("destoryed enemies");
+        }
+
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        for (var i = 0; i < towers.Length; i++)
+        {
+            Destroy(towers[i]);
+            print("destroyed towers");
+        }
         onGameEnd.Invoke();
         Destroy(player);
     }
