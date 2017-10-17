@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class TileSprite
@@ -108,7 +109,7 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         End();
-        Start();
+		SceneManager.LoadScene ("Prehistoric Era");
     }
 
     void Update()
