@@ -17,6 +17,7 @@ public class FluteController : TowerController
     // Use this for initialization
     void Start()
     {
+        PlayerController.money -= cost;
         time = Time.time;
     }
 

@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 		moving = 0;
-		money = 5;
+		money = 10;
         health = 100;
         playerHealthText = GameObject.Find("PlayerHealth").GetComponent<Text>();
         playerMoneyText = GameObject.Find("Money").GetComponent<Text>();
@@ -32,14 +32,19 @@ public class PlayerController : MonoBehaviour {
 
     void Update () {
 		if (Input.GetKeyDown ("e")) {
-			mode = "Build";
-            tower = (GameObject)Resources.Load("Drum");
+            if (money >= 5)
+            {
+                mode = "Build";
+                tower = (GameObject)Resources.Load("Drum");
+            }
            
 		}
         if (Input.GetKeyDown("q"))
         {
+            if (money >= 1){
             mode = "Build";
             tower = (GameObject)Resources.Load("Flute");
+            }
 
         }
         if (moving == 2)

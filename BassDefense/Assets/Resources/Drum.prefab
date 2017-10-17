@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: []
   pinrange: 0
-  cost: 10
+  cost: 5
   upgrade: 5
   damage: 2
   level: 1
@@ -115,5 +115,3 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0

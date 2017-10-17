@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   bounty: 5
-  speed: 0.5
+  speed: 1
   damage: 25
   enemy: {fileID: 1148131846045596}
 --- !u!212 &212239809154507310
@@ -163,9 +163,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 1470481723
+  m_SortingLayer: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b21f87b5eebb97b458fcc33aca81f22c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -174,8 +174,6 @@ SpriteRenderer:
   m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212405854179421958
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -216,5 +214,3 @@ SpriteRenderer:
   m_Size: {x: 0.01, y: 0.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
