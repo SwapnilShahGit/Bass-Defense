@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour
     public Grid grid;
 
     // UI variables
+    public Texture2D cursor;
     public float levelStartDelay = 2f;                          // Num seconds to have overlay display
     private string timeperiod = "60,000 Years Ago";
     private Text timeperiodText;                                //Text to display current age/year
@@ -54,6 +55,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
         // Add each sprite into the dictionary for quick referencing
         spriteDictionary = new Dictionary<Color32, GameObject[]>();
         foreach (TileSprite tileSprite in tileSprites)
