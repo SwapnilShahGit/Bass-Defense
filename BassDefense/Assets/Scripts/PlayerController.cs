@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour {
     // UI tingz
     public Text playerHealthText;
     public Text playerMoneyText;
-
-
+    public float cd = 0.7f;
+    int onCD = 0;
+    float time = 0;
+    float timeint = 0;
+    public int damage = 2;
     public static GameObject player;
     public static Vector2 target;
-
-    
+    public static EnemyController attacking;
 	private Vector3 position;
 	public static GameObject tower;
     public static int moving;
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     public static string mode = "Slashy";
 
 	void Start () {
+        time = Time.time;
 		moving = 0;
 		money = 10;
         health = 100;
@@ -54,8 +57,41 @@ public class PlayerController : MonoBehaviour {
 
         if (moving == 1)
         {
+
+            if (attacking != null)
+            {
+                target = attacking.GetComponent<Transform>().position;
+            }
             Vector2 pos = Camera.main.ScreenToWorldPoint(target);
-			this.transform.position = Vector2.MoveTowards(this.transform.position, pos, 4.0f * Time.deltaTime);
+            if (attacking != null)
+            {
+                pos = attacking.GetComponent<Transform>().position;
+            }
+            if (Vector2.Distance(this.transform.position, pos) < 1f && attacking != null)
+            {
+
+                timeint = Time.time - time;
+                if (onCD == 1)
+                {
+                    moving = 0;
+                    if (timeint > cd)
+                    {
+                        onCD = 0;
+                    }
+                }
+                else
+                {
+                    moving = 0;
+                    attacking.hp -= damage;
+                    onCD = 1;
+                    time = Time.time;
+                }
+            }
+            else
+            {
+                this.transform.position = Vector2.MoveTowards(this.transform.position, pos, 4.0f * Time.deltaTime);
+            }
+            
         }
         if (mode == "Slashy"){
 

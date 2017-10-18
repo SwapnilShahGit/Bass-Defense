@@ -79,4 +79,12 @@ public class EnemyController : MonoBehaviour {
     {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
     }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            PlayerController.attacking = this;
+        }
+    }
 }
