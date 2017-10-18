@@ -6,12 +6,13 @@ public class BuildTower : MonoBehaviour
 {
     int building = 0;
     public GameObject player;
-    int placed = 0;
+    public int placed = 0;
     Color old;
+    int i;
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -21,12 +22,19 @@ public class BuildTower : MonoBehaviour
         {
             
             GameObject d = Instantiate(PlayerController.tower, this.transform);
+            
             placed = 1;
+            
             d.transform.localScale = new Vector3(0.50f, 0.50f, 1);
             PlayerController.mode = "Slashy";
             building = 0;
             PlayerController.moving = 0;
         }
+
+       
+        
+
+
     }
 
 

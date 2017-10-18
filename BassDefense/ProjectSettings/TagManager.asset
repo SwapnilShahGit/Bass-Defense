@@ -9,6 +9,8 @@ TagManager:
   - enemy
   - Spawn
   - Base
+  - Drum
+  - Flute
   layers:
   - Default
   - TransparentFX

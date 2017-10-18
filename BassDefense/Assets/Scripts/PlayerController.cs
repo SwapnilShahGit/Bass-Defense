@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
     int onCD = 0;
     float time = 0;
     float timeint = 0;
-    public int damage = 2;
+    public int damage = 5;
     public static GameObject player;
     public static Vector2 target;
     public static EnemyController attacking;

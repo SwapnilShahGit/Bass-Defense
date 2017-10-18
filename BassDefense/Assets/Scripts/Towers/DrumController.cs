@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DrumController : TowerController {
+    public Sprite Upgraded;
     public int cost = 10;
     public int upgrade = 5;
     public int damage = 2;
@@ -14,12 +15,17 @@ public class DrumController : TowerController {
     
 	// Use this for initialization
 	void Start () {
+        
         PlayerController.money -= cost;
         time = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        
+        
+       
+        
         timeint = Time.time - time;
         
         
@@ -49,6 +55,7 @@ public class DrumController : TowerController {
             targets.Add(other.gameObject);
             Debug.Log("target added");
         }
+        
     }
     
     void OnTriggerExit2D( Collider2D other)
@@ -57,6 +64,7 @@ public class DrumController : TowerController {
             targets.Remove(other.gameObject);
             Debug.Log("target removed");
         }
+        
     }
     
     

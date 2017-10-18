@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114455971400128516}
   m_Layer: 2
   m_Name: Drum
-  m_TagString: Tower
+  m_TagString: Drum
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: []
   pinrange: 0
+  Upgraded: {fileID: 21300000, guid: e127dbc2dcd55df41b5040dfd53793d3, type: 3}
   cost: 5
   upgrade: 5
   damage: 2

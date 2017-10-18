@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114521062992572766}
   m_Layer: 2
   m_Name: Flute
-  m_TagString: Tower
+  m_TagString: Flute
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
