@@ -1830,7 +1830,7 @@ Prefab:
         type: 2}
       propertyPath: cursor
       value: 
-      objectReference: {fileID: 2800000, guid: 1595423ff983bad49bb1099565f55835, type: 3}
+      objectReference: {fileID: 2800000, guid: c081492c528c1cb42be49c77fd8af85e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b9fc1e2f1acbe2459a4bfbf5a5df6a4, type: 2}
   m_IsPrefabParent: 0

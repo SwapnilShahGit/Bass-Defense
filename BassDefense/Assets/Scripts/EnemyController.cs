@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
     public int hp;
+    public Texture2D scursor;
+    public Texture2D cursor;
     int maxhp;
     public int bounty = 5;
     public float speed = 2;
@@ -67,5 +69,14 @@ public class EnemyController : MonoBehaviour {
             transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    void OnMouseEnter()
+    {
+        Cursor.SetCursor(scursor, Vector2.zero, CursorMode.Auto);
+    }
+    void OnMouseExit()
+    {
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
     }
 }

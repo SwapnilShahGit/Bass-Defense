@@ -23,6 +23,7 @@ public class BuildTower : MonoBehaviour
             GameObject d = Instantiate(PlayerController.tower, this.transform);
             placed = 1;
             d.transform.localScale = new Vector3(0.50f, 0.50f, 1);
+            PlayerController.mode = "Slashy";
             building = 0;
             PlayerController.moving = 0;
         }

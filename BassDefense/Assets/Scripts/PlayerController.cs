@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
 		}
         if (Input.GetKeyDown("q"))
         {
-            if (money >= 1){
+            if (money >= 10){
             mode = "Build";
             tower = (GameObject)Resources.Load("Flute");
             }
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (Input.GetMouseButton(0))
             {
-
+                
             }
 
             else if (Input.GetMouseButton(1))
