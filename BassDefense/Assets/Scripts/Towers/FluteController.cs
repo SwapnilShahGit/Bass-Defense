@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class FluteController : TowerController
 {
-    public int cost = 20;
-    public int upgrade = 10;
-    public int damage = 6;
-    public int level = 1;
-    public float cd = 0.8f;
-    int onCD = 0;
-    float time = 0;
-    float timeint = 0;
-    List<GameObject> bullets;
 
+    List<GameObject> bullets;
+    float timeint;
+    float time;
+    float onCD;
     // Use this for initialization
     void Start()
     {
+        cost = 10;
+        damage = 6;
+        cd = 0.8f;
+        onCD = 0;
+        timeint = 0;
         PlayerController.money -= cost;
         time = Time.time;
     }

@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
     // Navigation
     public Grid grid;
 
+    public RapidFire rapid;
     // UI variables
     public Texture2D cursor;
     public float levelStartDelay = 2f;                          // Num seconds to have overlay display
@@ -53,6 +54,13 @@ public class GameController : MonoBehaviour
     private GameObject loadingOverlay;                          //Image to block out level as levels are being set up, background for playerHealthText.
     private Text textRemove;
 
+    void Awake()
+    {
+        if (RapidFire.rapid == null)
+        {
+            Instantiate(rapid);
+        }
+    }
     void Start()
     {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);

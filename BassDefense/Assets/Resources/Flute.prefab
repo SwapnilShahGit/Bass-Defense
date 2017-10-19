@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114521062992572766}
   m_Layer: 2
   m_Name: Flute
-  m_TagString: Flute
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,6 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bdf1c9d454d55a4d9ccd36b2fbb8c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 10
+  upgrade: 10
+  damage: 6
+  level: 1
+  cd: 1
+  onCD: 0
+  time: 0
+  timeint: 0
   targets: []
   pinrange: 0
   cost: 10

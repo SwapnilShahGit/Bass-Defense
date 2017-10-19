@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
     int onCD = 0;
     float time = 0;
     float timeint = 0;
+    int abil = 0;
+    public static int mana;
     public int damage = 5;
     public static GameObject player;
     public static Vector2 target;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour {
 		moving = 0;
 		money = 10;
         health = 100;
+        mana = 10;
         playerHealthText = GameObject.Find("PlayerHealth").GetComponent<Text>();
         playerMoneyText = GameObject.Find("Money").GetComponent<Text>();
         playerHealthText.text = health.ToString();
@@ -34,6 +37,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update () {
+        if (Input.GetKeyDown("1"))
+        {
+            RapidFire.rapid.cast();
+            
+        }
+
 		if (Input.GetKeyDown ("e")) {
             if (money >= 5)
             {
@@ -107,11 +116,18 @@ public class PlayerController : MonoBehaviour {
                 //cast(activeAbility);
             }
         }
-        else if (mode == "Build")
+        else if (mode == "Build" || mode == "Ability")
         {
             if (Input.GetMouseButton(0))
             {
-                
+                if (mode == "Ability")
+                {
+                    if (abil == 1)
+                    {
+                        //RapidFire.rapid.cast();
+                    }
+                }
+
             }
 
             else if (Input.GetMouseButton(1))

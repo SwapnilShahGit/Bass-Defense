@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class DrumController : TowerController {
     public Sprite Upgraded;
-    public int cost = 10;
-    public int upgrade = 5;
-    public int damage = 2;
-    public int level = 1;
-    public float cd = 2;
-    int onCD = 0;
-    float time = 0;
-    float timeint = 0;
+
+    float timeint;
+    float time;
+    int onCD;
     
 	// Use this for initialization
 	void Start () {
-        
+        cost = 5;
+        damage = 2;
+        cd = 1.2f;
+        onCD = 0;
+        timeint = 0;
         PlayerController.money -= cost;
         time = Time.time;
 	}
@@ -40,7 +40,6 @@ public class DrumController : TowerController {
             {
                 foreach (GameObject target in targets)
                 {
-                Debug.Log("Damaging enemy");
                 target.GetComponent<EnemyController>().hp -= damage;
                 onCD = 1;
                 time = Time.time;
@@ -53,7 +52,6 @@ public class DrumController : TowerController {
     {
         if (other.gameObject.tag.Equals("enemy")){
             targets.Add(other.gameObject);
-            Debug.Log("target added");
         }
         
     }
@@ -62,7 +60,6 @@ public class DrumController : TowerController {
     {
         if (other.gameObject.tag.Equals("enemy")){
             targets.Remove(other.gameObject);
-            Debug.Log("target removed");
         }
         
     }

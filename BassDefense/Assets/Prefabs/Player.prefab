@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114300398477178688}
   - component: {fileID: 82310374199562544}
   - component: {fileID: 58016535846832542}
+  - component: {fileID: 114933443543135954}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -169,6 +170,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealthText: {fileID: 0}
   playerMoneyText: {fileID: 0}
+  cd: 0.7
+  damage: 5
+--- !u!114 &114933443543135954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748399196551062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98860d9e3ce062442bbfc317db1eccfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealthText: {fileID: 0}
+  playerMoneyText: {fileID: 0}
+  cd: 0.7
+  damage: 5
 --- !u!212 &212830076218026420
 SpriteRenderer:
   m_ObjectHideFlags: 1
