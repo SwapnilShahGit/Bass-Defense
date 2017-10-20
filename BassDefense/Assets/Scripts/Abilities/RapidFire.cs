@@ -2,35 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RapidFire : AbilityController {
-    public static RapidFire rapid = null;
-    private void Awake()
-    {
-        if (rapid != null && rapid != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            rapid = this;
-        }
-    }
-    float dur = 4;
-    GameObject[] towers;
-    float casttime;
+public class RapidFire : MonoBehaviour {
+
+    static int onCD;
+    int cost;
+    float dur;
+    static GameObject[] towers;
+    static float casttime;
     float castint;
-    bool isActive;
-    float cdmult = 0.4f;
+    static bool isActive;
+    static float cdmult;
+    float time;
+    float timeint;
+    float cd;
 	// Use this for initialization
 	void Start () {
+        onCD = 0;
+        
         isActive = false;
+        dur = 5;
+        cdmult = 0.4f;
         cost = 5;
-        cd = 34;
+        cd = 30;
         time = Time.time;
+        timeint = 0;
+        casttime = 0;
+        castint = 0;
+        towers = null;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown("1"))
+        {
+            cast();
+        }
+
         timeint = Time.time - time;
         if (timeint > cd)
         {
@@ -52,7 +59,7 @@ public class RapidFire : AbilityController {
         }
 	}
 
-    public void cast()
+    public static void cast()
     {
         if (onCD == 0 && PlayerController.mana >= 5)
         {

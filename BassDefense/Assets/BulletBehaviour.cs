@@ -33,7 +33,7 @@ public class BulletBehaviour : MonoBehaviour {
         else
         {
             this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, oldpos, 8.0f * Time.deltaTime);
-            if (Vector3.Distance(this.transform.position, oldpos) == 0){
+            if (Vector3.Distance(this.transform.position, oldpos) == 0 || oldpos == new Vector3(0,0,0)){
                 Destroy(this.gameObject);
             }
         }

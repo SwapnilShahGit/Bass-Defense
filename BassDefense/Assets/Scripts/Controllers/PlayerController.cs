@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour {
     int onCD = 0;
     float time = 0;
     float timeint = 0;
-    int abil = 0;
     public static int mana;
     public int damage = 5;
     public static GameObject player;
@@ -23,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	public static int money;
     public static int health;
     public static string mode = "Slashy";
+    
 
 	void Start () {
         time = Time.time;
@@ -37,11 +37,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetKeyDown("1"))
-        {
-            RapidFire.rapid.cast();
-            
-        }
+        
 
 		if (Input.GetKeyDown ("e")) {
             if (money >= 5)
@@ -120,13 +116,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (Input.GetMouseButton(0))
             {
-                if (mode == "Ability")
-                {
-                    if (abil == 1)
-                    {
-                        //RapidFire.rapid.cast();
-                    }
-                }
+                
 
             }
 
