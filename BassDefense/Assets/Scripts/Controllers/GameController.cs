@@ -53,10 +53,7 @@ public class GameController : MonoBehaviour
     private GameObject loadingOverlay;                          //Image to block out level as levels are being set up, background for playerHealthText.
     private Text textRemove;
 
-<<<<<<< HEAD
-   
-=======
->>>>>>> f8a38f08852320415078fb8a7b9020f1e30f7539
+
     void Start()
     {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
