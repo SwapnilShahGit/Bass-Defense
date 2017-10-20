@@ -18,7 +18,7 @@ public class BuildTower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((building == 1  && Vector2.Distance(GameObject.FindWithTag("Player").GetComponent<Transform>().position,this.gameObject.transform.position) < 5f) && PlayerController.moving == 2)
+        if ((building == 1  && Vector2.Distance(GameObject.FindWithTag("Player").GetComponent<Transform>().position,this.gameObject.transform.position) < 2f) && PlayerController.moving == 2)
         {
             
             GameObject d = Instantiate(PlayerController.tower, this.transform);
