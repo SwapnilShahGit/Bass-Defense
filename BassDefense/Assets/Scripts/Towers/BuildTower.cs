@@ -22,7 +22,14 @@ public class BuildTower : MonoBehaviour
         {
             
             GameObject d = Instantiate(PlayerController.tower, this.transform);
-            
+            if (d.GetComponent<FluteController>() != null)
+            {
+                PlayerController.activeflutes++;
+            }
+            else if (d.GetComponent<DrumController>() != null)
+            {
+                PlayerController.activedrums++;
+            }
             placed = 1;
             
             d.transform.localScale = new Vector3(0.50f, 0.50f, 1);

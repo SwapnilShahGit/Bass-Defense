@@ -22,9 +22,14 @@ public class PlayerController : MonoBehaviour {
 	public static int money;
     public static int health;
     public static string mode = "Slashy";
-    
+    public static int activedrums;
+    public static int activeflutes;
+    public AudioSource[] audio;
 
 	void Start () {
+        audio = GetComponents<AudioSource>();
+        activedrums = 0;
+        activeflutes = 0;
         time = Time.time;
 		moving = 0;
 		money = 10;
@@ -37,7 +42,25 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update () {
-        
+        if (activedrums == 1)
+        {
+            audio[0].Play();
+        }
+        else if (activedrums >= 2)
+        {
+            audio[1].Play();
+        }
+
+        if (activeflutes == 1)
+        {
+            audio[2].Play();
+        }
+        else if (activeflutes >= 2)
+        {
+            audio[3].Play();
+        }
+
+
 
 		if (Input.GetKeyDown ("e")) {
             if (money >= 5)
