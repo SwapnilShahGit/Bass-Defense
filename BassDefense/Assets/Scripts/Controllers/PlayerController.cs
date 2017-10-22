@@ -22,9 +22,13 @@ public class PlayerController : MonoBehaviour {
 	public static int money;
     public static int health;
     public static string mode = "Slashy";
+    public static float speed;
   
 
 	void Start () {
+        StartCoroutine(regen());
+        player = gameObject;
+        speed = 2.0f;
         time = Time.time;
 		moving = 0;
 		money = 10;
@@ -58,7 +62,7 @@ public class PlayerController : MonoBehaviour {
         }
         if (moving == 2)
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, target, 4.0f * Time.deltaTime);
+            this.transform.position = Vector2.MoveTowards(this.transform.position, target, speed * Time.deltaTime);
         }
 
         if (moving == 1)
@@ -95,7 +99,7 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
-                this.transform.position = Vector2.MoveTowards(this.transform.position, pos, 4.0f * Time.deltaTime);
+                this.transform.position = Vector2.MoveTowards(this.transform.position, pos, speed * Time.deltaTime);
             }
             
         }
@@ -142,8 +146,15 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Harmonize()
+    IEnumerator regen()
     {
-
+        while (health >= 0)
+        {
+            yield return new WaitForSeconds(3);
+            if (health < 100)
+            {
+                health++;
+            }
+        }
     }
 }

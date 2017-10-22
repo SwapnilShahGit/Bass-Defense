@@ -11,7 +11,11 @@ public class EnemyController : MonoBehaviour {
     public float speed = 2;
     public int damage = 25;
     public GameObject enemy;
-
+    public int pdmg = 5;
+    float cd = 2;
+    int onCD = 1;
+    float time;
+    float timeint;
     Transform hpBar;
     float origscaley;
 
@@ -23,15 +27,34 @@ public class EnemyController : MonoBehaviour {
         hpBar = transform.GetChild(0);
         maxhp = hp;
         origscaley = hpBar.localScale.y;
+        time = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (Vector2.Distance(gameObject.transform.position, PlayerController.player.GetComponent<Transform>().position) < 2f)
+        {
+            timeint = Time.time - time;
+            if (onCD == 1)
+            {
+                if (timeint > cd)
+                {
+                    onCD = 0;
+                }
+            }
+            else
+            {
+                PlayerController.health -= pdmg;
+                onCD = 1;
+                time = Time.time;
+            }
+        }
         hpBar.localScale = new Vector3(2f,(origscaley*hp/maxhp), 1);
         
         if (hp <= 0)
         {
             FloatingTextController.bounty(bounty, this.transform.position.x, this.transform.position.y);
+            Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
             Destroy(enemy);
             PlayerController.money += 5;
         }
@@ -53,6 +76,8 @@ public class EnemyController : MonoBehaviour {
             Debug.Log("Path unsuccessful");
         }
     }
+
+    
 
     IEnumerator FollowPath() {
         Vector3 currentWaypoint = path[0];

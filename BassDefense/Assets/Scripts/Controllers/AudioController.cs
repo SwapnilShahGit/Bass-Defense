@@ -30,6 +30,7 @@ public class AudioController : MonoBehaviour {
             }
             if (activedrums >= 2 && sources[1].isPlaying == false)
             {
+                
 
                 sources[1].Play();    
                 if (sources[0].isPlaying == false)
@@ -45,6 +46,7 @@ public class AudioController : MonoBehaviour {
             }
             if (activeflutes >= 2 && sources[3].isPlaying == false)
             {
+                
                 sources[3].timeSamples = Mathf.RoundToInt(sources[3].clip.length* sources[3].clip.frequency*sources[3].clip.channels / 2) -2;
                 sources[3].Play();
                 if (sources[2].isPlaying == false)
@@ -55,6 +57,7 @@ public class AudioController : MonoBehaviour {
             }
             time = Time.time;
         }
+        
 	}
 
    
