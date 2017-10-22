@@ -24,10 +24,8 @@ public class PlayerController : MonoBehaviour {
     public static string mode = "Slashy";
     public static int activedrums;
     public static int activeflutes;
-    public AudioSource[] audio;
 
 	void Start () {
-        audio = GetComponents<AudioSource>();
         activedrums = 0;
         activeflutes = 0;
         time = Time.time;
@@ -44,20 +42,47 @@ public class PlayerController : MonoBehaviour {
     void Update () {
         if (activedrums == 1)
         {
-            audio[0].Play();
+           
+            GameObject s = GameObject.Find("BassDrums");
+            
+            if (AudioController.isQueued(s.GetComponent<AudioSource>()) == false)
+            {
+                s.GetComponent<AudioSource>().timeSamples = 0;
+                AudioController.queue(s.GetComponent<AudioSource>());
+               
+            }
         }
         else if (activedrums >= 2)
         {
-            audio[1].Play();
+
+            GameObject s = GameObject.Find("TrebleDrums");
+            if (AudioController.isQueued(s.GetComponent<AudioSource>()) == false)
+            {
+                s.GetComponent<AudioSource>().timeSamples = 0;
+                AudioController.queue(s.GetComponent<AudioSource>());
+
+            }
         }
 
         if (activeflutes == 1)
         {
-            audio[2].Play();
+            GameObject s = GameObject.Find("FirstFlute");
+            if (AudioController.isQueued(s.GetComponent<AudioSource>()) == false)
+            {
+                s.GetComponent<AudioSource>().timeSamples = 0;
+                AudioController.queue(s.GetComponent<AudioSource>());
+
+            }
         }
         else if (activeflutes >= 2)
         {
-            audio[3].Play();
+            GameObject s = GameObject.Find("SecondFlute");
+            if (AudioController.isQueued(s.GetComponent<AudioSource>()) == false)
+            {
+                s.GetComponent<AudioSource>().timeSamples = 0;
+                AudioController.queue(s.GetComponent<AudioSource>());
+
+            }
         }
 
 

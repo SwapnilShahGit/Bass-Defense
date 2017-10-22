@@ -416,7 +416,8 @@ MonoBehaviour:
   playerMoneyText: {fileID: 0}
   cd: 0.7
   damage: 5
-  audio: {fileID: 0}
+  audio:
+  - {fileID: 0}
 --- !u!114 &114495815715239596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -443,7 +444,11 @@ MonoBehaviour:
   playerMoneyText: {fileID: 0}
   cd: 0.7
   damage: 5
-  audio: {fileID: 82257863679844424}
+  audio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &212830076218026420
 SpriteRenderer:
   m_ObjectHideFlags: 1
