@@ -11,6 +11,12 @@ public class GameLevel {
     public string sceneName;
 }
 
+[System.Serializable]
+public class VariableSlider {
+    public Slider slider;
+    public InputField inputField;
+}
+
 public class MenuNavigation : MonoBehaviour {
 
     // Menu public variables
@@ -25,6 +31,10 @@ public class MenuNavigation : MonoBehaviour {
     public GameLevel[] gameLevels;
     public Button playButton;
     public GameLevel currentLevelSelected;
+
+    // Random Mode public variables
+    public MapPreview mapPreview;
+    public VariableSlider[] sliders;
     
     void Start() {
         currentMenu = mainMenu;
@@ -87,6 +97,8 @@ public class MenuNavigation : MonoBehaviour {
         currentMenu.SetActive(false);
         randomModeMenu.SetActive(true);
         currentMenu = randomModeMenu;
+
+        mapPreview.GeneratePreview();
     }
 
     // Settings
