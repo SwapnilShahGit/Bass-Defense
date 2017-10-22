@@ -409,7 +409,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 26566488}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1643989463}
+        m_MethodName: GenerateRandomPreview
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &26566488
@@ -895,7 +906,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 116587626}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1643989463}
+        m_MethodName: GeneratePredefinedPreview
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &116587626
@@ -6683,7 +6705,13 @@ MonoBehaviour:
     levelSummary: {fileID: 1930650129}
     sceneName: Prehistoric Era
   mapPreview: {fileID: 2011356343}
-  inputFields: []
+  gen: {fileID: 2011356344}
+  sliders:
+  - {fileID: 1620839510}
+  - {fileID: 859807613}
+  - {fileID: 1941879972}
+  - {fileID: 885123845}
+  - {fileID: 1971864039}
 --- !u!1 &1686949584
 GameObject:
   m_ObjectHideFlags: 0

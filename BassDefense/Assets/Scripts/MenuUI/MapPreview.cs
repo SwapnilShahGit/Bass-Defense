@@ -6,6 +6,7 @@ public class MapPreview : MonoBehaviour {
 
     int width;
     int height;
+    GameObject map;
     Transform mapHolder;
     HashSet<Color32> colorSet;
 
@@ -25,9 +26,6 @@ public class MapPreview : MonoBehaviour {
     }
 
     ProceduralGenerator GenerateMapFromRandom() {
-        //Camera.main.orthographicSize = 9;
-        //Camera.main.transform.position = new Vector3(-0.5f, -0.5f, -10f);
-
         ProceduralGenerator mapGen = GetComponent<ProceduralGenerator>();
         width = mapGen.GetWidth();
         height = mapGen.GetHeight();
@@ -37,7 +35,11 @@ public class MapPreview : MonoBehaviour {
     }
 
     void GenerateMapPreview(Color32[] pixelColors) {
-        mapHolder = new GameObject("Generated Map").transform;
+        if(mapHolder != null) {
+            Destroy(map);
+        }
+        map = new GameObject("Generated Map");
+        mapHolder = map.transform;
         mapHolder.parent = transform;
 
         // Match each color in the array with a corresponding tile and create it in the game world

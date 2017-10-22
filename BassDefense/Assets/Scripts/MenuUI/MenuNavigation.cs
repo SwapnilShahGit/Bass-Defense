@@ -28,11 +28,15 @@ public class MenuNavigation : MonoBehaviour {
 
     // Random Mode public variables
     public MapPreview mapPreview;
-    public InputField[] inputFields;
+    public ProceduralGenerator gen;
+    public Slider[] sliders;
+    System.Random rng;
 
     void Start() {
         currentMenu = mainMenu;
         currentMenu.SetActive(true);
+
+        rng = new System.Random();
     }
 
     // Main Menu
@@ -92,8 +96,31 @@ public class MenuNavigation : MonoBehaviour {
         randomModeMenu.SetActive(true);
         currentMenu = randomModeMenu;
 
+        GeneratePredefinedPreview();
+    }
+
+
+    public void GeneratePredefinedPreview() {
+        gen.numSpawners = (int)sliders[0].value;
+        gen.minPathLength = (int)sliders[0].value;
+        gen.MaxPathLength = (int)sliders[0].value;
+        gen.percentObstacles = sliders[0].value;
+        gen.mapSeed = (int)sliders[0].value;
+
         mapPreview.GeneratePreview();
     }
+
+    public void GenerateRandomPreview() {
+        sliders[0].value = rng.Next(1, 5);
+        sliders[1].value = rng.Next(3, 40);
+        sliders[2].value = rng.Next(gen.minPathLength, 40);
+        sliders[3].value = (float)(rng.NextDouble() * (0.8));
+        sliders[4].value = rng.Next(1, 1001);
+
+        GeneratePredefinedPreview();
+    }
+
+
 
     // Settings
     public void GoToSettingsMenu() {
