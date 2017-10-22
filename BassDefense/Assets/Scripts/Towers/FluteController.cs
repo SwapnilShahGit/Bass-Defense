@@ -12,7 +12,7 @@ public class FluteController : TowerController
     // Use this for initialization
     void Start()
     {
-        PlayerController.activeflutes++;
+        AudioController.activeflutes++;
         cost = 10;
         damage = 6;
         cd = 0.8f;

@@ -151,8 +151,6 @@ public class GameController : MonoBehaviour
             Destroy(towers[i]);
             print("destroyed towers");
         }
-        PlayerController.activedrums = 0;
-        PlayerController.activeflutes = 0;
         onGameEnd.Invoke();
         Destroy(player);
     }

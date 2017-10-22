@@ -11,7 +11,7 @@ public class DrumController : TowerController {
     
 	// Use this for initialization
 	void Start () {
-        PlayerController.activedrums++;
+        AudioController.activedrums++;
         cost = 5;
         damage = 2;
         cd = 1.2f;

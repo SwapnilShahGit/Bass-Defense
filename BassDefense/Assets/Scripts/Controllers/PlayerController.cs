@@ -22,12 +22,9 @@ public class PlayerController : MonoBehaviour {
 	public static int money;
     public static int health;
     public static string mode = "Slashy";
-    public static int activedrums;
-    public static int activeflutes;
+  
 
 	void Start () {
-        activedrums = 0;
-        activeflutes = 0;
         time = Time.time;
 		moving = 0;
 		money = 10;
@@ -40,51 +37,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update () {
-        if (activedrums == 1)
-        {
-           
-            GameObject s = GameObject.Find("BassDrums");
-            
-            if (AudioController.isQueued(s.GetComponent<AudioSource>()) == false)
-            {
-                s.GetComponent<AudioSource>().timeSamples = 0;
-                AudioController.queue(s.GetComponent<AudioSource>());
-               
-            }
-        }
-        else if (activedrums >= 2)
-        {
-
-            GameObject s = GameObject.Find("TrebleDrums");
-            if (AudioController.isQueued(s.GetComponent<AudioSource>()) == false)
-            {
-                s.GetComponent<AudioSource>().timeSamples = 0;
-                AudioController.queue(s.GetComponent<AudioSource>());
-
-            }
-        }
-
-        if (activeflutes == 1)
-        {
-            GameObject s = GameObject.Find("FirstFlute");
-            if (AudioController.isQueued(s.GetComponent<AudioSource>()) == false)
-            {
-                s.GetComponent<AudioSource>().timeSamples = 0;
-                AudioController.queue(s.GetComponent<AudioSource>());
-
-            }
-        }
-        else if (activeflutes >= 2)
-        {
-            GameObject s = GameObject.Find("SecondFlute");
-            if (AudioController.isQueued(s.GetComponent<AudioSource>()) == false)
-            {
-                s.GetComponent<AudioSource>().timeSamples = 0;
-                AudioController.queue(s.GetComponent<AudioSource>());
-
-            }
-        }
-
+      
 
 
 		if (Input.GetKeyDown ("e")) {

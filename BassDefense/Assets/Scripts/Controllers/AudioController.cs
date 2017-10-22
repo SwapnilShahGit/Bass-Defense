@@ -3,77 +3,60 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioController : MonoBehaviour {
-    public static float starttime;
-    float loopend;
-    public static AudioSource master = null;
-    public static AudioSource[] slaves = new AudioSource[3];
-    public static int ssize = 0;
+    public AudioSource[] sources;
+    public static int activedrums;
+    public static int activeflutes;
+    float time;
+    float timeint;
+    bool started;
 	// Use this for initialization
 	void Start () {
-		
+        started = false;
+        activedrums = 0;
+        activeflutes = 0;
+        time = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (master!= null){
-            if (master.isPlaying == false)
+        timeint = Time.time - time;
+        if (timeint >= 12 || started == false)
+        {
+            if (activedrums == 1 && sources[0].isPlaying == false)
             {
-                master.Play();
+                sources[0].Play();
+                started = true;
+                
             }
-            foreach (AudioSource s in slaves)
+            if (activedrums >= 2 && sources[1].isPlaying == false)
             {
-                if (s.isPlaying == false && master.timeSamples == 0)
+
+                sources[1].Play();    
+                if (sources[0].isPlaying == false)
                 {
-                    s.Play();
-                
+                    sources[0].Play();
                 }
+                started = true;
             }
-                
-           
+            if (activeflutes == 1 && sources[2].isPlaying == false)
+            {
+                sources[2].Play();
+                started = true;
+            }
+            if (activeflutes >= 2 && sources[3].isPlaying == false)
+            {
+                sources[3].timeSamples = Mathf.RoundToInt(sources[3].clip.length* sources[3].clip.frequency*sources[3].clip.channels / 2) -2;
+                sources[3].Play();
+                if (sources[2].isPlaying == false)
+                {
+                    sources[2].Play();
+                }
+                started = true;
+            }
+            time = Time.time;
         }
-        SyncTracks();
 	}
 
-    private IEnumerator SyncTracks()
-    {
-      foreach (AudioSource slave in slaves)
-            {
-                slave.timeSamples = master.timeSamples;
-                yield return null;
-            }
-      
-    } 
+   
 
-
-
-    public static bool isQueued(AudioSource s)
-    {
-        if (master = s)
-        {
-            return true;
-        }
-        foreach (AudioSource slave in slaves)
-        {
-            if (slave == s)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    public static void queue(AudioSource s)
-    {
-        if (master == null)
-        {
-            master = s;
-            master.Play();
-        }
-        else
-        {
-            slaves[ssize] = s;
-            ssize++;
-        }
-    }
 }
