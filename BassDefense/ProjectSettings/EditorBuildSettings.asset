@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menus.unity
+    guid: 9d28ee6bc562e8f4087e3be399aaf02b
+  - enabled: 1
+    path: Assets/Scenes/Prehistoric Era.unity
+    guid: fe5c0b1a96d3b7f4e95b7888c53527da
