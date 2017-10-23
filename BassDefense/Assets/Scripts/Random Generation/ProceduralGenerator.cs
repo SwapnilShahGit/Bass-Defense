@@ -86,6 +86,7 @@ public class ProceduralGenerator : MonoBehaviour {
         FillMap();
         ChooseSectorForBases();
         CreatePaths();
+        AddObstacles();
 
         return map;
     }
@@ -566,5 +567,39 @@ public class ProceduralGenerator : MonoBehaviour {
         //Debug.Log("Returning from x: " + tile.x + ", y: " + tile.y);
         visited[currentIdx] = false;
         return false;
+    }
+
+    void AddObstacles() {
+        List<Coord> grassTiles = new List<Coord>();
+        int numGrassTiles = 0;
+        Coord c;
+        int currentIdx;
+
+        for(int x = 0; x < mapWidth; x++) {
+            for(int y = 0; y < mapHeight; y++) {
+                currentIdx = (y * mapWidth) + x;
+                if(map[currentIdx].r == grassTileColor.r &&
+                    map[currentIdx].g == grassTileColor.g &&
+                    map[currentIdx].b == grassTileColor.b &&
+                    map[currentIdx].a == grassTileColor.a) {
+
+                    numGrassTiles++;
+                    c = new Coord(x, y);
+                    grassTiles.Add(c);
+                }
+            }
+        }
+
+        Queue<Coord> grassQ = gen.RandomShuffleArray<Coord>(grassTiles.ToArray());
+
+        for(int i = 1; i <= numGrassTiles * percentObstacles; i++) {
+            c = grassQ.Dequeue();
+            currentIdx = (c.y * mapWidth) + c.x;
+
+            map[currentIdx].r = obstacleTileColor.r;
+            map[currentIdx].g = obstacleTileColor.g;
+            map[currentIdx].b = obstacleTileColor.b;
+            map[currentIdx].a = obstacleTileColor.a;
+        }
     }
 }
