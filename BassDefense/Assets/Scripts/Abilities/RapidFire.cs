@@ -5,7 +5,7 @@ using UnityEngine;
 public class RapidFire : MonoBehaviour {
 
     static int onCD;
-    int cost;
+    static int cost;
     float dur;
     static TowerController[] towers;
     static float casttime;
@@ -61,9 +61,9 @@ public class RapidFire : MonoBehaviour {
 
     public static void cast()
     {
-        if (onCD == 0 && PlayerController.mana >= 5)
+        if (onCD == 0 && PlayerController.mana >= cost)
         {
-            PlayerController.mana -= 5;
+            PlayerController.mana -= cost;
             Debug.Log("Casting");
             towers = (TowerController[])GameObject.FindObjectsOfType(typeof(TowerController));
             casttime = Time.time;
