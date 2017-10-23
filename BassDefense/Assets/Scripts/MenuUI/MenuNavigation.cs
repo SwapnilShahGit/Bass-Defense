@@ -30,6 +30,7 @@ public class MenuNavigation : MonoBehaviour {
     public MapPreview mapPreview;
     public ProceduralGenerator gen;
     public Slider[] sliders;
+    public GameObject cover;
     System.Random rng;
 
     void Start() {
@@ -41,6 +42,9 @@ public class MenuNavigation : MonoBehaviour {
 
     // Main Menu
     public void GoToMainMenu() {
+        currentLevelSelected.levelSummary.SetActive(false);
+        currentLevelSelected.arrow.gameObject.SetActive(false);
+
         currentMenu.SetActive(false);
         mainMenu.SetActive(true);
         currentMenu = mainMenu;
@@ -102,12 +106,18 @@ public class MenuNavigation : MonoBehaviour {
 
     public void GeneratePredefinedPreview() {
         gen.numSpawners = (int)sliders[0].value;
-        gen.minPathLength = (int)sliders[0].value;
-        gen.MaxPathLength = (int)sliders[0].value;
-        gen.percentObstacles = sliders[0].value;
-        gen.mapSeed = (int)sliders[0].value;
+        gen.minPathLength = (int)sliders[1].value;
+        gen.MaxPathLength = (int)sliders[2].value;
+        gen.percentObstacles = sliders[3].value;
+        gen.mapSeed = (int)sliders[4].value;
 
-        mapPreview.GeneratePreview();
+        if(gen.minPathLength > gen.MaxPathLength) {
+            cover.SetActive(true);
+        }
+        else {
+            cover.SetActive(false);
+            mapPreview.GeneratePreview();
+        }
     }
 
     public void GenerateRandomPreview() {
