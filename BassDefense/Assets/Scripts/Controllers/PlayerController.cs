@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
   
 
 	void Start () {
-        StartCoroutine(regen());
+        
         player = gameObject;
         speed = 2.0f;
         time = Time.time;
@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour {
 		money = 10;
         health = 100;
         mana = 10;
-        
+        StartCoroutine(regenhp());
+        StartCoroutine(regenmana());
         healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
         manaSlider = GameObject.Find("ManaSlider").GetComponent<Slider>();
         playerMoneyText = GameObject.Find("Money").GetComponent<Text>();
@@ -138,6 +139,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
         healthSlider.value= health;
+        manaSlider.value = mana;
         playerMoneyText.text = money.ToString();
     }
 
@@ -151,7 +153,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    IEnumerator regen()
+    IEnumerator regenhp()
     {
         while (health >= 0)
         {
@@ -159,6 +161,17 @@ public class PlayerController : MonoBehaviour {
             if (health < 100)
             {
                 health++;
+            }
+        }
+    }
+    IEnumerator regenmana()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(15);
+            if (mana < 10)
+            {
+                mana++;
             }
         }
     }
