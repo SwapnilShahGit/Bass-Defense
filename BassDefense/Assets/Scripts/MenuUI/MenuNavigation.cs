@@ -13,25 +13,29 @@ public class GameLevel {
 
 public class MenuNavigation : MonoBehaviour {
 
-    // Menu public variables
+    // Menu variables
     public GameObject mainMenu;
     public GameObject storyModeMenu;
     public GameObject randomModeMenu;
     public GameObject settingsMenu;
+    bool quitPanelActive = false;
 
     GameObject currentMenu;
 
-    // Story Mode public variables
+    // Story Mode variables
     public GameLevel[] gameLevels;
     public Button playButton;
     public GameLevel currentLevelSelected;
 
-    // Random Mode public variables
+    // Random Mode variables
     public MapPreview mapPreview;
     public ProceduralGenerator gen;
     public Slider[] sliders;
     public GameObject cover;
     System.Random rng;
+
+    // Quit pannel variables
+    public GameObject panel;
 
     void Start() {
         currentMenu = mainMenu;
@@ -42,22 +46,26 @@ public class MenuNavigation : MonoBehaviour {
 
     // Main Menu
     public void GoToMainMenu() {
-        currentLevelSelected.levelSummary.SetActive(false);
-        currentLevelSelected.arrow.gameObject.SetActive(false);
+        if(!quitPanelActive) {
+            currentLevelSelected.levelSummary.SetActive(false);
+            currentLevelSelected.arrow.gameObject.SetActive(false);
 
-        currentMenu.SetActive(false);
-        mainMenu.SetActive(true);
-        currentMenu = mainMenu;
+            currentMenu.SetActive(false);
+            mainMenu.SetActive(true);
+            currentMenu = mainMenu;
+        }
     }
 
     // Story Mode
     public void GoToStoryMenu() {
-        currentMenu.SetActive(false);
-        storyModeMenu.SetActive(true);
-        currentMenu = storyModeMenu;
+        if(!quitPanelActive) {
+            currentMenu.SetActive(false);
+            storyModeMenu.SetActive(true);
+            currentMenu = storyModeMenu;
 
-        currentLevelSelected = gameLevels[0];
-        SelectPrehistoric();
+            currentLevelSelected = gameLevels[0];
+            SelectPrehistoric();
+        }
     }
 
     public void SelectPrehistoric() {
@@ -96,11 +104,13 @@ public class MenuNavigation : MonoBehaviour {
 
     // Random Generation Mode
     public void GoToRandomMenu() {
-        currentMenu.SetActive(false);
-        randomModeMenu.SetActive(true);
-        currentMenu = randomModeMenu;
+        if(!quitPanelActive) {
+            currentMenu.SetActive(false);
+            randomModeMenu.SetActive(true);
+            currentMenu = randomModeMenu;
 
-        GeneratePredefinedPreview();
+            GeneratePredefinedPreview();
+        }
     }
 
 
@@ -134,10 +144,25 @@ public class MenuNavigation : MonoBehaviour {
 
     // Settings
     public void GoToSettingsMenu() {
-        currentMenu.SetActive(false);
-        settingsMenu.SetActive(true);
-        currentMenu = settingsMenu;
+        if(!quitPanelActive) {
+            currentMenu.SetActive(false);
+            settingsMenu.SetActive(true);
+            currentMenu = settingsMenu;
+        }
     }
 
     // Quit
+    public void GetQuitPanel() {
+        panel.SetActive(true);
+        quitPanelActive = true;
+    }
+
+    public void PressYes() {
+        Application.Quit();
+    }
+
+    public void PressNo() {
+        panel.SetActive(false);
+        quitPanelActive = false;
+    }
 }
