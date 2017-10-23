@@ -136,6 +136,7 @@ MonoBehaviour:
   speed: 1
   damage: 25
   enemy: {fileID: 1148131846045596}
+  pdmg: 5
 --- !u!212 &212239809154507310
 SpriteRenderer:
   m_ObjectHideFlags: 1
