@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildTower : MonoBehaviour
 {
+    public Transform t;
     int building = 0;
     public GameObject player;
     public int placed = 0;

@@ -7,7 +7,7 @@ public class RapidFire : MonoBehaviour {
     static int onCD;
     int cost;
     float dur;
-    static GameObject[] towers;
+    static TowerController[] towers;
     static float casttime;
     float castint;
     static bool isActive;
@@ -48,9 +48,9 @@ public class RapidFire : MonoBehaviour {
             castint = Time.time - casttime;
             if (castint > dur)
             {
-                foreach (GameObject t in towers)
+                foreach (TowerController t in towers)
                 {
-                    t.GetComponent<TowerController>().cd /= cdmult;
+                    t.cd /= cdmult;
                 }
                 isActive = false;
                 onCD = 1;
@@ -65,12 +65,12 @@ public class RapidFire : MonoBehaviour {
         {
             PlayerController.mana -= 5;
             Debug.Log("Casting");
-            towers = GameObject.FindGameObjectsWithTag("Tower");
+            towers = (TowerController[])GameObject.FindObjectsOfType(typeof(TowerController));
             casttime = Time.time;
             isActive = true;
-            foreach (GameObject t in towers)
+            foreach (TowerController t in towers)
             {
-                t.GetComponent<TowerController>().cd *= cdmult;
+                t.cd *= cdmult;
             }
         }
         else
