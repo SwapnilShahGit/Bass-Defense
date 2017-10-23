@@ -1,8 +1,17 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour {
+    // UI tingz
+    public Image damageFlash;                                   // Reference to an image to flash on the screen on being hurt.
+    public bool damaged = false;                                // True when the base gets damaged.
+    public float flashSpeed = 10000000000000f;                  // The speed the damageImage will fade at.
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
+    Transform hpBar;
+    float origscaley;
+
     public int hp;
     public Texture2D scursor;
     public Texture2D cursor;
@@ -16,8 +25,6 @@ public class EnemyController : MonoBehaviour {
     int onCD = 1;
     float time;
     float timeint;
-    Transform hpBar;
-    float origscaley;
 
     Vector3[] path;
     int targetIndex;
@@ -26,6 +33,7 @@ public class EnemyController : MonoBehaviour {
 	void Start () {
         hpBar = transform.GetChild(0);
         maxhp = hp;
+        damageFlash = GameObject.Find("DamageFlash").GetComponent<Image>();
         origscaley = hpBar.localScale.y;
         time = Time.time;
 	}
@@ -41,10 +49,12 @@ public class EnemyController : MonoBehaviour {
                 {
                     onCD = 0;
                 }
+                damageFlash.color = Color.Lerp(damageFlash.color, Color.clear, flashSpeed * Time.deltaTime);
             }
             else
             {
                 PlayerController.health -= pdmg;
+                damageFlash.color = flashColour;
                 onCD = 1;
                 time = Time.time;
             }
