@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     // UI tingz
-    public Text playerHealthText;
+    public Slider healthSlider;
+    public Slider manaSlider;
     public Text playerMoneyText;
+
     public float cd = 0.7f;
     int onCD = 0;
     float time = 0;
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour {
   
 
 	void Start () {
-        
+        StartCoroutine(regen());
         player = gameObject;
         speed = 2.0f;
         time = Time.time;
@@ -34,11 +36,12 @@ public class PlayerController : MonoBehaviour {
 		money = 10;
         health = 100;
         mana = 10;
-        StartCoroutine(regenhp());
-        StartCoroutine(regenmana());
-        playerHealthText = GameObject.Find("PlayerHealth").GetComponent<Text>();
+        
+        healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
+        manaSlider = GameObject.Find("ManaSlider").GetComponent<Slider>();
         playerMoneyText = GameObject.Find("Money").GetComponent<Text>();
-        playerHealthText.text = health.ToString();
+        healthSlider.value = health;
+        manaSlider.value = mana;
         playerMoneyText.text = money.ToString();
     }
 
@@ -134,7 +137,7 @@ public class PlayerController : MonoBehaviour {
                 target = Input.mousePosition;
             }
         }
-        playerHealthText.text = health.ToString();
+        healthSlider.value= health;
         playerMoneyText.text = money.ToString();
     }
 
@@ -148,7 +151,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    IEnumerator regenhp()
+    IEnumerator regen()
     {
         while (health >= 0)
         {
@@ -158,19 +161,5 @@ public class PlayerController : MonoBehaviour {
                 health++;
             }
         }
-
-    }
-
-    IEnumerator regenmana()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(10);
-            if (mana < 10)
-            {
-                mana++;
-            }
-        }
-
     }
 }
