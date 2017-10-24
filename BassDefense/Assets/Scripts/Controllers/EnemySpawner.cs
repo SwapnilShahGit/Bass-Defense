@@ -6,15 +6,15 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public EnemyController enemyPrefab;
-    public float spawnTime;
+    public float[] spawnTimes;
 
     Transform playerBase;
 
-    public void StartSpawning(float start, Transform pBase)
+    public void StartSpawning(float start, int wave, Transform pBase)
     {
         Debug.Log("Started Spawning");
         playerBase = pBase;
-        InvokeRepeating("SpawnEnemy", start, spawnTime);
+        InvokeRepeating("SpawnEnemy", start, spawnTimes[wave]);
     }
 
     public void StopSpawning()

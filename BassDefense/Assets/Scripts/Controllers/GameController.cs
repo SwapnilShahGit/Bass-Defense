@@ -13,7 +13,7 @@ public class TileSprite
 }
 
 [System.Serializable]
-public class StartEvent : UnityEvent<float, Transform> { }
+public class StartEvent : UnityEvent<float, int, Transform> { }
 
 public class GameController : MonoBehaviour
 {
@@ -52,6 +52,13 @@ public class GameController : MonoBehaviour
     private GameObject lossTextRemove;                               
     private GameObject loadingOverlay;                          //Image to block out level as levels are being set up, background for playerHealthText.
     private Text textRemove;
+
+    // Time
+    float currentTime;
+
+    Transform home;
+
+    bool[] invoked = { false, false, false, false, false };
 
 
     void Start()
@@ -94,12 +101,13 @@ public class GameController : MonoBehaviour
         grid.StartCreatingGrid();
 
         // Create a base object
-        Transform home = Instantiate(basePrefab, baseStart, Quaternion.identity).transform as Transform;
+        home = Instantiate(basePrefab, baseStart, Quaternion.identity).transform as Transform;
 
         // Create a player object
         player = Instantiate(playerPrefab, baseStart, Quaternion.identity) as GameObject;
 
-        onGameStart.Invoke(levelStartDelay + 1f, home);
+        currentTime = 0f;
+        onGameStart.Invoke(levelStartDelay + 1f, 0, home);
     }
 
     //Hides black image used between levels
@@ -125,15 +133,41 @@ public class GameController : MonoBehaviour
             loadingOverlay.SetActive(true);
             lossTextRemove.SetActive(true);
         }
-        if (PlayerController.money >= 100)
-        {
+
+        if(currentTime >= 300) {
             print("win");
             textRemove.text = "Congratulations, you win!";
             timeperiodText.text = "";
             loadingOverlay.SetActive(true);
             lossTextRemove.SetActive(true);
-
+            Debug.Log(currentTime + " end");
         }
+        else if(currentTime >= 240 && !invoked[4]) {
+            onGameEnd.Invoke();
+            onGameStart.Invoke(levelStartDelay + 1f, 4, home);
+            invoked[4] = true;
+            Debug.Log(currentTime + " Wave 4");
+        }
+        else if(currentTime >= 180 && !invoked[3]) {
+            onGameEnd.Invoke();
+            onGameStart.Invoke(levelStartDelay + 1f, 3, home);
+            invoked[3] = true;
+            Debug.Log(currentTime + " Wave 3");
+        }
+        else if(currentTime >= 120 && !invoked[2]) {
+            onGameEnd.Invoke();
+            onGameStart.Invoke(levelStartDelay + 1f, 2, home);
+            invoked[2] = true;
+            Debug.Log(currentTime + " Wave 2");
+        }
+        else if(currentTime >= 60 && !invoked[1]) {
+            onGameEnd.Invoke();
+            onGameStart.Invoke(levelStartDelay + 1f, 1, home);
+            invoked[1] = true;
+            Debug.Log(currentTime + " Wave 2");
+        }
+
+        currentTime += Time.deltaTime;
     }
 
     public void End()

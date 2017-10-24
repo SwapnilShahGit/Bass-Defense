@@ -51,7 +51,7 @@ public class FluteController : TowerController
     {
         if (other.gameObject.tag.Equals("enemy")){
             targets.Add(other.gameObject);
-            Debug.Log("target added");
+            //Debug.Log("target added");
         }
     }
     
@@ -59,7 +59,7 @@ public class FluteController : TowerController
     {
         if (other.gameObject.tag.Equals("enemy")){
             targets.Remove(other.gameObject);
-            Debug.Log("target removed");
+            //Debug.Log("target removed");
         }
     }
 
