@@ -31,6 +31,13 @@ public class MapPreview : MonoBehaviour {
         height = mapGen.GetHeight();
         Color32[] colorMap = mapGen.GenerateMap();
         GenerateMapPreview(colorMap);
+
+        MapData.Width = width;
+        MapData.Height = height;
+        MapData.ColorMap = colorMap;
+        MapData.BaseLocationX = mapGen.GetBaseLocationX();
+        MapData.BaseLocationY = mapGen.GetBaseLocationY();
+
         return mapGen;
     }
 
