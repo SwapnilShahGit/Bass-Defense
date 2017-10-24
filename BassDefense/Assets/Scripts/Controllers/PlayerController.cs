@@ -175,4 +175,26 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
+
+
+    public void drumbutton()
+    {
+        if (money >= 5)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Drum");
+        }
+    }
+
+    public void flutebutton()
+    {
+        if (money >= 10)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Flute");
+        }
+    }
+
+
+    
 }
