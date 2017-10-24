@@ -44,7 +44,7 @@ public class UpgradeFlutes : MonoBehaviour {
                 bool isGrouped = false;
                 for (int r = 0; r < i; r++)
                 {
-                    if (Groups[r] == d1)
+                    if (Vector2.Distance(Groups[r],d1)<2f)
                     {
                         isGrouped = true;
                     }
