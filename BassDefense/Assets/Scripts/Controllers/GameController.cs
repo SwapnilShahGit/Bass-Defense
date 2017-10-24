@@ -96,8 +96,8 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            ProceduralGenerator gen = GenerateMapFromRandom();
-            baseStart = new Vector2(-width / 2 + gen.GetBaseLocationX() - 0.5f, -height / 2 + gen.GetBaseLocationY() - 0.5f);
+            GenerateMapFromRandom();
+            baseStart = new Vector2(-width / 2 + MapData.BaseLocationX - 0.5f, -height / 2 + MapData.BaseLocationY - 0.5f);
         }
 
         grid.StartCreatingGrid();
@@ -209,17 +209,15 @@ public class GameController : MonoBehaviour
         GenerateMap(pixelColors);
     }
 
-    ProceduralGenerator GenerateMapFromRandom()
+    void GenerateMapFromRandom()
     {
         Camera.main.orthographicSize = 9;
         Camera.main.transform.position = new Vector3(-0.5f, -0.5f, -10f);
 
-        ProceduralGenerator mapGen = GetComponent<ProceduralGenerator>();
-        width = mapGen.GetWidth();
-        height = mapGen.GetHeight();
-        Color32[] colorMap = mapGen.GenerateMap();
+        width = MapData.Width;
+        height = MapData.Height;
+        Color32[] colorMap = MapData.ColorMap;
         GenerateMap(colorMap);
-        return mapGen;
     }
 
 
