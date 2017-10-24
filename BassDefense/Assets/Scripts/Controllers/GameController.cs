@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
     private GameObject lossTextRemove;                               
     private GameObject loadingOverlay;                          //Image to block out level as levels are being set up, background for playerHealthText.
     private Text textRemove;
+    public Text waveText;
 
     // Time
     float currentTime;
@@ -108,6 +109,7 @@ public class GameController : MonoBehaviour
         player = Instantiate(playerPrefab, baseStart, Quaternion.identity) as GameObject;
 
         currentTime = 0f;
+        waveText.text = "Wave: 1";
         onGameStart.Invoke(levelStartDelay + 1f, 0, home);
     }
 
@@ -147,24 +149,28 @@ public class GameController : MonoBehaviour
             onGameEnd.Invoke();
             onGameStart.Invoke(levelStartDelay + 1f, 4, home);
             invoked[4] = true;
-            Debug.Log(currentTime + " Wave 4");
+            waveText.text = "Wave: 5";
+            Debug.Log(currentTime + " Wave 5");
         }
         else if(currentTime >= secondsBetweenWaves*3 && !invoked[3]) {
             onGameEnd.Invoke();
             onGameStart.Invoke(levelStartDelay + 1f, 3, home);
             invoked[3] = true;
-            Debug.Log(currentTime + " Wave 3");
+            waveText.text = "Wave: 4";
+            Debug.Log(currentTime + " Wave 4");
         }
         else if(currentTime >= secondsBetweenWaves*2 && !invoked[2]) {
             onGameEnd.Invoke();
             onGameStart.Invoke(levelStartDelay + 1f, 2, home);
             invoked[2] = true;
-            Debug.Log(currentTime + " Wave 2");
+            waveText.text = "Wave: 3";
+            Debug.Log(currentTime + " Wave 3");
         }
         else if(currentTime >= secondsBetweenWaves && !invoked[1]) {
             onGameEnd.Invoke();
             onGameStart.Invoke(levelStartDelay + 1f, 1, home);
             invoked[1] = true;
+            waveText.text = "Wave: 2";
             Debug.Log(currentTime + " Wave 2");
         }
 
