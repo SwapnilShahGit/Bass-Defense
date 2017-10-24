@@ -41,7 +41,18 @@ public class UpgradeFlutes : MonoBehaviour {
             }
             if (k >= 3)
             {
-                Groups[i] = d1;
+                bool isGrouped = false;
+                for (int r = 0; r < i; r++)
+                {
+                    if (Groups[r] == d1)
+                    {
+                        isGrouped = true;
+                    }
+                }
+                if (!isGrouped)
+                {
+                    Groups[i] = d1;
+                }
             }
         }
 
