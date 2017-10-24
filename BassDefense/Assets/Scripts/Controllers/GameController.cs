@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
     private GameObject loadingOverlay;                          //Image to block out level as levels are being set up, background for playerHealthText.
     private Text textRemove;
     public Text waveText;
+    public AudioSource gongeffect;
 
     // Time
     float currentTime;
@@ -128,7 +129,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (BaseController.hp <= 0)
+        if (BaseController.hp <= 0 || PlayerController.health <=0)
         {
             print("dead");
             timeperiodText.text = "";
@@ -143,6 +144,7 @@ public class GameController : MonoBehaviour
             timeperiodText.text = "";
             loadingOverlay.SetActive(true);
             lossTextRemove.SetActive(true);
+            gongeffect.Play();
             Debug.Log(currentTime + " end");
         }
         else if(currentTime >= secondsBetweenWaves*4 && !invoked[4]) {
@@ -150,6 +152,7 @@ public class GameController : MonoBehaviour
             onGameStart.Invoke(levelStartDelay + 1f, 4, home);
             invoked[4] = true;
             waveText.text = "Wave: 5";
+            gongeffect.Play();
             Debug.Log(currentTime + " Wave 5");
         }
         else if(currentTime >= secondsBetweenWaves*3 && !invoked[3]) {
@@ -157,6 +160,7 @@ public class GameController : MonoBehaviour
             onGameStart.Invoke(levelStartDelay + 1f, 3, home);
             invoked[3] = true;
             waveText.text = "Wave: 4";
+            gongeffect.Play();
             Debug.Log(currentTime + " Wave 4");
         }
         else if(currentTime >= secondsBetweenWaves*2 && !invoked[2]) {
@@ -164,6 +168,7 @@ public class GameController : MonoBehaviour
             onGameStart.Invoke(levelStartDelay + 1f, 2, home);
             invoked[2] = true;
             waveText.text = "Wave: 3";
+            gongeffect.Play();
             Debug.Log(currentTime + " Wave 3");
         }
         else if(currentTime >= secondsBetweenWaves && !invoked[1]) {
@@ -171,6 +176,7 @@ public class GameController : MonoBehaviour
             onGameStart.Invoke(levelStartDelay + 1f, 1, home);
             invoked[1] = true;
             waveText.text = "Wave: 2";
+            gongeffect.Play();
             Debug.Log(currentTime + " Wave 2");
         }
 
