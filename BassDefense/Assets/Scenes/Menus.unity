@@ -3668,7 +3668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &901385362
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6330,9 +6330,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Some text talking about cavemen and how their brains got bigger. Once the
-    cavemens'' brains became big enough, the began making more complex tools and eventually
-    instruments and music. '
+  m_Text: The first known musical instrument was the human voice itself.                                             As
+    humans evolved, their brains got bigger and they began making tools and instruments
+    to survive and create rhythm.
 --- !u!222 &1559901466
 CanvasRenderer:
   m_ObjectHideFlags: 0
