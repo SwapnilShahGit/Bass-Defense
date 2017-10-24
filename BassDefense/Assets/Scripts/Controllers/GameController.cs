@@ -55,6 +55,7 @@ public class GameController : MonoBehaviour
 
     // Time
     float currentTime;
+    public float secondsBetweenWaves;
 
     Transform home;
 
@@ -134,7 +135,7 @@ public class GameController : MonoBehaviour
             lossTextRemove.SetActive(true);
         }
 
-        if(currentTime >= 300) {
+        if(currentTime >= secondsBetweenWaves*5) {
             print("win");
             textRemove.text = "Congratulations, you win!";
             timeperiodText.text = "";
@@ -142,25 +143,25 @@ public class GameController : MonoBehaviour
             lossTextRemove.SetActive(true);
             Debug.Log(currentTime + " end");
         }
-        else if(currentTime >= 240 && !invoked[4]) {
+        else if(currentTime >= secondsBetweenWaves*4 && !invoked[4]) {
             onGameEnd.Invoke();
             onGameStart.Invoke(levelStartDelay + 1f, 4, home);
             invoked[4] = true;
             Debug.Log(currentTime + " Wave 4");
         }
-        else if(currentTime >= 180 && !invoked[3]) {
+        else if(currentTime >= secondsBetweenWaves*3 && !invoked[3]) {
             onGameEnd.Invoke();
             onGameStart.Invoke(levelStartDelay + 1f, 3, home);
             invoked[3] = true;
             Debug.Log(currentTime + " Wave 3");
         }
-        else if(currentTime >= 120 && !invoked[2]) {
+        else if(currentTime >= secondsBetweenWaves*2 && !invoked[2]) {
             onGameEnd.Invoke();
             onGameStart.Invoke(levelStartDelay + 1f, 2, home);
             invoked[2] = true;
             Debug.Log(currentTime + " Wave 2");
         }
-        else if(currentTime >= 60 && !invoked[1]) {
+        else if(currentTime >= secondsBetweenWaves && !invoked[1]) {
             onGameEnd.Invoke();
             onGameStart.Invoke(levelStartDelay + 1f, 1, home);
             invoked[1] = true;

@@ -3784,6 +3784,11 @@ Prefab:
       propertyPath: rapid
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114832303457913986, guid: 5b9fc1e2f1acbe2459a4bfbf5a5df6a4,
+        type: 2}
+      propertyPath: secondsBetweenWaves
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b9fc1e2f1acbe2459a4bfbf5a5df6a4, type: 2}
   m_IsPrefabParent: 0
