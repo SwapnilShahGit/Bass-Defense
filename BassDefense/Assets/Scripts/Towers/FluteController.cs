@@ -13,9 +13,6 @@ public class FluteController : TowerController
     void Start()
     {
         AudioController.activeflutes++;
-        cost = 10;
-        damage = 6;
-        cd = 0.8f;
         onCD = 0;
         timeint = 0;
         PlayerController.money -= cost;
