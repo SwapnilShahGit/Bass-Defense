@@ -5,6 +5,7 @@ using UnityEngine;
 public class Grid : MonoBehaviour {
     public LayerMask unwalkableMask;
     public LayerMask aiUnwalkableMask;
+    public LayerMask pathMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
     Node[,] grid;
@@ -32,9 +33,20 @@ public class Grid : MonoBehaviour {
         for(int x = 0; x < gridSizeX; x++) {
             for(int y = 0; y < gridSizeY; y++) {
                 Vector2 worldPoint = worldBottomLeft + Vector2.right * (x * nodeDiameter + nodeRadius) + Vector2.up * (y * nodeDiameter + nodeRadius);
-                bool walkable = (Physics2D.OverlapCircle(worldPoint, nodeRadius, unwalkableMask.value) == null);
-                bool aiWalkable = (Physics2D.OverlapCircle(worldPoint, nodeRadius, aiUnwalkableMask.value) == null);
-                grid[x, y] = new Node(walkable, aiWalkable, worldPoint, x, y);
+
+                // if Path walkable by all
+                if((Physics2D.OverlapCircle(worldPoint, nodeRadius, pathMask.value) != null)) {
+                    grid[x, y] = new Node(true, true, worldPoint, x, y);
+                }
+                // if forest
+                else if((Physics2D.OverlapCircle(worldPoint, nodeRadius, aiUnwalkableMask.value) != null)) {
+                    grid[x, y] = new Node(true, false, worldPoint, x, y);
+                }
+                else {
+                    grid[x, y] = new Node(false, false, worldPoint, x, y);
+                }
+                //bool walkable = ((Physics2D.OverlapCircle(worldPoint, nodeRadius, unwalkableMask.value) == null));
+                //bool aiWalkable = ((Physics2D.OverlapCircle(worldPoint, nodeRadius, aiUnwalkableMask.value) == null));
             }
         }
     }
