@@ -78,4 +78,9 @@ public class RapidFire : MonoBehaviour {
             //on cooldown sound
         }
     }
+
+    public void rapidbutton()
+    {
+        cast();
+    }
 }

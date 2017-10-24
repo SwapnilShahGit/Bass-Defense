@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 5465931}
   - component: {fileID: 5465933}
   - component: {fileID: 5465932}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 135971624}
   - component: {fileID: 135971626}
   - component: {fileID: 135971625}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 146014014}
   - component: {fileID: 146014016}
   - component: {fileID: 146014015}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 193545116}
   - component: {fileID: 193545115}
   - component: {fileID: 193545114}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 204441262}
   - component: {fileID: 204441264}
   - component: {fileID: 204441263}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Loss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 236681657}
   - component: {fileID: 236681659}
   - component: {fileID: 236681658}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Quit to Desktop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 327079088}
   - component: {fileID: 327079091}
   - component: {fileID: 327079089}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RestartButtonTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 327329942}
   - component: {fileID: 327329944}
   - component: {fileID: 327329943}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ GameObject:
   - component: {fileID: 335362083}
   - component: {fileID: 335362085}
   - component: {fileID: 335362084}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: OverlayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,9 @@ GameObject:
   - component: {fileID: 408685679}
   - component: {fileID: 408685681}
   - component: {fileID: 408685680}
-  m_Layer: 0
+  - component: {fileID: 408685682}
+  - component: {fileID: 408685683}
+  m_Layer: 13
   m_Name: RapidFirePrice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1201,7 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1223,6 +1225,83 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 408685678}
+--- !u!114 &408685682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408685678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.4327422, g: 0.5026817, b: 0.6397059, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 408685680}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 900822203}
+        m_MethodName: rapidbutton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!61 &408685683
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408685678}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &439850311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,7 +1421,8 @@ GameObject:
   - component: {fileID: 484464548}
   - component: {fileID: 484464550}
   - component: {fileID: 484464549}
-  m_Layer: 0
+  - component: {fileID: 484464551}
+  m_Layer: 13
   m_Name: DrumPrice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1400,6 +1480,59 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 484464547}
+--- !u!114 &484464551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 484464547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.4327422, g: 0.5026817, b: 0.6397059, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 484464549}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114300398477178688, guid: 9863d4b3bcf276d49ae647e7e7a8b5cc,
+          type: 2}
+        m_MethodName: drumbutton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &493228223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,7 +1541,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 493228224}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PlayerResources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1582,7 @@ GameObject:
   - component: {fileID: 853364710}
   - component: {fileID: 853364709}
   - component: {fileID: 853364708}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1688,7 +1821,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 945544261}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BaseResources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1725,7 +1858,7 @@ GameObject:
   - component: {fileID: 951446276}
   - component: {fileID: 951446278}
   - component: {fileID: 951446277}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1826,7 +1959,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1014218231}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,7 +2067,7 @@ GameObject:
   - component: {fileID: 1110049877}
   - component: {fileID: 1110049879}
   - component: {fileID: 1110049878}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Quit to Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2090,7 +2223,7 @@ GameObject:
   - component: {fileID: 1188118886}
   - component: {fileID: 1188118888}
   - component: {fileID: 1188118887}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2158,7 +2291,7 @@ GameObject:
   - component: {fileID: 1192719647}
   - component: {fileID: 1192719649}
   - component: {fileID: 1192719648}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2231,7 +2364,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1213391389}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2266,7 +2399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1214212551}
   - component: {fileID: 1214212552}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ManaSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2351,7 +2484,9 @@ GameObject:
   - component: {fileID: 1253813327}
   - component: {fileID: 1253813329}
   - component: {fileID: 1253813328}
-  m_Layer: 0
+  - component: {fileID: 1253813331}
+  - component: {fileID: 1253813330}
+  m_Layer: 13
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2412,6 +2547,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1253813326}
+--- !u!114 &1253813330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1253813326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &1253813331
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1253813326}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
 --- !u!1 &1262877143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,7 +2593,8 @@ GameObject:
   - component: {fileID: 1262877144}
   - component: {fileID: 1262877146}
   - component: {fileID: 1262877145}
-  m_Layer: 0
+  - component: {fileID: 1262877147}
+  m_Layer: 13
   m_Name: FlutePrice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2480,6 +2652,59 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1262877143}
+--- !u!114 &1262877147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262877143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.4327422, g: 0.5026817, b: 0.6397059, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1262877145}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114300398477178688, guid: 9863d4b3bcf276d49ae647e7e7a8b5cc,
+          type: 2}
+        m_MethodName: flutebutton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1295155116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2598,7 +2823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1368131199}
   - component: {fileID: 1368131200}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2683,7 +2908,7 @@ GameObject:
   - component: {fileID: 1428980875}
   - component: {fileID: 1428980877}
   - component: {fileID: 1428980876}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CoinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2751,7 +2976,7 @@ GameObject:
   - component: {fileID: 1431306978}
   - component: {fileID: 1431306980}
   - component: {fileID: 1431306979}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2825,7 +3050,7 @@ GameObject:
   - component: {fileID: 1501285010}
   - component: {fileID: 1501285012}
   - component: {fileID: 1501285011}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ReturnToMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2918,7 +3143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1527830095}
   - component: {fileID: 1527830096}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2957,7 +3182,7 @@ CanvasGroup:
   m_GameObject: {fileID: 1527830094}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
+  m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &1627802119
@@ -2969,7 +3194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1627802120}
   - component: {fileID: 1627802121}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BaseHealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3054,7 +3279,7 @@ GameObject:
   - component: {fileID: 1647198885}
   - component: {fileID: 1647198887}
   - component: {fileID: 1647198886}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3122,7 +3347,7 @@ GameObject:
   - component: {fileID: 1732677811}
   - component: {fileID: 1732677813}
   - component: {fileID: 1732677812}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BaseSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3190,7 +3415,7 @@ GameObject:
   - component: {fileID: 1733238497}
   - component: {fileID: 1733238499}
   - component: {fileID: 1733238498}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3260,7 +3485,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1808529403}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3296,7 +3521,7 @@ GameObject:
   - component: {fileID: 1814561882}
   - component: {fileID: 1814561884}
   - component: {fileID: 1814561883}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DamageFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3473,7 +3698,7 @@ GameObject:
   - component: {fileID: 1963584061}
   - component: {fileID: 1963584063}
   - component: {fileID: 1963584062}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: WaveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3547,7 +3772,7 @@ GameObject:
   - component: {fileID: 1970711364}
   - component: {fileID: 1970711366}
   - component: {fileID: 1970711365}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3615,7 +3840,7 @@ GameObject:
   - component: {fileID: 1976941739}
   - component: {fileID: 1976941741}
   - component: {fileID: 1976941740}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3683,7 +3908,8 @@ GameObject:
   - component: {fileID: 1985682846}
   - component: {fileID: 1985682848}
   - component: {fileID: 1985682847}
-  m_Layer: 0
+  - component: {fileID: 1985682849}
+  m_Layer: 13
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3743,6 +3969,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1985682845}
+--- !u!223 &1985682849
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1985682845}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!1 &2027248925
 GameObject:
   m_ObjectHideFlags: 0
@@ -3753,7 +3999,7 @@ GameObject:
   - component: {fileID: 2027248926}
   - component: {fileID: 2027248928}
   - component: {fileID: 2027248927}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3827,7 +4073,7 @@ GameObject:
   - component: {fileID: 2047456037}
   - component: {fileID: 2047456039}
   - component: {fileID: 2047456038}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3895,7 +4141,7 @@ GameObject:
   - component: {fileID: 2083596371}
   - component: {fileID: 2083596373}
   - component: {fileID: 2083596372}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4238,7 +4484,7 @@ GameObject:
   - component: {fileID: 2108351779}
   - component: {fileID: 2108351781}
   - component: {fileID: 2108351780}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
