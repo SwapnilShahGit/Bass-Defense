@@ -99,7 +99,8 @@ public class MenuNavigation : MonoBehaviour {
     }
 
     public void SelectPlay() {
-        SceneManager.LoadScene(currentLevelSelected.sceneName);
+        //SceneManager.LoadScene(currentLevelSelected.sceneName);
+        SceneManager.LoadScene("Controls");
     }
 
     // Random Generation Mode
