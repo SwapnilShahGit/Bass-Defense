@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class RapidFire : MonoBehaviour {
 
-    static int onCD;
+    public static int onCD;
     static int cost;
     float dur;
     static TowerController[] towers;
     static float casttime;
     float castint;
-    static bool isActive;
+    public static bool isActive;
     static float cdmult;
     float time;
-    float timeint;
-    float cd;
+    public float timeint;
+    public float cd;
 	// Use this for initialization
 	void Start () {
         onCD = 0;
@@ -81,6 +81,7 @@ public class RapidFire : MonoBehaviour {
 
     public void rapidbutton()
     {
+        
         cast();
     }
 }
