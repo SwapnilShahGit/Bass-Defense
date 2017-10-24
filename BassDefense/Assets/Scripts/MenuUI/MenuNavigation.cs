@@ -141,6 +141,10 @@ public class MenuNavigation : MonoBehaviour {
         GeneratePredefinedPreview();
     }
 
+    public void PlayRandom() {
+        SceneManager.LoadScene("Random Map");
+    }
+
 
 
     // Settings
