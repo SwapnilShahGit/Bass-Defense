@@ -47,8 +47,34 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update () {
-      
+        // AWSD CONTROLS
+        Vector2 move = Vector2.zero;
 
+        if (Input.GetKey("a"))
+        {
+            move.x -= 1f;
+        }
+        if (Input.GetKey("d"))
+        {
+            move.x += 1f;
+        }
+        if (Input.GetKey("w"))
+        {
+            move.y += 1f;
+        }
+        if (Input.GetKey("s"))
+        {
+            move.y -= 1f;
+        }
+
+        if (moving == 0)
+        {
+            this.transform.Translate(move * speed * Time.deltaTime);
+        }
+        else if (moving == 1)
+        {
+            target += move*speed;
+        }
 
 		if (Input.GetKeyDown ("e")) {
             if (money >= 5)
