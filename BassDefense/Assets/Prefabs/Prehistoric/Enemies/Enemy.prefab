@@ -138,7 +138,7 @@ MonoBehaviour:
   cursor: {fileID: 2800000, guid: c081492c528c1cb42be49c77fd8af85e, type: 3}
   bounty: 5
   speed: 1
-  damage: 25
+  damage: 10
   enemy: {fileID: 1148131846045596}
   pdmg: 5
 --- !u!212 &212239809154507310

@@ -18,6 +18,7 @@ public class StartEvent : UnityEvent<float, int, Transform> { }
 public class GameController : MonoBehaviour
 {
 
+    public bool isTut;
     // player variables
     public GameObject playerPrefab;
     GameObject player;
@@ -136,6 +137,10 @@ public class GameController : MonoBehaviour
             textRemove.text = "You Lose";
             loadingOverlay.SetActive(true);
             lossTextRemove.SetActive(true);
+        }
+        if (currentTime >= secondsBetweenWaves*2 && isTut)
+        {
+            SceneManager.LoadScene("Prehistoric Era");
         }
 
         if(currentTime >= secondsBetweenWaves*5) {
