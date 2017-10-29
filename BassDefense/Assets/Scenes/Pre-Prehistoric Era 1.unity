@@ -1909,10 +1909,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sources:
-  - {fileID: 259346633}
-  - {fileID: 1295155118}
-  - {fileID: 175294618}
-  - {fileID: 439850313}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &900822198 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1086810514083464, guid: 5b9fc1e2f1acbe2459a4bfbf5a5df6a4,
