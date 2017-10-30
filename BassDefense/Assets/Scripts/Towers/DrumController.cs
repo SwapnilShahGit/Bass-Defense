@@ -70,9 +70,6 @@ public class DrumController : TowerController
 
     void Bullets(float x, float y)
     {
-
-        
-
         GameObject wave1 = Instantiate((GameObject)Resources.Load("BulletDrum"));
         wave1.transform.position = this.gameObject.transform.position;
         if (wave1.GetComponent<BulletBehaviour>() != null)

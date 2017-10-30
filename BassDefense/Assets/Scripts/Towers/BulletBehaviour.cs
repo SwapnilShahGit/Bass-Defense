@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletBehaviour : MonoBehaviour {
+public class BulletBehaviour : MonoBehaviour
+{
     public GameObject target;
     public Vector3 destination;
     public int dmg;
     Vector3 oldpos;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-        if (target != null && destination == null)
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (target != null)
         {
             this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, target.transform.position, 8.0f * Time.deltaTime);
             oldpos = target.transform.position;
@@ -27,11 +30,9 @@ public class BulletBehaviour : MonoBehaviour {
                     target.GetComponent<EnemyController>().hp -= dmg;
                     Destroy(this.gameObject);
                 }
-                
             }
-
         }
-        if(destination != null && target == null)
+        if (destination != null && target == null)
         {
             this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, destination, 8.0f * Time.deltaTime);
 
