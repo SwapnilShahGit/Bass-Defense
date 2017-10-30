@@ -24,7 +24,28 @@ public class ClassicalAudioController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timeint = Time.time - time;
-        
+        if (activebags > 0)
+        {
+            sources[0].mute = false;
+        }
+        if (activeharps > 0)
+        {
+            sources[1].mute = false;
+        }
+        if (activetrumpets == 1)
+        {
+            sources[2].mute = false;
+        }
+        if (activetrumpets >= 2)
+        {
+            sources[2].mute = false;
+            sources[3].mute = false;
+        }
+        if (activepianos > 0)
+        {
+            sources[4].mute = false;
+        }
+
         
 	}
 
