@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     // UI tingz
     public Slider healthSlider;
     public Slider manaSlider;
     public Text playerMoneyText;
+
+    public Texture2D cursor;
+
 
     public float cd = 0.7f;
     int onCD = 0;
@@ -18,29 +22,32 @@ public class PlayerController : MonoBehaviour {
     public static GameObject player;
     public static Vector2 target;
     public static EnemyController attacking;
-	private Vector3 position;
-	public static GameObject tower;
+    private Vector3 position;
+    public static GameObject tower;
     public static int moving;
-	public static int money;
+    public static int money;
     public static int health;
     public static string mode = "Slashy";
     public static float speed;
 
+
     Animator animator;
     bool isLookingRight = true;
 
-    private void Awake() {
+    private void Awake()
+    {
         animator = GetComponent<Animator>();
     }
 
 
-    void Start () {
-        
+    void Start()
+    {
+
         player = gameObject;
         speed = 2.0f;
         time = Time.time;
-		moving = 0;
-		money = 10;
+        moving = 0;
+        money = 10;
         health = 100;
         mana = 10;
         StartCoroutine(regenhp());
@@ -53,7 +60,8 @@ public class PlayerController : MonoBehaviour {
         playerMoneyText.text = money.ToString();
     }
 
-    void Update () {
+    void Update()
+    {
         // AWSD CONTROLS
         Vector2 move = Vector2.zero;
 
@@ -80,22 +88,24 @@ public class PlayerController : MonoBehaviour {
         }
         else if (moving == 1)
         {
-            target += move*speed;
+            target += move * speed;
         }
 
-		if (Input.GetKeyDown ("e")) {
+        if (Input.GetKeyDown("e"))
+        {
             if (money >= 5)
             {
                 mode = "Build";
                 tower = (GameObject)Resources.Load("Drum");
             }
-           
-		}
+
+        }
         if (Input.GetKeyDown("q"))
         {
-            if (money >= 10){
-            mode = "Build";
-            tower = (GameObject)Resources.Load("Flute");
+            if (money >= 10)
+            {
+                mode = "Build";
+                tower = (GameObject)Resources.Load("Flute");
             }
 
         }
@@ -106,7 +116,6 @@ public class PlayerController : MonoBehaviour {
 
         if (moving == 1)
         {
-
             if (attacking != null)
             {
                 target = attacking.GetComponent<Transform>().position;
@@ -120,12 +129,15 @@ public class PlayerController : MonoBehaviour {
             {
 
                 timeint = Time.time - time;
-                if(onCD == 0) {
-                    if(isLookingRight) {
+                if (onCD == 0)
+                {
+                    if (isLookingRight)
+                    {
                         //look right
                         animator.SetInteger("AnimState", 0);
                     }
-                    else {
+                    else
+                    {
                         //look left
                         animator.SetInteger("AnimState", 2);
                     }
@@ -141,11 +153,13 @@ public class PlayerController : MonoBehaviour {
                 else
                 {
                     //attack right
-                    if(isLookingRight) {
+                    if (isLookingRight)
+                    {
                         animator.SetTrigger("Attack");
                     }
                     //attack left
-                    else {
+                    else
+                    {
                         animator.SetTrigger("Attack");
                     }
                     moving = 0;
@@ -156,21 +170,24 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
-                if(transform.position.x > pos.x) {
+                if (transform.position.x > pos.x)
+                {
                     //look left
                     animator.SetInteger("AnimState", 2);
                     isLookingRight = false;
                 }
-                if(transform.position.x < pos.x) {
+                if (transform.position.x < pos.x)
+                {
                     //look right
                     animator.SetInteger("AnimState", 0);
                     isLookingRight = true;
                 }
                 this.transform.position = Vector2.MoveTowards(this.transform.position, pos, speed * Time.deltaTime);
             }
-            
+
         }
-        if (mode == "Slashy"){
+        if (mode == "Slashy")
+        {
 
             if (Input.GetMouseButton(1))
             {
@@ -180,7 +197,7 @@ public class PlayerController : MonoBehaviour {
 
             if (Input.GetMouseButton(0))
             {
-                
+
                 //cast(activeAbility);
             }
         }
@@ -188,7 +205,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (Input.GetMouseButton(0))
             {
-                
+
 
             }
 
@@ -199,7 +216,7 @@ public class PlayerController : MonoBehaviour {
                 target = Input.mousePosition;
             }
         }
-        healthSlider.value= health;
+        healthSlider.value = health;
         manaSlider.value = mana;
         playerMoneyText.text = money.ToString();
     }
@@ -209,7 +226,9 @@ public class PlayerController : MonoBehaviour {
         if (Vector2.Distance(this.transform.position, target) < 6f)
         {
             return true;
-        }else{
+        }
+        else
+        {
             return false;
         }
     }
@@ -257,5 +276,5 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    
+
 }
