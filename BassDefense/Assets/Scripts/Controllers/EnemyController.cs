@@ -26,11 +26,18 @@ public class EnemyController : MonoBehaviour {
     float time;
     float timeint;
 
+    Animator animator;
+    bool isLookingRight = true;
+
     Vector3[] path;
     int targetIndex;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake() {
+        animator = GetComponent<Animator>();
+    }
+
+    // Use this for initialization
+    void Start () {
         hpBar = transform.GetChild(0);
         maxhp = hp;
         damageFlash = GameObject.Find("DamageFlash").GetComponent<Image>();
@@ -99,6 +106,15 @@ public class EnemyController : MonoBehaviour {
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
+            }
+
+            if(transform.position.x < currentWaypoint.x) {
+                animator.SetInteger("Animstate", 0);
+                isLookingRight = true;
+            }
+            else if(transform.position.x > currentWaypoint.x) {
+                animator.SetInteger("Animstate", 1);
+                isLookingRight = false;
             }
 
             transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);

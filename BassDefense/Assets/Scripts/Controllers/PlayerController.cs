@@ -25,9 +25,16 @@ public class PlayerController : MonoBehaviour {
     public static int health;
     public static string mode = "Slashy";
     public static float speed;
-  
 
-	void Start () {
+    Animator animator;
+    bool isLookingRight = true;
+
+    private void Awake() {
+        animator = GetComponent<Animator>();
+    }
+
+
+    void Start () {
         
         player = gameObject;
         speed = 2.0f;
@@ -113,6 +120,16 @@ public class PlayerController : MonoBehaviour {
             {
 
                 timeint = Time.time - time;
+                if(onCD == 0) {
+                    if(isLookingRight) {
+                        //look right
+                        animator.SetInteger("AnimState", 0);
+                    }
+                    else {
+                        //look left
+                        animator.SetInteger("AnimState", 2);
+                    }
+                }
                 if (onCD == 1)
                 {
                     moving = 0;
@@ -123,6 +140,14 @@ public class PlayerController : MonoBehaviour {
                 }
                 else
                 {
+                    //attack right
+                    if(isLookingRight) {
+                        animator.SetTrigger("Attack");
+                    }
+                    //attack left
+                    else {
+                        animator.SetTrigger("Attack");
+                    }
                     moving = 0;
                     attacking.hp -= damage;
                     onCD = 1;
@@ -131,6 +156,16 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
+                if(transform.position.x > pos.x) {
+                    //look left
+                    animator.SetInteger("AnimState", 2);
+                    isLookingRight = false;
+                }
+                if(transform.position.x < pos.x) {
+                    //look right
+                    animator.SetInteger("AnimState", 0);
+                    isLookingRight = true;
+                }
                 this.transform.position = Vector2.MoveTowards(this.transform.position, pos, speed * Time.deltaTime);
             }
             
