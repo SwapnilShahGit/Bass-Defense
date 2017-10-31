@@ -81,6 +81,7 @@ MonoBehaviour:
   t: {fileID: 4966671930631052}
   player: {fileID: 1748399196551062, guid: 9863d4b3bcf276d49ae647e7e7a8b5cc, type: 2}
   placed: 0
+  buildable: 1
 --- !u!212 &212711727129345724
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -90,7 +91,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -106,7 +106,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

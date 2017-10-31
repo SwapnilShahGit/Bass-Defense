@@ -8,6 +8,7 @@ public class BuildTower : MonoBehaviour
     int building = 0;
     public GameObject player;
     public int placed = 0;
+    public bool buildable;
     Color old;
     int i;
     // Use this for initialization
@@ -45,7 +46,12 @@ public class BuildTower : MonoBehaviour
         old = this.gameObject.GetComponent<SpriteRenderer>().color;
         if (PlayerController.mode == "Build")
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            if(buildable) {
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            }
+            else {
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            }
         }
 
 
@@ -58,7 +64,7 @@ public class BuildTower : MonoBehaviour
     }
     void OnMouseUp()
     {
-        if (PlayerController.mode == "Build" && placed == 0)
+        if (PlayerController.mode == "Build" && placed == 0 && buildable)
         {
             PlayerController.target = this.gameObject.transform.position;
             PlayerController.moving = 2;

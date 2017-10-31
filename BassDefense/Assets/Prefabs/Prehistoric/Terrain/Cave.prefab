@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212343245688346126}
   - component: {fileID: 114439923647475814}
   - component: {fileID: 61003083704795394}
+  - component: {fileID: 114227466183107864}
   m_Layer: 13
   m_Name: Cave
   m_TagString: Spawn
@@ -59,7 +60,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.94814813, y: 0.94814813}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -67,6 +68,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.899, y: 0.899}
   m_EdgeRadius: 0
+--- !u!114 &114227466183107864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303586144939944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc62b670f2398944d9e39a7ed2ae41fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: {fileID: 4595626628493298}
+  player: {fileID: 1748399196551062, guid: 9863d4b3bcf276d49ae647e7e7a8b5cc, type: 2}
+  placed: 0
+  buildable: 0
 --- !u!114 &114439923647475814
 MonoBehaviour:
   m_ObjectHideFlags: 1

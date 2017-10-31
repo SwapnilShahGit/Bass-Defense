@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4924279557554184}
   - component: {fileID: 212329250515074976}
   - component: {fileID: 61913153469732806}
+  - component: {fileID: 114619002941089740}
   m_Layer: 13
   m_Name: Buildable Area
   m_TagString: Untagged
@@ -66,6 +67,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.899, y: 0.899}
   m_EdgeRadius: 0
+--- !u!114 &114619002941089740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600298413383656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc62b670f2398944d9e39a7ed2ae41fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: {fileID: 4924279557554184}
+  player: {fileID: 1748399196551062, guid: 9863d4b3bcf276d49ae647e7e7a8b5cc, type: 2}
+  placed: 0
+  buildable: 0
 --- !u!212 &212329250515074976
 SpriteRenderer:
   m_ObjectHideFlags: 1
