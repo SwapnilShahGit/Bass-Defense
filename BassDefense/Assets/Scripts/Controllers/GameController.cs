@@ -85,7 +85,12 @@ public class GameController : MonoBehaviour
         textRemove = GameObject.Find("Loss").GetComponent<Text>();
 
         lossTextRemove.SetActive(false);
-        timeperiodText.text = timeperiod;
+        if(isTut) {
+            timeperiodText.text = "Tutorial";
+        }
+        else {
+            timeperiodText.text = timeperiod;
+        }
 
         loadingOverlay.SetActive(true);
         Invoke("HideLoadingOverlay", levelStartDelay);
@@ -125,7 +130,12 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         End();
-		SceneManager.LoadScene ("Prehistoric Era");
+        if(isTut) {
+            SceneManager.LoadScene("Prehistoric Tutorial");
+        }
+        else {
+            SceneManager.LoadScene("Prehistoric Era");
+        }
     }
 
     void Update()

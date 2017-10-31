@@ -175,7 +175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Right Click to move around the Map.
+  m_Text: Right Click to move around the Map or use WASD.
 --- !u!222 &30235450
 CanvasRenderer:
   m_ObjectHideFlags: 0

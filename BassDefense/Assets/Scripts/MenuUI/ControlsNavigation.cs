@@ -10,7 +10,7 @@ public class ControlsNavigation : MonoBehaviour {
     }
 
     public void GoPlay() {
-        SceneManager.LoadScene("Prehistoric Era");
+        SceneManager.LoadScene("Prehistoric Tutorial");
     }
 
 }

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Controls.unity
     guid: ad0bf3c8db87f8f48bb45c6738fa5bcf
   - enabled: 1
+    path: Assets/Scenes/Prehistoric Tutorial.unity
+    guid: a92f3390e8ad782418d96334cb433610
+  - enabled: 1
     path: Assets/Scenes/Prehistoric Era.unity
     guid: fe5c0b1a96d3b7f4e95b7888c53527da
   - enabled: 1
