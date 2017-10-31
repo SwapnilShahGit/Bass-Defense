@@ -79,9 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t: {fileID: 4966671930631052}
-  player: {fileID: 1748399196551062, guid: 9863d4b3bcf276d49ae647e7e7a8b5cc, type: 2}
   placed: 0
   buildable: 1
+  cursor: {fileID: 2800000, guid: c081492c528c1cb42be49c77fd8af85e, type: 3}
+  hcursor: {fileID: 2800000, guid: 9739b5f5a2c1be648be36cbadd7c1139, type: 3}
 --- !u!212 &212711727129345724
 SpriteRenderer:
   m_ObjectHideFlags: 1
