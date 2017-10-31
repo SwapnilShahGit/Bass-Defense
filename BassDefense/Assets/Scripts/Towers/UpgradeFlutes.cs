@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeFlutes : MonoBehaviour {
-	
-		
-	public GameObject UpgradedFlute;
+public class UpgradeFlutes : MonoBehaviour
+{
+
+
+    public GameObject UpgradedFlute;
     public GameObject[] Flutes;
     public BuildTower[] Tiles;
     public Vector2[] Groups;
@@ -13,12 +14,14 @@ public class UpgradeFlutes : MonoBehaviour {
     Vector2 d1;
     Vector2 d2;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         Flutes = GameObject.FindGameObjectsWithTag("Flute");
         Tiles = GameObject.FindObjectsOfType(typeof(BuildTower)) as BuildTower[];
 
@@ -44,7 +47,7 @@ public class UpgradeFlutes : MonoBehaviour {
                 bool isGrouped = false;
                 for (int r = 0; r < i; r++)
                 {
-                    if (Vector2.Distance(Groups[r],d1)<2f)
+                    if (Vector2.Distance(Groups[r], d1) < 2f)
                     {
                         isGrouped = true;
                     }
@@ -57,37 +60,39 @@ public class UpgradeFlutes : MonoBehaviour {
         }
 
 
-        foreach (Vector2 pos in Groups){
+        foreach (Vector2 pos in Groups)
+        {
             foreach (GameObject flute in Flutes)
+            {
+                if (Vector2.Distance(pos, flute.GetComponent<Transform>().position) < 2f)
                 {
-                    if (Vector2.Distance(pos, flute.GetComponent<Transform>().position) < 2f)
+                    foreach (BuildTower tile in Tiles)
                     {
-                        foreach(BuildTower tile in Tiles){
-                            if (tile.GetComponent<Transform>().position == flute.GetComponent<Transform>().position)
-                            {
-                                tile.GetComponent<BuildTower>().placed = 0;
-                            }
+                        if (tile.GetComponent<Transform>().position == flute.GetComponent<Transform>().position)
+                        {
+                            tile.GetComponent<BuildTower>().placed = 0;
                         }
-                        Destroy(flute);
                     }
-                }
-                BuildTower t = null;
-                foreach (BuildTower tile in Tiles)
-                {
-                    if (((Vector2)tile.t.position  == pos) )
-                    
-                    {
-                        t = tile;
-                    }
-
-                }
-                if (t != null)
-                {
-                    GameObject d = Instantiate(UpgradedFlute, t.t);
-
-                    t.placed = 1;
-                    d.transform.localScale = new Vector3(0.50f, 0.50f, 1);
+                    Destroy(flute);
                 }
             }
-	}
+            BuildTower t = null;
+            foreach (BuildTower tile in Tiles)
+            {
+                if (((Vector2)tile.t.position == pos))
+
+                {
+                    t = tile;
+                }
+
+            }
+            if (t != null && t.buildable)
+            {
+                GameObject d = Instantiate(UpgradedFlute, t.t);
+
+                t.placed = 1;
+                d.transform.localScale = new Vector3(0.50f, 0.50f, 1);
+            }
+        }
+    }
 }

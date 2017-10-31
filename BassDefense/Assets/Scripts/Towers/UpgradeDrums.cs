@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeDrums : MonoBehaviour {
+public class UpgradeDrums : MonoBehaviour
+{
     public GameObject UpgradedDrum;
     public GameObject[] Drums;
     public BuildTower[] Tiles;
@@ -11,12 +12,14 @@ public class UpgradeDrums : MonoBehaviour {
     Vector2 d1;
     Vector2 d2;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         Drums = GameObject.FindGameObjectsWithTag("Drum");
         Tiles = GameObject.FindObjectsOfType(typeof(BuildTower)) as BuildTower[];
 
@@ -28,7 +31,7 @@ public class UpgradeDrums : MonoBehaviour {
             d1 = Drums[i].GetComponent<Transform>().position;
             for (int j = 0; j < Drums.Length; j++)
             {
-                
+
                 d2 = Drums[j].GetComponent<Transform>().position;
 
                 if (Vector2.Distance(d1, d2) < 2f)
@@ -42,7 +45,7 @@ public class UpgradeDrums : MonoBehaviour {
                 bool isGrouped = false;
                 for (int r = 0; r < i; r++)
                 {
-                    if (Vector2.Distance(Groups[r],d1) < 2f)
+                    if (Vector2.Distance(Groups[r], d1) < 2f)
                     {
                         isGrouped = true;
                     }
@@ -55,36 +58,39 @@ public class UpgradeDrums : MonoBehaviour {
         }
 
 
-        foreach (Vector2 pos in Groups){
-                foreach (GameObject drum in Drums)
+        foreach (Vector2 pos in Groups)
+        {
+            foreach (GameObject drum in Drums)
+            {
+                if (Vector2.Distance(pos, drum.GetComponent<Transform>().position) < 2f)
                 {
-                    if (Vector2.Distance(pos, drum.GetComponent<Transform>().position) < 2f)
+                    foreach (BuildTower tile in Tiles)
                     {
-                        foreach(BuildTower tile in Tiles){
-                            if (tile.GetComponent<Transform>().position == drum.GetComponent<Transform>().position){
-                                tile.GetComponent<BuildTower>().placed = 0;
-                            }
+                        if (tile.GetComponent<Transform>().position == drum.GetComponent<Transform>().position)
+                        {
+                            tile.GetComponent<BuildTower>().placed = 0;
                         }
-                        Destroy(drum);
                     }
-                }
-                BuildTower t = null;
-                foreach (BuildTower tile in Tiles)
-                {
-                    if (((Vector2)tile.t.position  == pos) )
-                    
-                    {
-                        t = tile;
-                    }
-
-                }
-                if (t != null)
-                {
-                    GameObject d = Instantiate(UpgradedDrum, t.t);
-
-                    t.placed = 1;
-                    d.transform.localScale = new Vector3(0.50f, 0.50f, 1);
+                    Destroy(drum);
                 }
             }
-	}
+            BuildTower t = null;
+            foreach (BuildTower tile in Tiles)
+            {
+                if (((Vector2)tile.t.position == pos))
+
+                {
+                    t = tile;
+                }
+
+            }
+            if (t != null && t.buildable)
+            {
+                GameObject d = Instantiate(UpgradedDrum, t.t);
+
+                t.placed = 1;
+                d.transform.localScale = new Vector3(0.50f, 0.50f, 1);
+            }
+        }
+    }
 }

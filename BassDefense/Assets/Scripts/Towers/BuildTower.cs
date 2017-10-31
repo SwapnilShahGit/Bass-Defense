@@ -27,7 +27,6 @@ public class BuildTower : MonoBehaviour
         if ((building == 1 && Vector2.Distance(GameObject.FindWithTag("Player").GetComponent<Transform>().position, this.gameObject.transform.position) < 2f) && PlayerController.moving == 2)
         {
             GameObject d = Instantiate(PlayerController.tower, this.transform);
-
             placed = 1;
 
             d.transform.localScale = new Vector3(0.50f, 0.50f, 1);
