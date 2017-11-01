@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrumpetController : TowerController {
+public class BagpipeController : TowerController {
     public Sprite Upgraded;
 
     float timeint;
@@ -11,7 +11,7 @@ public class TrumpetController : TowerController {
     
 	// Use this for initialization
 	void Start () {
-        AudioController.activedrums++;
+        ClassicalAudioController.activebags++;
         onCD = 0;
         timeint = 0;
         PlayerController.money -= cost;
