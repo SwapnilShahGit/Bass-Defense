@@ -14,7 +14,7 @@ public class BagpipeController : TowerController {
         ClassicalAudioController.activebags++;
         onCD = 0;
         timeint = 0;
-        PlayerController.money -= cost;
+        PlayerController.flow -= cost;
         time = Time.time;
 	}
 	

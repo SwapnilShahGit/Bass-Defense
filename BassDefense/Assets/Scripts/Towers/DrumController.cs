@@ -17,7 +17,7 @@ public class DrumController : TowerController
         AudioController.activedrums++;
         onCD = 0;
         timeint = 0;
-        PlayerController.money -= cost;
+        PlayerController.flow -= cost;
         time = Time.time;
         bulletTravel = GetComponent<CircleCollider2D>().radius / 2;
     }
