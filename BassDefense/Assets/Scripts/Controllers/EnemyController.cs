@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour {
             FloatingTextController.bounty(bounty, this.transform.position.x, this.transform.position.y);
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
             Destroy(enemy);
-            PlayerController.money += 5;
+            PlayerController.flow += 5;
         }
 	}
 

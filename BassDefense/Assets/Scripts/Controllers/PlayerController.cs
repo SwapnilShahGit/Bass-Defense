@@ -7,8 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     // UI tingz
     public Slider healthSlider;
-    public Slider manaSlider;
-    public Text playerMoneyText;
+    public Slider flowSlider;
 
     public Texture2D cursor;
 
@@ -17,7 +16,6 @@ public class PlayerController : MonoBehaviour
     int onCD = 0;
     float time = 0;
     float timeint = 0;
-    public static int mana;
     public int damage = 5;
     public static GameObject player;
     public static Vector2 target;
@@ -25,8 +23,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 position;
     public static GameObject tower;
     public static int moving;
-    public static int money;
     public static int health;
+    public static int flow;
     public static string mode = "Slashy";
     public static float speed;
 
@@ -42,22 +40,21 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
         player = gameObject;
         speed = 2.0f;
         time = Time.time;
         moving = 0;
-        money = 10;
+        
         health = 100;
-        mana = 10;
+        flow = 10;
+
         StartCoroutine(regenhp());
-        StartCoroutine(regenmana());
+        StartCoroutine(regenflow());
         healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
-        manaSlider = GameObject.Find("ManaSlider").GetComponent<Slider>();
-        playerMoneyText = GameObject.Find("Money").GetComponent<Text>();
+        flowSlider = GameObject.Find("FlowSlider").GetComponent<Slider>();
+        
         healthSlider.value = health;
-        manaSlider.value = mana;
-        playerMoneyText.text = money.ToString();
+        flowSlider.value = flow;
     }
 
     void Update()
@@ -93,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-            if (money >= 5)
+            if (flow >= 5)
             {
                 mode = "Build";
                 tower = (GameObject)Resources.Load("Drum");
@@ -102,7 +99,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown("q"))
         {
-            if (money >= 10)
+            if (flow >= 10)
             {
                 mode = "Build";
                 tower = (GameObject)Resources.Load("Flute");
@@ -217,8 +214,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         healthSlider.value = health;
-        manaSlider.value = mana;
-        playerMoneyText.text = money.ToString();
+        flowSlider.value = flow;
     }
 
     public bool isClose()
@@ -244,14 +240,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    IEnumerator regenmana()
+    IEnumerator regenflow()
     {
         while (true)
         {
-            yield return new WaitForSeconds(15);
-            if (mana < 10)
+            yield return new WaitForSeconds(5);
+            if (flow < 100)
             {
-                mana++;
+                flow++;
             }
         }
     }
@@ -259,7 +255,7 @@ public class PlayerController : MonoBehaviour
 
     public void drumbutton()
     {
-        if (money >= 5)
+        if (flow >= 5)
         {
             mode = "Build";
             tower = (GameObject)Resources.Load("Drum");
@@ -268,7 +264,7 @@ public class PlayerController : MonoBehaviour
 
     public void flutebutton()
     {
-        if (money >= 10)
+        if (flow >= 10)
         {
             mode = "Build";
             tower = (GameObject)Resources.Load("Flute");

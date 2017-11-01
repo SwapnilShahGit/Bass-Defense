@@ -61,9 +61,9 @@ public class RapidFire : MonoBehaviour {
 
     public static void cast()
     {
-        if (onCD == 0 && PlayerController.mana >= cost)
+        if (onCD == 0 && PlayerController.flow >= cost && !isActive)
         {
-            PlayerController.mana -= cost;
+            PlayerController.flow -= cost;
             Debug.Log("Casting");
             towers = (TowerController[])GameObject.FindObjectsOfType(typeof(TowerController));
             casttime = Time.time;
