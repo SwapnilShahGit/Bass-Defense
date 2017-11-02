@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BagpipeController : TowerController {
+public class BagpipeController1 : TowerController {
     public Sprite Upgraded;
 
     float timeint;
