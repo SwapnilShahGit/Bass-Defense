@@ -15,7 +15,7 @@ public class TrumpetController : TowerController
         AudioController.activeflutes++;
         onCD = 0;
         timeint = 0;
-        PlayerController.money -= cost;
+        PlayerController.flow -= cost;
         time = Time.time;
     }
 
