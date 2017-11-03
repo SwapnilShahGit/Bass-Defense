@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
                     }
                     moving = 0;
                     attacking.hp -= damage;
+                    PlayerController.flow += 2;
                     onCD = 1;
                     time = Time.time;
                 }

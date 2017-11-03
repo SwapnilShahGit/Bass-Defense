@@ -1,6 +1,7 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour {
@@ -16,7 +17,7 @@ public class EnemyController : MonoBehaviour {
     public Texture2D scursor;
     public Texture2D cursor;
     int maxhp;
-    public int bounty = 5;
+    public int bounty = 10;
     public float speed = 2;
     public int damage = 25;
     public GameObject enemy;
@@ -25,6 +26,8 @@ public class EnemyController : MonoBehaviour {
     int onCD = 1;
     float time;
     float timeint;
+
+    public UnityEvent onDeath;
 
     Animator animator;
     bool isLookingRight = true;
@@ -73,7 +76,8 @@ public class EnemyController : MonoBehaviour {
             FloatingTextController.bounty(bounty, this.transform.position.x, this.transform.position.y);
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
             Destroy(enemy);
-            PlayerController.flow += 5;
+            onDeath.Invoke();
+            PlayerController.flow += bounty;
         }
 	}
 

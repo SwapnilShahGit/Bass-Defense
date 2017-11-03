@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
-    public EnemyController enemyPrefab;
-    public float[] spawnTimes;
-
     Transform playerBase;
+    Wave currentWave;
+    WaveController waveController;
 
-    public void StartSpawning(float start, int wave, Transform pBase)
+    void Start() {
+        waveController = GameObject.Find("Game Controller").GetComponent<WaveController>();
+    }
+
+    public void StartSpawning(float start, Wave cWave, Transform pBase)
     {
         Debug.Log("Started Spawning");
         playerBase = pBase;
-        InvokeRepeating("SpawnEnemy", start, spawnTimes[wave]);
+        currentWave = cWave;
+
+        foreach(EnemyGroup enemyGroup in currentWave.enemies) {
+            StartCoroutine(SpawnEnemy(enemyGroup.enemyPrefab, enemyGroup.numEnemy, start, enemyGroup.timeBetweenEnemies));
+        } 
     }
 
     public void StopSpawning()
     {
         Debug.Log("Stoped Spawning");
-        CancelInvoke();
     }
 
-    void SpawnEnemy()
+    IEnumerator SpawnEnemy(EnemyController enemyPrefab, int numInWave, float start, float repeat)
     {
-        EnemyController e = Instantiate(enemyPrefab, transform.position, Quaternion.identity) as EnemyController;
-        e.GoToTarget(playerBase.position);
+        yield return new WaitForSeconds(start);
+
+        int numSpawned = 0;
+
+        while(numSpawned <= numInWave) {
+            EnemyController e = Instantiate(enemyPrefab, transform.position, Quaternion.identity) as EnemyController;
+            e.GoToTarget(playerBase.position);
+            e.onDeath.AddListener(waveController.UpdateNumKilled);
+            yield return new WaitForSeconds(repeat);
+        }
     }
 }
