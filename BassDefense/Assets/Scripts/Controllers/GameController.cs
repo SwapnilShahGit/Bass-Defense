@@ -1,135 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-[System.Serializable]
-public class TileSprite
-{
-    public Color32 color;
-    public GameObject[] spriteArray;
-}
-
-[System.Serializable]
-public class StartEvent : UnityEvent<float, int, Transform> { }
 
 public class GameController : MonoBehaviour
 {
-
+    // is current level tutorial?
     public bool isTut;
-    // player variables
+
+    // prefabs
     public GameObject playerPrefab;
-    GameObject player;
-
-    // Map variables
-    public Texture2D mapSprite;
-    public TileSprite[] tileSprites;
-
-    Dictionary<Color32, GameObject[]> spriteDictionary;
-    int width, height;
-    float tileSpacing;
-    Transform mapHolder;
-
-    // Base variables
     public GameObject basePrefab;
 
-    // Generate from sprite?
-    public bool generateFromSprite;
-
-    // Events
-    public StartEvent onGameStart;
-    public UnityEvent onGameEnd;
-
-    // Navigation
+    // Navigation grid
     public Grid grid;
 
-    // UI variables
-    public Texture2D cursor;
-    public float levelStartDelay = 2f;                          // Num seconds to have overlay display
-    private string timeperiod = "60,000 Years Ago";
-    private Text timeperiodText;                                //Text to display current age/year
-    private GameObject lossTextRemove;                               
-    private GameObject loadingOverlay;                          //Image to block out level as levels are being set up, background for playerHealthText.
-    private Text textRemove;
-    public Text waveText;
-    public AudioSource gongeffect;
-
-    // Time
-    float currentTime;
-    public float secondsBetweenWaves;
-
-    Transform home;
-
-    bool[] invoked = { false, false, false, false, false };
-
+    // Num seconds to have overlay display
+    public float levelStartDelay = 2f;                          
 
     void Start()
     {
-        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
-        // Add each sprite into the dictionary for quick referencing
-        spriteDictionary = new Dictionary<Color32, GameObject[]>();
-        foreach (TileSprite tileSprite in tileSprites)
-        {
-            spriteDictionary.Add(tileSprite.color, tileSprite.spriteArray);
-        }
+        // Get controllers
+        WaveController waveController = GetComponent<WaveController>();
+        UIController uiController = GetComponent<UIController>();
+        MapGeneratorController mapGenController = GetComponent<MapGeneratorController>();
 
-        print("starting");
+        // Initialize UI
+        uiController.Initialize(isTut, levelStartDelay);
 
-        Vector2 baseStart = new Vector2(0, 0);
-        //Get a reference to our canvas things and show stuff
-        loadingOverlay = GameObject.Find("Overlay");
-        timeperiodText = GameObject.Find("OverlayText").GetComponent<Text>();
-        lossTextRemove = GameObject.Find("Loss");
-        textRemove = GameObject.Find("Loss").GetComponent<Text>();
+        // Initialize the map
+        mapGenController.Initialize();
 
-        lossTextRemove.SetActive(false);
-        if(isTut) {
-            timeperiodText.text = "Tutorial";
-        }
-        else {
-            timeperiodText.text = timeperiod;
-        }
-
-        loadingOverlay.SetActive(true);
-        Invoke("HideLoadingOverlay", levelStartDelay);
-
-
-        // Generate the map
-        if (generateFromSprite && mapSprite != null && tileSprites != null)
-        {
-            GenerateMapFromSprite();
-        }
-        else
-        {
-            GenerateMapFromRandom();
-            baseStart = new Vector2(-width / 2 + MapData.BaseLocationX - 0.5f, -height / 2 + MapData.BaseLocationY - 0.5f);
-        }
-
+        // Initialize the movement grid
         grid.StartCreatingGrid();
 
+        // Get the start location of the base and references to the spawners
+        Vector2 baseStart = mapGenController.GetBaseStart();
+        List<EnemySpawner> spawners = mapGenController.GetSpawners();
+
         // Create a base object
-        home = Instantiate(basePrefab, baseStart, Quaternion.identity).transform as Transform;
+        Transform home = Instantiate(basePrefab, baseStart, Quaternion.identity).transform as Transform;
 
         // Create a player object
-        player = Instantiate(playerPrefab, baseStart, Quaternion.identity) as GameObject;
+        Instantiate(playerPrefab, baseStart, Quaternion.identity);
 
-        currentTime = 0f;
-        waveText.text = "Wave: 1";
-        onGameStart.Invoke(levelStartDelay + 1f, 0, home);
-    }
-
-    //Hides black image used between levels
-    void HideLoadingOverlay()
-    {
-        //Disable the loadingOverlay gameObject.
-        loadingOverlay.SetActive(false);
+        // Start the waves
+        waveController.StartWaves(home, spawners);
     }
 
     public void Restart()
     {
-        End();
         if(isTut) {
             SceneManager.LoadScene("Prehistoric Tutorial");
         }
@@ -137,155 +57,4 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene("Prehistoric Era");
         }
     }
-
-    void Update()
-    {
-        if (BaseController.hp <= 0 || PlayerController.health <=0)
-        {
-            print("dead");
-            timeperiodText.text = "";
-            textRemove.text = "You Lose";
-            loadingOverlay.SetActive(true);
-            lossTextRemove.SetActive(true);
-        }
-        if (currentTime >= secondsBetweenWaves*2 && isTut)
-        {
-            SceneManager.LoadScene("Prehistoric Era");
-        }
-
-        if(currentTime >= secondsBetweenWaves*5) {
-            print("win");
-            textRemove.text = "Congratulations, you win!";
-            timeperiodText.text = "";
-            loadingOverlay.SetActive(true);
-            lossTextRemove.SetActive(true);
-            gongeffect.Play();
-            Debug.Log(currentTime + " end");
-        }
-        else if(currentTime >= secondsBetweenWaves*4 && !invoked[4]) {
-            onGameEnd.Invoke();
-            onGameStart.Invoke(levelStartDelay + 1f, 4, home);
-            invoked[4] = true;
-            waveText.text = "Wave: 5";
-            gongeffect.Play();
-            Debug.Log(currentTime + " Wave 5");
-        }
-        else if(currentTime >= secondsBetweenWaves*3 && !invoked[3]) {
-            onGameEnd.Invoke();
-            onGameStart.Invoke(levelStartDelay + 1f, 3, home);
-            invoked[3] = true;
-            waveText.text = "Wave: 4";
-            gongeffect.Play();
-            Debug.Log(currentTime + " Wave 4");
-        }
-        else if(currentTime >= secondsBetweenWaves*2 && !invoked[2]) {
-            onGameEnd.Invoke();
-            onGameStart.Invoke(levelStartDelay + 1f, 2, home);
-            invoked[2] = true;
-            waveText.text = "Wave: 3";
-            gongeffect.Play();
-            Debug.Log(currentTime + " Wave 3");
-        }
-        else if(currentTime >= secondsBetweenWaves && !invoked[1]) {
-            onGameEnd.Invoke();
-            onGameStart.Invoke(levelStartDelay + 1f, 1, home);
-            invoked[1] = true;
-            waveText.text = "Wave: 2";
-            gongeffect.Play();
-            Debug.Log(currentTime + " Wave 2");
-        }
-
-        currentTime += Time.deltaTime;
-    }
-
-    public void End()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
-        for (var i = 0; i < enemies.Length; i++)
-        {
-            Destroy(enemies[i]);
-            print("destoryed enemies");
-        }
-
-        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
-        for (var i = 0; i < towers.Length; i++)
-        {
-            Destroy(towers[i]);
-            print("destroyed towers");
-        }
-        onGameEnd.Invoke();
-        Destroy(player);
-    }
-
-    void GenerateMapFromSprite()
-    {
-        Camera.main.orthographicSize = 8;
-        Camera.main.transform.position = new Vector3(0f, 0f, -10f);
-
-        // Get the dimensions of the map from sprite size
-        width = mapSprite.width;
-        height = mapSprite.height;
-
-        Color32[] pixelColors = mapSprite.GetPixels32();
-        GenerateMap(pixelColors);
-    }
-
-    void GenerateMapFromRandom()
-    {
-        Camera.main.orthographicSize = 9;
-        Camera.main.transform.position = new Vector3(-0.5f, -0.5f, -10f);
-
-        width = MapData.Width;
-        height = MapData.Height;
-        Color32[] colorMap = MapData.ColorMap;
-        GenerateMap(colorMap);
-    }
-
-
-    void GenerateMap(Color32[] pixelColors)
-    {
-        mapHolder = new GameObject("Generated Map").transform;
-        mapHolder.parent = transform;
-
-        // Match each color in the array with a corresponding tile and create it in the game world
-        for (int y = 0; y < height; y++)
-        {
-            for (int x = 0; x < width; x++)
-            {
-                SpawnTile(pixelColors[(y * width) + x], x, y);
-            }
-        }
-        Debug.Log("Done Generating Map");
-    }
-
-    void SpawnTile(Color32 color, int x, int y)
-    {
-        if (spriteDictionary.ContainsKey(color))
-        {
-            GameObject[] spriteArray = spriteDictionary[color];
-            int idx = 0;
-            if (spriteArray.Length > 1)
-            {
-                idx = UnityEngine.Random.Range(0, spriteArray.Length);
-            }
-            GameObject tilePrefab = spriteArray[idx];
-            Vector2 tilePosition = new Vector2(-width / 2 + x, -height / 2 + y);
-            GameObject tileSprite = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as GameObject;
-            tileSprite.transform.parent = mapHolder;
-
-            EnemySpawner spawner = tileSprite.GetComponent<EnemySpawner>();
-            if (spawner != null)
-            {
-                onGameStart.AddListener(spawner.StartSpawning);
-                onGameEnd.AddListener(spawner.StopSpawning);
-            }
-        }
-        else
-        {
-            Debug.LogError("No sprite for color: " + color.ToString());
-        }
-
-
-    }
-
 }

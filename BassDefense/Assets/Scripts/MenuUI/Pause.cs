@@ -32,10 +32,12 @@ public class Pause : MonoBehaviour {
     }
 
     public void GoToMenu() {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menus");
     }
 
     public void GoToDesktop() {
+        Time.timeScale = 1;
         Application.Quit();
     }
 }
