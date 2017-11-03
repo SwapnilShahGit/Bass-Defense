@@ -45,16 +45,13 @@ public class GameController : MonoBehaviour
         Instantiate(playerPrefab, baseStart, Quaternion.identity);
 
         // Start the waves
-        waveController.StartWaves(home, spawners);
+        waveController.Initialize(home, spawners);
+        waveController.StartWaves();
     }
 
     public void Restart()
     {
-        if(isTut) {
-            SceneManager.LoadScene("Prehistoric Tutorial");
-        }
-        else {
-            SceneManager.LoadScene("Prehistoric Era");
-        }
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

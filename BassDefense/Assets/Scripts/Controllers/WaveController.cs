@@ -4,24 +4,45 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class StartEvent : UnityEvent<float, int, Transform> { }
+public class StartEvent : UnityEvent<float, Wave, Transform> { }
+
+[System.Serializable]
+public class EnemyGroup {
+    public int numEnemy;
+    public float timeBetweenEnemies;
+    public EnemyController enemyPrefab;
+}
+
+[System.Serializable]
+public class Wave {
+    public EnemyGroup[] enemies;
+}
 
 public class WaveController : MonoBehaviour {
+    public float timeBeforeNextWave;
+
     //Events
     public StartEvent onWaveStart;
     public UnityEvent onWaveEnd;
 
-    // Time
-    float currentTime;
-    public float secondsBetweenWaves;
+    public Wave[] waves;
+    int waveIdx;
+    int numWaves;
+    int numEnemies;
+    int numKilled;
 
-    bool[] invoked = { false, false, false, false, false };
-
-    UIController uIController;
+    UIController uiController;
     Transform home;
 
-    public void StartWaves(Transform _home, List<EnemySpawner> spawners) {
-        uIController = GetComponent<UIController>();
+    bool gameEnd;
+
+    void Start() {
+        waveIdx = -1;
+        gameEnd = false;
+    }
+
+    public void Initialize(Transform _home, List<EnemySpawner> spawners) {
+        uiController = GetComponent<UIController>();
         home = _home;
 
         foreach(EnemySpawner spawner in spawners) {
@@ -29,55 +50,56 @@ public class WaveController : MonoBehaviour {
             onWaveEnd.AddListener(spawner.StopSpawning);
         }
 
+        numWaves = waves.Length;
     }
-    
-    /*
+
+    public void StartWaves() {
+        waveIdx = 0;
+        numEnemies = GetNumEnemies(waves[0]);
+        numKilled = 0;
+        onWaveStart.Invoke(timeBeforeNextWave, waves[waveIdx], home);
+        Invoke("UpdateWave", timeBeforeNextWave);
+    }
+
+
     void Update() {
-        if(BaseController.hp <= 0 || PlayerController.health <= 0) {
-            uIController.LoseUI();
-        }
-        if(currentTime >= secondsBetweenWaves * 2 && isTut) {
-            SceneManager.LoadScene("Prehistoric Era");
-        }
+        if(waveIdx > -1 && !gameEnd) {
+            if(BaseController.hp <= 0 || PlayerController.health <= 0) {
+                gameEnd = true;
+                Time.timeScale = 0;
+                uiController.LoseUI();
+            }
 
-        if(currentTime >= secondsBetweenWaves * 5) {
-            uIController.WinUI();
-            Debug.Log(currentTime + " end");
+            if(waveIdx == numWaves) {
+                gameEnd = true;
+                Time.timeScale = 0;
+                uiController.WinUI();
+            }
+            else if(numKilled >= numEnemies) {
+                waveIdx++;
+                numKilled = 0;
+                if(waveIdx < numWaves) {
+                    numEnemies = GetNumEnemies(waves[waveIdx]);
+                    onWaveStart.Invoke(timeBeforeNextWave, waves[waveIdx], home);
+                    Invoke("UpdateWave", timeBeforeNextWave);
+                }
+            }
         }
-        else if(currentTime >= secondsBetweenWaves * 4 && !invoked[4]) {
-            onWaveEnd.Invoke();
-            onWaveStart.Invoke(levelStartDelay + 1f, 4, home);
-            invoked[4] = true;
-            waveText.text = "Wave: 5";
-            gongeffect.Play();
-            Debug.Log(currentTime + " Wave 5");
-        }
-        else if(currentTime >= secondsBetweenWaves * 3 && !invoked[3]) {
-            onWaveEnd.Invoke();
-            onWaveStart.Invoke(levelStartDelay + 1f, 3, home);
-            invoked[3] = true;
-            waveText.text = "Wave: 4";
-            gongeffect.Play();
-            Debug.Log(currentTime + " Wave 4");
-        }
-        else if(currentTime >= secondsBetweenWaves * 2 && !invoked[2]) {
-            onWaveEnd.Invoke();
-            onWaveStart.Invoke(levelStartDelay + 1f, 2, home);
-            invoked[2] = true;
-            waveText.text = "Wave: 3";
-            gongeffect.Play();
-            Debug.Log(currentTime + " Wave 3");
-        }
-        else if(currentTime >= secondsBetweenWaves && !invoked[1]) {
-            onWaveEnd.Invoke();
-            onWaveStart.Invoke(levelStartDelay + 1f, 1, home);
-            invoked[1] = true;
-            waveText.text = "Wave: 2";
-            gongeffect.Play();
-            Debug.Log(currentTime + " Wave 2");
-        }
-
-        currentTime += Time.deltaTime;
     }
-    */
+
+    int GetNumEnemies(Wave wave) {
+        int num = 0;
+        foreach(EnemyGroup enemyGroup in wave.enemies) {
+            num += enemyGroup.numEnemy;
+        }
+        return num;
+    }
+
+    void UpdateWave() {
+        uiController.UpdateWave(waveIdx + 1);
+    }
+
+    public void UpdateNumKilled() {
+        numKilled++;
+    }
 }

@@ -8,48 +8,50 @@ public class UIController : MonoBehaviour {
     public Texture2D cursor;
 
     string timeperiod = "60,000 Years Ago";
-    public Text timeperiodText;
-    public Text textRemove;
+    public Text OverlayText;
     public Text waveText;
-    public GameObject lossTextRemove;
-    public GameObject loadingOverlay;                          
+    public GameObject buttons;
+    public GameObject overlay;                          
     public AudioSource gongeffect;                         
 
     public void Initialize(bool isTut, float levelStartDelay) {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
-        lossTextRemove.SetActive(false);
+        buttons.SetActive(false);
 
         if(isTut) {
-            timeperiodText.text = "Tutorial";
+            OverlayText.text = "Tutorial";
         }
         else {
-            timeperiodText.text = timeperiod;
+            OverlayText.text = timeperiod;
         }
 
-        loadingOverlay.SetActive(true);
+        overlay.SetActive(true);
         Invoke("HideLoadingOverlay", levelStartDelay);
     }
 
     public void LoseUI() {
         print("dead");
-        timeperiodText.text = "";
-        textRemove.text = "You Lose";
-        loadingOverlay.SetActive(true);
-        lossTextRemove.SetActive(true);
+        OverlayText.text = "You Lose";
+        overlay.SetActive(true);
+        buttons.SetActive(true);
     }
 
     public void WinUI() {
         print("win");
-        textRemove.text = "Congratulations, you win!";
-        timeperiodText.text = "";
-        loadingOverlay.SetActive(true);
-        lossTextRemove.SetActive(true);
+        OverlayText.text = "Congratulations, you win!";
+        overlay.SetActive(true);
+        buttons.SetActive(true);
+        gongeffect.Play();
+    }
+
+    public void UpdateWave(int waveNum) {
+        waveText.text = "Wave: " + waveNum;
         gongeffect.Play();
     }
 
     //Hides black image used between levels
     void HideLoadingOverlay() {
         //Disable the loadingOverlay gameObject.
-        loadingOverlay.SetActive(false);
+        overlay.SetActive(false);
     }
 }

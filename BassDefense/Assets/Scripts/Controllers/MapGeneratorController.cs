@@ -25,6 +25,8 @@ public class MapGeneratorController : MonoBehaviour {
     List<EnemySpawner> spawners;
 
     public void Initialize() {
+        spawners = new List<EnemySpawner>();
+
         // Add each sprite into the dictionary for quick referencing
         spriteDictionary = new Dictionary<Color32, GameObject[]>();
         foreach(TileSprite tileSprite in tileSprites) {
