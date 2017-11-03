@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour {
     public Texture2D scursor;
     public Texture2D cursor;
     int maxhp;
-    public int bounty = 5;
+    public int bounty = 10;
     public float speed = 2;
     public int damage = 25;
     public GameObject enemy;
@@ -77,7 +77,7 @@ public class EnemyController : MonoBehaviour {
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
             Destroy(enemy);
             onDeath.Invoke();
-            PlayerController.flow += 5;
+            PlayerController.flow += bounty;
         }
 	}
 

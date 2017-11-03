@@ -92,7 +92,7 @@ public class WaveController : MonoBehaviour {
         foreach(EnemyGroup enemyGroup in wave.enemies) {
             num += enemyGroup.numEnemy;
         }
-        return num;
+        return num * 2;
     }
 
     void UpdateWave() {
