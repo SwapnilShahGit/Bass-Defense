@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         moving = 0;
         
         health = 100;
-        flow = 10;
+        flow = 20;
 
         StartCoroutine(regenhp());
         StartCoroutine(regenflow());
@@ -59,6 +59,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (health <= 0)
+        {
+            //UIController.LoseUI();
+        }
+
         // AWSD CONTROLS
         Vector2 move = Vector2.zero;
 
@@ -90,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-            if (flow >= 5)
+            if (flow >= 10)
             {
                 mode = "Build";
                 tower = (GameObject)Resources.Load("Drum");
@@ -99,7 +104,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown("q"))
         {
-            if (flow >= 10)
+            if (flow >= 20)
             {
                 mode = "Build";
                 tower = (GameObject)Resources.Load("Flute");
@@ -161,7 +166,7 @@ public class PlayerController : MonoBehaviour
                     }
                     moving = 0;
                     attacking.hp -= damage;
-                    PlayerController.flow += 2;
+                    PlayerController.flow += 1;
                     onCD = 1;
                     time = Time.time;
                 }
@@ -256,7 +261,7 @@ public class PlayerController : MonoBehaviour
 
     public void drumbutton()
     {
-        if (flow >= 5)
+        if (flow >= 10)
         {
             mode = "Build";
             tower = (GameObject)Resources.Load("Drum");
@@ -265,7 +270,7 @@ public class PlayerController : MonoBehaviour
 
     public void flutebutton()
     {
-        if (flow >= 10)
+        if (flow >= 20)
         {
             mode = "Build";
             tower = (GameObject)Resources.Load("Flute");

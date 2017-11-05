@@ -34,6 +34,7 @@ public class BaseController : MonoBehaviour {
         if (hp <= 0)
         {
             OnBaseDestroyed.Invoke();
+            //UIController.LoseUI();
         }
 
         if (damaged)

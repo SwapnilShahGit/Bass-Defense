@@ -2016,6 +2016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 2800000, guid: c081492c528c1cb42be49c77fd8af85e, type: 3}
+  timeperiod: 60,000 Years Ago
   OverlayText: {fileID: 335362084}
   waveText: {fileID: 1963584062}
   buttons: {fileID: 201393330}

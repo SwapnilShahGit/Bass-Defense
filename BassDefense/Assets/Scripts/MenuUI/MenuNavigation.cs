@@ -5,13 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
-public class GameLevel {
+public class GameLevel
+{
     public Image arrow;
     public GameObject levelSummary;
     public string sceneName;
 }
 
-public class MenuNavigation : MonoBehaviour {
+public class MenuNavigation : MonoBehaviour
+{
 
     // Menu variables
     public GameObject mainMenu;
@@ -37,7 +39,8 @@ public class MenuNavigation : MonoBehaviour {
     // Quit pannel variables
     public GameObject panel;
 
-    void Start() {
+    void Start()
+    {
         currentMenu = mainMenu;
         currentMenu.SetActive(true);
 
@@ -45,8 +48,10 @@ public class MenuNavigation : MonoBehaviour {
     }
 
     // Main Menu
-    public void GoToMainMenu() {
-        if(!quitPanelActive) {
+    public void GoToMainMenu()
+    {
+        if (!quitPanelActive)
+        {
             currentLevelSelected.levelSummary.SetActive(false);
             currentLevelSelected.arrow.gameObject.SetActive(false);
 
@@ -57,8 +62,10 @@ public class MenuNavigation : MonoBehaviour {
     }
 
     // Story Mode
-    public void GoToStoryMenu() {
-        if(!quitPanelActive) {
+    public void GoToStoryMenu()
+    {
+        if (!quitPanelActive)
+        {
             currentMenu.SetActive(false);
             storyModeMenu.SetActive(true);
             currentMenu = storyModeMenu;
@@ -68,7 +75,8 @@ public class MenuNavigation : MonoBehaviour {
         }
     }
 
-    public void SelectPrehistoric() {
+    public void SelectPrehistoric()
+    {
         currentLevelSelected.levelSummary.SetActive(false);
         currentLevelSelected.arrow.gameObject.SetActive(false);
 
@@ -78,17 +86,19 @@ public class MenuNavigation : MonoBehaviour {
         playButton.gameObject.SetActive(true);
     }
 
-    public void SelectClassical() {
+    public void SelectClassical()
+    {
         currentLevelSelected.levelSummary.SetActive(false);
         currentLevelSelected.arrow.gameObject.SetActive(false);
 
         currentLevelSelected = gameLevels[1];
         currentLevelSelected.levelSummary.SetActive(true);
         currentLevelSelected.arrow.gameObject.SetActive(true);
-        playButton.gameObject.SetActive(false);
+        playButton.gameObject.SetActive(true);
     }
 
-    public void SelectModern() {
+    public void SelectModern()
+    {
         currentLevelSelected.levelSummary.SetActive(false);
         currentLevelSelected.arrow.gameObject.SetActive(false);
 
@@ -98,14 +108,25 @@ public class MenuNavigation : MonoBehaviour {
         playButton.gameObject.SetActive(false);
     }
 
-    public void SelectPlay() {
+    public void SelectPlay()
+    {
         //SceneManager.LoadScene(currentLevelSelected.sceneName);
-        SceneManager.LoadScene("Controls");
+        if (currentLevelSelected == gameLevels[0])
+        {
+            SceneManager.LoadScene("Controls");
+        }
+        else
+        {
+            SceneManager.LoadScene(currentLevelSelected.sceneName);
+        }
+
     }
 
     // Random Generation Mode
-    public void GoToRandomMenu() {
-        if(!quitPanelActive) {
+    public void GoToRandomMenu()
+    {
+        if (!quitPanelActive)
+        {
             currentMenu.SetActive(false);
             randomModeMenu.SetActive(true);
             currentMenu = randomModeMenu;
@@ -115,23 +136,27 @@ public class MenuNavigation : MonoBehaviour {
     }
 
 
-    public void GeneratePredefinedPreview() {
+    public void GeneratePredefinedPreview()
+    {
         gen.numSpawners = (int)sliders[0].value;
         gen.minPathLength = (int)sliders[1].value;
         gen.MaxPathLength = (int)sliders[2].value;
         gen.percentObstacles = sliders[3].value;
         gen.mapSeed = (int)sliders[4].value;
 
-        if(gen.minPathLength > gen.MaxPathLength) {
+        if (gen.minPathLength > gen.MaxPathLength)
+        {
             cover.SetActive(true);
         }
-        else {
+        else
+        {
             cover.SetActive(false);
             mapPreview.GeneratePreview();
         }
     }
 
-    public void GenerateRandomPreview() {
+    public void GenerateRandomPreview()
+    {
         sliders[0].value = rng.Next(1, 5);
         sliders[1].value = rng.Next(3, 40);
         sliders[2].value = rng.Next(gen.minPathLength, 40);
@@ -141,15 +166,18 @@ public class MenuNavigation : MonoBehaviour {
         GeneratePredefinedPreview();
     }
 
-    public void PlayRandom() {
+    public void PlayRandom()
+    {
         SceneManager.LoadScene("Random Map");
     }
 
 
 
     // Settings
-    public void GoToSettingsMenu() {
-        if(!quitPanelActive) {
+    public void GoToSettingsMenu()
+    {
+        if (!quitPanelActive)
+        {
             currentMenu.SetActive(false);
             settingsMenu.SetActive(true);
             currentMenu = settingsMenu;
@@ -157,16 +185,19 @@ public class MenuNavigation : MonoBehaviour {
     }
 
     // Quit
-    public void GetQuitPanel() {
+    public void GetQuitPanel()
+    {
         panel.SetActive(true);
         quitPanelActive = true;
     }
 
-    public void PressYes() {
+    public void PressYes()
+    {
         Application.Quit();
     }
 
-    public void PressNo() {
+    public void PressNo()
+    {
         panel.SetActive(false);
         quitPanelActive = false;
     }
