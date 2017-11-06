@@ -75,7 +75,8 @@ MonoBehaviour:
   cd: 2
   targets: []
   pinrange: 0
-  burstnum: 0
+  burstnum: 3
+  burstcd: 0.2
 --- !u!212 &212918521065569858
 SpriteRenderer:
   m_ObjectHideFlags: 1

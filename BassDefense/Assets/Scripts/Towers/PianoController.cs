@@ -10,10 +10,13 @@ public class PianoController : TowerController
     float time;
     float onCD;
     public int burstnum;
+    public float burstcd;
+    int onburstCD;
     int i;
     // Use this for initialization
     void Start()
     {
+        burstcd = 0.2f;
         ClassicalAudioController.activepianos++;
         onCD = 0;
         timeint = 0;
@@ -36,12 +39,26 @@ public class PianoController : TowerController
                     onCD = 0;
                 }
             }
+            else if (onburstCD == 1)
+            {
+                if (timeint > burstcd)
+                {
+                    onburstCD = 0;
+                }
+            }
             else
             {
-                shoot(target);
-                if (i >= burstnum)
+                i++;
+                if (i > burstnum)
                 {
                     onCD = 1;
+                    time = Time.time;
+                }
+                else
+                {
+                    shoot(target);
+                    
+                    onburstCD = 1;
                     time = Time.time;
                 }
             }

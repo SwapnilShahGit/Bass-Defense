@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         moving = 0;
         
         health = 100;
-        flow = 20;
+        flow = 50;
 
         StartCoroutine(regenhp());
         StartCoroutine(regenflow());
