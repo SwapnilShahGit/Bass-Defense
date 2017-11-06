@@ -26,11 +26,11 @@ public class ClassicalAudioController : MonoBehaviour {
         timeint = Time.time - time;
         if (activeharps > 0)
         {
-            sources[0].mute = false;
+            sources[0].mute = true;
         }
         if (activetrumpets == 1)
         {
-            sources[1].mute = false;
+            sources[1].mute = true;
         }
         if (activetrumpets >= 2)
         {
