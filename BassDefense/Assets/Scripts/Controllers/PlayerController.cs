@@ -200,7 +200,15 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButton(1))
             {
                 moving = 1;
+                if (attacking != null)
+                {
+                    if (Vector2.Distance(attacking.GetComponent<Transform>().position, Camera.main.ScreenToWorldPoint(Input.mousePosition)) > 2f)
+                    {
+                        attacking = null;
+                    }
+                }
                 target = Input.mousePosition;
+                
             }
 
             if (Input.GetMouseButton(0))
