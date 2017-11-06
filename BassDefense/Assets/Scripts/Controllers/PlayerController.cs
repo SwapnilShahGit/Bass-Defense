@@ -290,14 +290,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void bagpipebutton()
-    {
-        if (flow >= 10)
-        {
-            mode = "Build";
-            tower = (GameObject)Resources.Load("Bagpipe");
-        }
-    }
+   
 
     public void harpbutton()
     {

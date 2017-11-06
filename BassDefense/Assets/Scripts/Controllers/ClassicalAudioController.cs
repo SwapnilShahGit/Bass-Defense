@@ -15,7 +15,6 @@ public class ClassicalAudioController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         started = false;
-        activebags = 0;
         activeharps = 0;
         activetrumpets = 0;
         activepianos = 0;
