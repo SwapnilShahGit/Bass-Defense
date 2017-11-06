@@ -49,6 +49,25 @@ public class Grid : MonoBehaviour {
                 //bool aiWalkable = ((Physics2D.OverlapCircle(worldPoint, nodeRadius, aiUnwalkableMask.value) == null));
             }
         }
+        List<Node> nodeList = new List<Node>();
+        for(int x = 0; x < gridSizeX; x++) {
+            for(int y = 0; y < gridSizeY; y++) {
+                if(grid[x, y].aiWalkable && grid[x,y].walkable) {
+                    Vector2 worldPoint = worldBottomLeft + Vector2.right * (x * nodeDiameter + nodeRadius) + Vector2.up * (y * nodeDiameter + nodeRadius);
+                    
+                    if((Physics2D.OverlapCircle(worldPoint, nodeRadius * 2, aiUnwalkableMask.value) != null) ||
+                        (Physics2D.OverlapCircle(worldPoint, nodeRadius * 2, unwalkableMask.value) != null)) {
+                        nodeList.Add(grid[x, y]);
+                    }
+
+                } 
+            }
+        }
+
+        foreach(Node node in nodeList) {
+            node.walkable = false;
+            node.aiWalkable = false;
+        }
     }
 
     public List<Node> GetNeighbours(Node node) {
