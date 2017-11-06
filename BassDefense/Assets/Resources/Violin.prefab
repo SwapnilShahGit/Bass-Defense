@@ -72,7 +72,7 @@ MonoBehaviour:
   upgrade: 0
   damage: 1
   level: 1
-  cd: 0.005
+  cd: 0.008
   targets: []
   pinrange: 0
 --- !u!212 &212918521065569858
