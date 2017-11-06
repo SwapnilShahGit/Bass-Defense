@@ -36,11 +36,6 @@ public class WaveController : MonoBehaviour {
 
     bool gameEnd;
 
-    void Start() {
-        waveIdx = -1;
-        gameEnd = false;
-    }
-
     public void Initialize(Transform _home, List<EnemySpawner> spawners) {
         uiController = GetComponent<UIController>();
         home = _home;
@@ -51,6 +46,9 @@ public class WaveController : MonoBehaviour {
         }
 
         numWaves = waves.Length;
+
+        waveIdx = -1;
+        gameEnd = false;
     }
 
     public void StartWaves() {
@@ -66,14 +64,14 @@ public class WaveController : MonoBehaviour {
         if(waveIdx > -1 && !gameEnd) {
             if(BaseController.hp <= 0 || PlayerController.health <= 0) {
                 gameEnd = true;
-                Time.timeScale = 0;
                 uiController.LoseUI();
+                Time.timeScale = 0;
             }
 
             if(waveIdx == numWaves) {
                 gameEnd = true;
-                Time.timeScale = 0;
                 uiController.WinUI();
+                Time.timeScale = 0;
             }
             else if(numKilled >= numEnemies) {
                 waveIdx++;
