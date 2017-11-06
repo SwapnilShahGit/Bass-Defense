@@ -16,7 +16,7 @@ public class PianoController : TowerController
     // Use this for initialization
     void Start()
     {
-        burstcd = 0.2f;
+        burstcd = 1f;
         ClassicalAudioController.activepianos++;
         onCD = 0;
         timeint = 0;
@@ -36,6 +36,7 @@ public class PianoController : TowerController
             {
                 if (timeint > cd)
                 {
+                    i = 0;
                     onCD = 0;
                 }
             }
@@ -44,6 +45,7 @@ public class PianoController : TowerController
                 if (timeint > burstcd)
                 {
                     onburstCD = 0;
+                    
                 }
             }
             else
@@ -56,13 +58,21 @@ public class PianoController : TowerController
                 }
                 else
                 {
-                    shoot(target);
-                    
+                    StartCoroutine(focus(target));
                     onburstCD = 1;
                     time = Time.time;
                 }
             }
 
+        }
+    }
+
+    IEnumerator focus(GameObject target)
+    {
+        while (target != null)
+        {
+            yield return new WaitForSeconds(0.3f);
+            shoot(target);
         }
     }
 
