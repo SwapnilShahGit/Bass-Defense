@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public Texture2D cursor;
 
 
+    public string era;
+
     public float cd = 0.7f;
     int onCD = 0;
     float time = 0;
@@ -93,6 +95,8 @@ public class PlayerController : MonoBehaviour
             target += move * speed;
         }
 
+
+        /*
         if (Input.GetKeyDown("e"))
         {
             if (flow >= 10)
@@ -111,6 +115,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+         */
         if (moving == 2)
         {
             this.transform.position = Vector2.MoveTowards(this.transform.position, target, speed * Time.deltaTime);
@@ -277,6 +282,50 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void bagpipebutton()
+    {
+        if (flow >= 10)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Bagpipe");
+        }
+    }
+
+    public void harpbutton()
+    {
+        if (flow >= 15)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Harp");
+        }
+    }
+
+    public void trumpetbutton()
+    {
+        if (flow >= 20)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Trumpet");
+        }
+    }
+
+    public void violinbutton()
+    {
+        if (flow >= 30)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Violin");
+        }
+    }
+
+    public void pianobutton()
+    {
+        if (flow >= 50)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Piano");
+        }
+    }
 
 
 }

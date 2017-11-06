@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrumpetController : TowerController
+public class HarpController : TowerController
 {
 
     List<GameObject> bullets;
@@ -12,7 +12,7 @@ public class TrumpetController : TowerController
     // Use this for initialization
     void Start()
     {
-        AudioController.activeflutes++;
+        ClassicalAudioController.activeharps++;
         onCD = 0;
         timeint = 0;
         PlayerController.flow -= cost;
