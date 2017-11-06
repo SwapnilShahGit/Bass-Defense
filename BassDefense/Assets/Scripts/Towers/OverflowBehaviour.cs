@@ -23,17 +23,19 @@ public class OverflowBehaviour : MonoBehaviour
  
         }
 
-            if (Vector3.Distance(this.transform.position, target) == 0)
+        if (Vector2.Distance(this.gameObject.transform.position, target) < 1.5f)
+        {
+            Collider2D[] enemies = Physics2D.OverlapCircleAll(target, 10);
+            foreach (Collider2D enemycol in enemies)
             {
-                Collider2D[] enemies = Physics2D.OverlapCircleAll(target,10);
-                foreach (Collider2D enemycol in enemies){
-                    GameObject e = enemycol.gameObject;
-                    if (e.GetComponent<EnemyController>() != null){
-                        e.GetComponent<EnemyController>().hp -= dmg;
-                    }
+                GameObject e = enemycol.gameObject;
+                if (e.GetComponent<EnemyController>() != null)
+                {
+                    e.GetComponent<EnemyController>().hp -= dmg;
                 }
-                Destroy(this.gameObject);
             }
+            Destroy(this.gameObject);
+        } 
 
     }
 }
