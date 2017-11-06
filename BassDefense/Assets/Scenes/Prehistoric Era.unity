@@ -1915,12 +1915,8 @@ MonoBehaviour:
       PublicKeyToken=null
   waves:
   - enemies:
-    - numEnemy: 2
-      timeBetweenEnemies: 10
-      enemyPrefab: {fileID: 114765176845256748, guid: 6983228fc921eb342b6b7ba3f566dbed,
-        type: 2}
     - numEnemy: 3
-      timeBetweenEnemies: 15
+      timeBetweenEnemies: 10
       enemyPrefab: {fileID: 114947510497162884, guid: ab6e2759b491c9243ba91e8ba1037603,
         type: 2}
   - enemies:

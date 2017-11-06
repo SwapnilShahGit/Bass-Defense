@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 95899883015249618}
   - component: {fileID: 212119620362162110}
   m_Layer: 11
-  m_Name: Enemy
+  m_Name: Tiger
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
