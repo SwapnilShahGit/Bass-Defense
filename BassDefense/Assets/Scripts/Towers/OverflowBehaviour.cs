@@ -23,7 +23,7 @@ public class OverflowBehaviour : MonoBehaviour
  
         }
 
-        if (Vector2.Distance(this.gameObject.transform.position, target) < 1.5f)
+        if (Vector2.Distance(this.gameObject.transform.position, target) < 0.5f)
         {
             Collider2D[] enemies = Physics2D.OverlapCircleAll(target, 10);
             foreach (Collider2D enemycol in enemies)
