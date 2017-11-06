@@ -63,10 +63,11 @@ public class ViolinController : TowerController
 
     void shoot(GameObject enemy)
     {
-        GameObject b = Instantiate((GameObject)Resources.Load("Bullet"));
+        GameObject b = Instantiate((GameObject)Resources.Load("ViolinBullet"));
         b.transform.position = this.gameObject.transform.position;
         if (b.GetComponent<BulletBehaviour>() != null && enemy != null)
         {
+            b.GetComponent<BulletBehaviour>().effect = "slow";
             b.GetComponent<BulletBehaviour>().target = enemy;
             b.GetComponent<BulletBehaviour>().dmg = damage;
         }

@@ -20,30 +20,37 @@ public class TrumpetController : TowerController
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        EnemyController mostDangerousEnemy = null;
+        foreach(GameObject target in targets) {
+            EnemyController enemyTarget = target.GetComponent<EnemyController>();
 
-        foreach (GameObject target in targets)
-        {
-            timeint = Time.time - time;
-            if (onCD == 1)
-            {
-                if (timeint > cd)
-                {
-                    onCD = 0;
+            if(mostDangerousEnemy == null) {
+                mostDangerousEnemy = enemyTarget;
+            }
+            else {
+                if(enemyTarget.GetDistanceTravelled() > mostDangerousEnemy.GetDistanceTravelled()) {
+                    mostDangerousEnemy = enemyTarget;
                 }
             }
-            else
-            {
-                shoot(target);
-                onCD = 1;
-                time = Time.time;
-            }
+        }
 
+        timeint = Time.time - time;
+        if(onCD == 1) {
+            if(timeint > cd) {
+                onCD = 0;
+            }
+        }
+        else {
+            if(mostDangerousEnemy != null) {
+                shoot(mostDangerousEnemy.gameObject);
+                onCD = 1;
+            }
+            time = Time.time;
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+        void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag.Equals("enemy"))
         {
@@ -63,7 +70,7 @@ public class TrumpetController : TowerController
 
     void shoot(GameObject enemy)
     {
-        GameObject b = Instantiate((GameObject)Resources.Load("Bullet"));
+        GameObject b = Instantiate((GameObject)Resources.Load("TrumpetBullet"));
         b.transform.position = this.gameObject.transform.position;
         if (b.GetComponent<BulletBehaviour>() != null && enemy != null)
         {

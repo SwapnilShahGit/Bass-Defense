@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour
     // UI tingz
     public Slider healthSlider;
     public Slider flowSlider;
+    public Text flowText;
 
     public Texture2D cursor;
 
 
-    public string era;
+    public static string era = "pre";
 
     public float cd = 0.7f;
     int onCD = 0;
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
 
     void Start()
-    {
+    {   
         player = gameObject;
         speed = 2.0f;
         time = Time.time;
@@ -54,7 +55,8 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(regenflow());
         healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
         flowSlider = GameObject.Find("FlowSlider").GetComponent<Slider>();
-        
+        flowText = GameObject.Find("FlowText").GetComponent<Text>();
+
         healthSlider.value = health;
         flowSlider.value = flow;
     }
@@ -96,26 +98,65 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        /*
-        if (Input.GetKeyDown("e"))
+        if (era == "pre")
         {
-            if (flow >= 10)
+            if (Input.GetKeyDown("e"))
             {
-                mode = "Build";
-                tower = (GameObject)Resources.Load("Drum");
-            }
+                if (flow >= 10)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Drum");
+                }
 
+            }
+            if (Input.GetKeyDown("q"))
+            {
+                if (flow >= 20)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Flute");
+                }
+
+            }
         }
-        if (Input.GetKeyDown("q"))
+
+        else if (era == "classical")
         {
-            if (flow >= 20)
+            if (Input.GetKeyDown("e"))
             {
-                mode = "Build";
-                tower = (GameObject)Resources.Load("Flute");
-            }
+                if (flow >= 15)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Harp");
+                }
 
+            }
+            if (Input.GetKeyDown("q"))
+            {
+                if (flow >= 20)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Trumpet");
+                }
+
+            }
+            if (Input.GetKeyDown("r"))
+            {
+                if (flow >= 30){
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Violin");
+                }
+            }
+            if (Input.GetKeyDown("f"))
+            {
+                if (flow >= 50)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Piano");
+                }
+            }
         }
-         */
+         
         if (moving == 2)
         {
             this.transform.position = Vector2.MoveTowards(this.transform.position, target, speed * Time.deltaTime);
@@ -234,6 +275,7 @@ public class PlayerController : MonoBehaviour
         }
         healthSlider.value = health;
         flowSlider.value = flow;
+        flowText.text = flow.ToString();
     }
 
     public bool isClose()
@@ -252,7 +294,7 @@ public class PlayerController : MonoBehaviour
     {
         while (health >= 0)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             if (health < 100)
             {
                 health++;

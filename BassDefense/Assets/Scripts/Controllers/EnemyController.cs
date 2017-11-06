@@ -27,6 +27,9 @@ public class EnemyController : MonoBehaviour {
     float time;
     float timeint;
 
+    float distanceTravelled;
+    float pathLength;
+
     public UnityEvent onDeath;
 
     Animator animator;
@@ -75,8 +78,7 @@ public class EnemyController : MonoBehaviour {
         {
             FloatingTextController.bounty(bounty, this.transform.position.x, this.transform.position.y);
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
-            Destroy(enemy);
-            onDeath.Invoke();
+            KillEnemy(enemy);
             PlayerController.flow += bounty;
         }
 	}
@@ -103,7 +105,13 @@ public class EnemyController : MonoBehaviour {
     IEnumerator FollowPath() {
         Vector3 currentWaypoint = path[0];
 
+        Vector2 prevPos = transform.position;
+        distanceTravelled = 0;
+        pathLength = CalculatePathLength();
+
         while(true) {
+            distanceTravelled += Vector2.Distance(prevPos, transform.position);
+
             if(transform.position == currentWaypoint) {
                 targetIndex++;
                 if(targetIndex >= path.Length) {
@@ -126,6 +134,22 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    float CalculatePathLength() {
+        Vector2 prevPos = transform.position;
+        float pLength = 0;
+
+        for(int i = 0; i < path.Length; i++) {
+            pLength += Vector2.Distance(prevPos, path[i]);
+            prevPos = path[i];
+        }
+
+        return pLength;
+    }
+
+    public float GetDistanceTravelled() {
+        return distanceTravelled;
+    }
+
     void OnMouseEnter()
     {
         Cursor.SetCursor(scursor, Vector2.zero, CursorMode.Auto);
@@ -141,5 +165,10 @@ public class EnemyController : MonoBehaviour {
         {
             PlayerController.attacking = this;
         }
+    }
+
+    public void KillEnemy(GameObject enemy) {
+        Destroy(enemy);
+        onDeath.Invoke();
     }
 }

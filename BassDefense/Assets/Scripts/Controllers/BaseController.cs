@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class BaseController : MonoBehaviour {
     // UI tingz
-    public Slider baseHealthSlider;
     public Image damageFlash;                                   // Reference to an image to flash on the screen on being hurt.
     public bool damaged = false;                                // True when the base gets damaged.
     public float flashSpeed = 10000000000000f;                  // The speed the damageImage will fade at.
@@ -21,9 +20,7 @@ public class BaseController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         hp = maxhp;
-        baseHealthSlider = GameObject.Find("BaseHealthSlider").GetComponent<Slider>();
         damageFlash = GameObject.Find("DamageFlash").GetComponent<Image>();
-        baseHealthSlider.value = hp;
         hpBar = this.gameObject.transform.GetChild(0);
         origscalex = hpBar.localScale.x;
 	}
@@ -51,11 +48,12 @@ public class BaseController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "enemy")
+        GameObject enemyObject = coll.gameObject;
+        if (enemyObject.tag == "enemy")
         {
-            hp -= coll.gameObject.GetComponent<EnemyController>().damage;
-            Destroy(coll.gameObject);
-            baseHealthSlider.value= hp;
+            EnemyController enemy = enemyObject.GetComponent<EnemyController>();
+            hp -= enemy.damage;
+            enemy.KillEnemy(enemyObject);
             damaged = true;
         }
     }
