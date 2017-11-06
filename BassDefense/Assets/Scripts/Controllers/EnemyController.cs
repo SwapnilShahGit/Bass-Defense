@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour {
     Transform hpBar;
     float origscaley;
 
+    public bool slow = false;
     public int hp;
     public Texture2D scursor;
     public Texture2D cursor;
@@ -53,6 +54,7 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         if (Vector2.Distance(gameObject.transform.position, PlayerController.player.GetComponent<Transform>().position) < 2f)
         {
             timeint = Time.time - time;
