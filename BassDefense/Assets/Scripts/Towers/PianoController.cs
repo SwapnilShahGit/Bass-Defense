@@ -96,7 +96,7 @@ public class PianoController : TowerController
 
     void shoot(GameObject enemy)
     {
-        GameObject b = Instantiate((GameObject)Resources.Load("Bullet"));
+        GameObject b = Instantiate((GameObject)Resources.Load("PianoBullet"));
         b.transform.position = this.gameObject.transform.position;
         if (b.GetComponent<BulletBehaviour>() != null && enemy != null)
         {
