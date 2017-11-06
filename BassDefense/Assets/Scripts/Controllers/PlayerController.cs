@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        era = "classical";
+        era = "pre";
         player = gameObject;
         speed = 2.0f;
         time = Time.time;
