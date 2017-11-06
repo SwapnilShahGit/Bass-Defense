@@ -56,7 +56,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 30
+  m_Radius: 50
 --- !u!114 &114351558399365698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,7 +72,7 @@ MonoBehaviour:
   upgrade: 0
   damage: 20
   level: 0
-  cd: 2
+  cd: 1
   targets: []
   pinrange: 0
   burstnum: 3
