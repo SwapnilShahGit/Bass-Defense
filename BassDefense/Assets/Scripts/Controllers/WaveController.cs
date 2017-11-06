@@ -67,7 +67,6 @@ public class WaveController : MonoBehaviour {
                 uiController.LoseUI();
                 Time.timeScale = 0;
             }
-            Debug.Log(numKilled + ", " + numEnemies);
             if(waveIdx == numWaves) {
                 gameEnd = true;
                 uiController.WinUI();
