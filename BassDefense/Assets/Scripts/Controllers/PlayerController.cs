@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     // UI tingz
     public Slider healthSlider;
     public Slider flowSlider;
+    public Text flowText;
 
     public Texture2D cursor;
 
@@ -55,7 +56,8 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(regenflow());
         healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
         flowSlider = GameObject.Find("FlowSlider").GetComponent<Slider>();
-        
+        flowText = GameObject.Find("FlowText").GetComponent<Text>();
+
         healthSlider.value = health;
         flowSlider.value = flow;
     }
@@ -274,6 +276,7 @@ public class PlayerController : MonoBehaviour
         }
         healthSlider.value = health;
         flowSlider.value = flow;
+        flowText.text = flow.ToString();
     }
 
     public bool isClose()
