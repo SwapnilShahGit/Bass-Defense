@@ -48,10 +48,12 @@ public class BaseController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "enemy")
+        GameObject enemyObject = coll.gameObject;
+        if (enemyObject.tag == "enemy")
         {
-            hp -= coll.gameObject.GetComponent<EnemyController>().damage;
-            Destroy(coll.gameObject);
+            EnemyController enemy = enemyObject.GetComponent<EnemyController>();
+            hp -= enemy.damage;
+            enemy.KillEnemy(enemyObject);
             damaged = true;
         }
     }

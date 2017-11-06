@@ -75,8 +75,7 @@ public class EnemyController : MonoBehaviour {
         {
             FloatingTextController.bounty(bounty, this.transform.position.x, this.transform.position.y);
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
-            Destroy(enemy);
-            onDeath.Invoke();
+            KillEnemy(enemy);
             PlayerController.flow += bounty;
         }
 	}
@@ -141,5 +140,10 @@ public class EnemyController : MonoBehaviour {
         {
             PlayerController.attacking = this;
         }
+    }
+
+    public void KillEnemy(GameObject enemy) {
+        Destroy(enemy);
+        onDeath.Invoke();
     }
 }
