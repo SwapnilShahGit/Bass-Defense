@@ -96,26 +96,65 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        /*
-        if (Input.GetKeyDown("e"))
+        if (era == "pre")
         {
-            if (flow >= 10)
+            if (Input.GetKeyDown("e"))
             {
-                mode = "Build";
-                tower = (GameObject)Resources.Load("Drum");
-            }
+                if (flow >= 10)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Drum");
+                }
 
+            }
+            if (Input.GetKeyDown("q"))
+            {
+                if (flow >= 20)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Flute");
+                }
+
+            }
         }
-        if (Input.GetKeyDown("q"))
+
+        else if (era == "classical")
         {
-            if (flow >= 20)
+            if (Input.GetKeyDown("e"))
             {
-                mode = "Build";
-                tower = (GameObject)Resources.Load("Flute");
-            }
+                if (flow >= 15)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Harp");
+                }
 
+            }
+            if (Input.GetKeyDown("q"))
+            {
+                if (flow >= 20)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Trumpet");
+                }
+
+            }
+            if (Input.GetKeyDown("r"))
+            {
+                if (flow >= 30){
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Violin");
+                }
+            }
+            if (Input.GetKeyDown("f"))
+            {
+                if (flow >= 50)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Piano");
+                }
+            }
         }
-         */
+         
         if (moving == 2)
         {
             this.transform.position = Vector2.MoveTowards(this.transform.position, target, speed * Time.deltaTime);
@@ -252,7 +291,7 @@ public class PlayerController : MonoBehaviour
     {
         while (health >= 0)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             if (health < 100)
             {
                 health++;
