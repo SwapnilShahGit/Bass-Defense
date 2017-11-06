@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        era = "classical";
         player = gameObject;
         speed = 2.0f;
         time = Time.time;

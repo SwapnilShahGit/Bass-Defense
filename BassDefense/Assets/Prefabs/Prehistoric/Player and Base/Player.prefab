@@ -414,7 +414,7 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   flowSlider: {fileID: 0}
   cursor: {fileID: 2800000, guid: c081492c528c1cb42be49c77fd8af85e, type: 3}
-  era: pre
+  era: classical
   cd: 0.3
   damage: 5
 --- !u!114 &114495815715239596

@@ -7,6 +7,7 @@ public class BulletBehaviour : MonoBehaviour
     public GameObject target;
     public Vector3 destination;
     public int dmg;
+    public string effect;
     Vector3 oldpos;
     // Use this for initialization
     void Start()
@@ -28,6 +29,7 @@ public class BulletBehaviour : MonoBehaviour
                 if (target.GetComponent<EnemyController>() != null)
                 {
                     target.GetComponent<EnemyController>().hp -= dmg;
+           
                     Destroy(this.gameObject);
                 }
             }
