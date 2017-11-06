@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
+    public float speed;
     public GameObject target;
     public Vector3 destination;
     public int dmg;
@@ -12,7 +13,7 @@ public class BulletBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        speed = 8f;
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class BulletBehaviour : MonoBehaviour
 
         if (target != null)
         {
-            this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, target.transform.position, 8.0f * Time.deltaTime);
+            this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, target.transform.position, speed * Time.deltaTime);
             oldpos = target.transform.position;
 
             if (Vector3.Distance(this.transform.position, target.transform.position) == 0)
@@ -36,7 +37,7 @@ public class BulletBehaviour : MonoBehaviour
         }
         if (destination != null && target == null && destination != new Vector3(0,0,0))
         {
-            this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, destination, 8.0f * Time.deltaTime);
+            this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, destination, speed * Time.deltaTime);
 
             if (Vector3.Distance(this.transform.position, destination) == 0)
             {
@@ -45,7 +46,7 @@ public class BulletBehaviour : MonoBehaviour
         }
         else
         {
-            this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, oldpos, 8.0f * Time.deltaTime);
+            this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, oldpos, speed * Time.deltaTime);
             if (Vector3.Distance(this.transform.position, oldpos) == 0 || oldpos == new Vector3(0, 0, 0))
             {
                 Destroy(this.gameObject);
