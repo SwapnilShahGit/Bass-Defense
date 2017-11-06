@@ -2016,6 +2016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 2800000, guid: c081492c528c1cb42be49c77fd8af85e, type: 3}
+  timeperiod: 60,000 Years Ago
   OverlayText: {fileID: 335362084}
   waveText: {fileID: 1963584062}
   buttons: {fileID: 201393330}
@@ -2254,7 +2255,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   gridWorldSize: {x: 32, y: 18}
-  nodeRadius: 0.1
+  nodeRadius: 0.15
 --- !u!4 &1061883577
 Transform:
   m_ObjectHideFlags: 0

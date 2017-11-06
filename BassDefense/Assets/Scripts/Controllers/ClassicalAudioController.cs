@@ -8,13 +8,13 @@ public class ClassicalAudioController : MonoBehaviour {
     public static int activeharps;
     public static int activetrumpets;
     public static int activepianos;
+    public static int activeviolins;
     float time;
     float timeint;
     bool started;
 	// Use this for initialization
 	void Start () {
         started = false;
-        activebags = 0;
         activeharps = 0;
         activetrumpets = 0;
         activepianos = 0;
@@ -45,7 +45,10 @@ public class ClassicalAudioController : MonoBehaviour {
         {
             sources[4].mute = false;
         }
-
+        if (activeviolins > 0)
+        {
+            sources[5].mute = false;
+        }
         
 	}
 

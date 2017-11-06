@@ -7,7 +7,7 @@ public class UIController : MonoBehaviour {
 
     public Texture2D cursor;
 
-    string timeperiod = "60,000 Years Ago";
+    public string timeperiod;
     public Text OverlayText;
     public Text waveText;
     public GameObject buttons;
@@ -19,7 +19,7 @@ public class UIController : MonoBehaviour {
         buttons.SetActive(false);
 
         if(isTut) {
-            OverlayText.text = "Tutorial";
+            OverlayText.text = "Defend Your Fire";
         }
         else {
             OverlayText.text = timeperiod;

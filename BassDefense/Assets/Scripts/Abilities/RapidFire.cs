@@ -22,7 +22,7 @@ public class RapidFire : MonoBehaviour {
         isActive = false;
         dur = 5;
         cdmult = 0.4f;
-        cost = 5;
+        cost = 50;
         cd = 30;
         time = Time.time;
         timeint = 0;

@@ -32,7 +32,7 @@ public class BulletBehaviour : MonoBehaviour
                 }
             }
         }
-        if (destination != null && target == null)
+        if (destination != null && target == null && destination != new Vector3(0,0,0))
         {
             this.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, destination, 8.0f * Time.deltaTime);
 

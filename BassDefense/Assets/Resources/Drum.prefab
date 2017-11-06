@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f2f0515420e774784d847832fc55f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 5
+  cost: 10
   upgrade: 5
   damage: 4
   level: 1

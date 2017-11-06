@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour {
     public Texture2D scursor;
     public Texture2D cursor;
     int maxhp;
-    public int bounty = 10;
+    public int bounty = 3;
     public float speed = 2;
     public int damage = 25;
     public GameObject enemy;

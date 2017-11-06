@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public Texture2D cursor;
 
 
+    public string era;
+
     public float cd = 0.7f;
     int onCD = 0;
     float time = 0;
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
         moving = 0;
         
         health = 100;
-        flow = 10;
+        flow = 50;
 
         StartCoroutine(regenhp());
         StartCoroutine(regenflow());
@@ -59,6 +61,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (health <= 0)
+        {
+            //UIController.LoseUI();
+        }
+
         // AWSD CONTROLS
         Vector2 move = Vector2.zero;
 
@@ -88,9 +95,11 @@ public class PlayerController : MonoBehaviour
             target += move * speed;
         }
 
+
+        /*
         if (Input.GetKeyDown("e"))
         {
-            if (flow >= 5)
+            if (flow >= 10)
             {
                 mode = "Build";
                 tower = (GameObject)Resources.Load("Drum");
@@ -99,13 +108,14 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown("q"))
         {
-            if (flow >= 10)
+            if (flow >= 20)
             {
                 mode = "Build";
                 tower = (GameObject)Resources.Load("Flute");
             }
 
         }
+         */
         if (moving == 2)
         {
             this.transform.position = Vector2.MoveTowards(this.transform.position, target, speed * Time.deltaTime);
@@ -161,7 +171,7 @@ public class PlayerController : MonoBehaviour
                     }
                     moving = 0;
                     attacking.hp -= damage;
-                    PlayerController.flow += 2;
+                    PlayerController.flow += 1;
                     onCD = 1;
                     time = Time.time;
                 }
@@ -190,7 +200,15 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButton(1))
             {
                 moving = 1;
+                if (attacking != null)
+                {
+                    if (Vector2.Distance(attacking.GetComponent<Transform>().position, Camera.main.ScreenToWorldPoint(Input.mousePosition)) > 2f)
+                    {
+                        attacking = null;
+                    }
+                }
                 target = Input.mousePosition;
+                
             }
 
             if (Input.GetMouseButton(0))
@@ -256,7 +274,7 @@ public class PlayerController : MonoBehaviour
 
     public void drumbutton()
     {
-        if (flow >= 5)
+        if (flow >= 10)
         {
             mode = "Build";
             tower = (GameObject)Resources.Load("Drum");
@@ -265,13 +283,50 @@ public class PlayerController : MonoBehaviour
 
     public void flutebutton()
     {
-        if (flow >= 10)
+        if (flow >= 20)
         {
             mode = "Build";
             tower = (GameObject)Resources.Load("Flute");
         }
     }
 
+   
+
+    public void harpbutton()
+    {
+        if (flow >= 15)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Harp");
+        }
+    }
+
+    public void trumpetbutton()
+    {
+        if (flow >= 20)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Trumpet");
+        }
+    }
+
+    public void violinbutton()
+    {
+        if (flow >= 30)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Violin");
+        }
+    }
+
+    public void pianobutton()
+    {
+        if (flow >= 50)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Piano");
+        }
+    }
 
 
 }
