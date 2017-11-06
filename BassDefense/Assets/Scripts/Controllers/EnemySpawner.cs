@@ -34,10 +34,12 @@ public class EnemySpawner : MonoBehaviour
 
         int numSpawned = 0;
 
-        while(numSpawned <= numInWave) {
+        while(numSpawned < numInWave) {
+            Debug.Log("Num Spawned: " + numSpawned + ", Num in Wave: " + numInWave);
             EnemyController e = Instantiate(enemyPrefab, transform.position, Quaternion.identity) as EnemyController;
             e.GoToTarget(playerBase.position);
             e.onDeath.AddListener(waveController.UpdateNumKilled);
+            numSpawned++;
             yield return new WaitForSeconds(repeat);
         }
     }
