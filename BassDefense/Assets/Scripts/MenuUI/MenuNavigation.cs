@@ -77,6 +77,7 @@ public class MenuNavigation : MonoBehaviour
 
     public void SelectPrehistoric()
     {
+        PlayerController.era = "pre";
         currentLevelSelected.levelSummary.SetActive(false);
         currentLevelSelected.arrow.gameObject.SetActive(false);
 
@@ -88,6 +89,7 @@ public class MenuNavigation : MonoBehaviour
 
     public void SelectClassical()
     {
+        PlayerController.era = "classical";
         currentLevelSelected.levelSummary.SetActive(false);
         currentLevelSelected.arrow.gameObject.SetActive(false);
 

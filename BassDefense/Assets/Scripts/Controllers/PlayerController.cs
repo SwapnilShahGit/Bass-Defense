@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public Texture2D cursor;
 
 
-    public string era;
+    public static string era = "pre";
 
     public float cd = 0.7f;
     int onCD = 0;
@@ -42,8 +42,7 @@ public class PlayerController : MonoBehaviour
 
 
     void Start()
-    {
-        era = "pre";
+    {   
         player = gameObject;
         speed = 2.0f;
         time = Time.time;

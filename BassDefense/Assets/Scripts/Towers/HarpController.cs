@@ -63,12 +63,13 @@ public class HarpController : TowerController
 
     void shoot(GameObject enemy)
     {
-        GameObject b = Instantiate((GameObject)Resources.Load("Bullet"));
+        GameObject b = Instantiate((GameObject)Resources.Load("HarpBullet"));
         b.transform.position = this.gameObject.transform.position;
         if (b.GetComponent<BulletBehaviour>() != null && enemy != null)
         {
             b.GetComponent<BulletBehaviour>().target = enemy;
             b.GetComponent<BulletBehaviour>().dmg = damage;
+            b.GetComponent<BulletBehaviour>().speed = 3f;
         }
 
 
