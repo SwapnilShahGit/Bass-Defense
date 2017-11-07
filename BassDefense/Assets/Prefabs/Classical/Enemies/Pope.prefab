@@ -134,10 +134,10 @@ MonoBehaviour:
   flashSpeed: 1e+13
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   slow: 0
-  hp: 10000
+  hp: 20000
   scursor: {fileID: 2800000, guid: 73cb02fef45cc5e4ea0d8b8a3153b022, type: 3}
   cursor: {fileID: 2800000, guid: c081492c528c1cb42be49c77fd8af85e, type: 3}
-  bounty: 100
+  bounty: 30
   speed: 0.5
   damage: 100
   enemy: {fileID: 1756630136301980}

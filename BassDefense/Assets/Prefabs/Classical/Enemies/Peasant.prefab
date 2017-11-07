@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61853599635257148}
   - component: {fileID: 50509480682419122}
   - component: {fileID: 212119620362162110}
+  - component: {fileID: 95197905969825436}
   m_Layer: 11
   m_Name: Peasant
   m_TagString: enemy
@@ -118,6 +119,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!95 &95197905969825436
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148131846045596}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5aadbe8ebb56edf42905606c6dd8231b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114765176845256748
 MonoBehaviour:
   m_ObjectHideFlags: 1
