@@ -38,6 +38,10 @@ public class DrumController : TowerController
             foreach (GameObject target in targets)
             {
                 target.GetComponent<EnemyController>().hp -= damage;
+                if (target.GetComponent<EnemyController>().slow == false){
+                    target.GetComponent<EnemyController>().slow = true;
+                    target.GetComponent<EnemyController>().speed *= 0.5;
+                }
                 onCD = 1;
                 time = Time.time;
             }
