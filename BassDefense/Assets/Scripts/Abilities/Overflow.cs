@@ -28,7 +28,6 @@ public class Overflow: MonoBehaviour {
         if (Input.GetKeyDown("2"))
         {
             cast();
-            sfx.Play();
         }
 
         timeint = Time.time - time;
@@ -38,10 +37,11 @@ public class Overflow: MonoBehaviour {
         }  
 	}
 
-    public static void cast()
+    public void cast()
     {
         if (onCD == 0 && PlayerController.flow >= cost)
         {
+            sfx.Play();
             GameObject b = Instantiate((GameObject)Resources.Load("Overflow"));
             b.transform.position = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
 

@@ -68,6 +68,8 @@ public class DrumController : TowerController
         if (other.gameObject.tag.Equals("enemy"))
         {
             targets.Remove(other.gameObject);
+            other.gameObject.GetComponent<EnemyController>().slow = false;
+            other.gameObject.GetComponent<EnemyController>().speed *= 2f;
         }
 
     }

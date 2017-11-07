@@ -4708,7 +4708,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Places a defensive structure that deals Area of Effect damage
+  m_Text: Places a defensive structure that deals Area of Effect damage and slows
+    enemies
 --- !u!222 &1759210000
 CanvasRenderer:
   m_ObjectHideFlags: 0
