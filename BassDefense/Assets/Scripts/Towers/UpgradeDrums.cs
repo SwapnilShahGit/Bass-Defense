@@ -62,7 +62,7 @@ public class UpgradeDrums : MonoBehaviour
         {
             foreach (GameObject drum in Drums)
             {
-                if (Vector2.Distance(pos, drum.GetComponent<Transform>().position) < 2f)
+                if (Vector2.Distance(pos, drum.GetComponent<Transform>().position) < 2f && )
                 {
                     foreach (BuildTower tile in Tiles)
                     {
@@ -71,6 +71,7 @@ public class UpgradeDrums : MonoBehaviour
                             tile.GetComponent<BuildTower>().placed = 0;
                         }
                     }
+                    print("here");
                     Destroy(drum);
                 }
             }
