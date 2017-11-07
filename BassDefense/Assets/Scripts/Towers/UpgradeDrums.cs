@@ -23,8 +23,12 @@ public class UpgradeDrums : MonoBehaviour
         Drums = GameObject.FindGameObjectsWithTag("Drum");
         Tiles = GameObject.FindObjectsOfType(typeof(BuildTower)) as BuildTower[];
 
-
         Groups = new Vector2[Drums.Length];
+        for (int i = 0; i < Drums.Length; i++)
+        {
+            Groups[i] = new Vector2(999, 999);
+        }
+
         for (int i = 0; i < Drums.Length; i++)
         {
             k = 0;
@@ -62,7 +66,7 @@ public class UpgradeDrums : MonoBehaviour
         {
             foreach (GameObject drum in Drums)
             {
-                if (Vector2.Distance(pos, drum.GetComponent<Transform>().position) < 2f )
+                if (Vector2.Distance(pos, drum.GetComponent<Transform>().position) < 2f)
                 {
                     foreach (BuildTower tile in Tiles)
                     {
@@ -71,7 +75,6 @@ public class UpgradeDrums : MonoBehaviour
                             tile.GetComponent<BuildTower>().placed = 0;
                         }
                     }
-                    print("here");
                     Destroy(drum);
                 }
             }
