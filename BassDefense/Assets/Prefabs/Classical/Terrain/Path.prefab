@@ -59,11 +59,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-<<<<<<< HEAD:BassDefense/Assets/Prefabs/Classical/Terrain/Cobble Path.prefab
-    newSize: {x: 0.94814813, y: 0.94814813}
-=======
     newSize: {x: 1, y: 1}
->>>>>>> eeae850aaf4df5b52e7855016ead6b8dd3819c14:BassDefense/Assets/Prefabs/Classical/Terrain/Path.prefab
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -121,11 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< HEAD:BassDefense/Assets/Prefabs/Classical/Terrain/Cobble Path.prefab
   m_Sprite: {fileID: 21300000, guid: f10eeaa8bec8abe40bf78ced829289ff, type: 3}
-=======
-  m_Sprite: {fileID: 21300016, guid: d39f2345cdfb49845b1b843a31569080, type: 3}
->>>>>>> eeae850aaf4df5b52e7855016ead6b8dd3819c14:BassDefense/Assets/Prefabs/Classical/Terrain/Path.prefab
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
