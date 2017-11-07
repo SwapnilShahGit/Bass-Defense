@@ -4103,6 +4103,8 @@ MonoBehaviour:
       rgba: 4278217471
     spriteArray:
     - {fileID: 1600298413383656, guid: 698e6cf045003c04ba768395b740a5dc, type: 2}
+  BaseLocationX: 13.5
+  BaseLocationY: 7.5
 --- !u!114 &900822207
 MonoBehaviour:
   m_ObjectHideFlags: 0
