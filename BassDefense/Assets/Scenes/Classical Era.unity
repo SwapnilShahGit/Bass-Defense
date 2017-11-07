@@ -4035,11 +4035,15 @@ MonoBehaviour:
   - enemies:
     - numEnemy: 2
       timeBetweenEnemies: 10
-      enemyPrefab: {fileID: 114765176845256748, guid: 6983228fc921eb342b6b7ba3f566dbed,
+      enemyPrefab: {fileID: 114691488201947722, guid: cd12f133386aa8a4faf9e6175f372a97,
         type: 2}
     - numEnemy: 3
       timeBetweenEnemies: 15
-      enemyPrefab: {fileID: 114947510497162884, guid: ab6e2759b491c9243ba91e8ba1037603,
+      enemyPrefab: {fileID: 114947510497162884, guid: 7b84c823497568e42a2a44fb6e0c3531,
+        type: 2}
+    - numEnemy: 15
+      timeBetweenEnemies: 5
+      enemyPrefab: {fileID: 114765176845256748, guid: bdcd5728f294a414f93b6360f7704270,
         type: 2}
   - enemies:
     - numEnemy: 3
