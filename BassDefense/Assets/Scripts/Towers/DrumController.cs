@@ -41,7 +41,7 @@ public class DrumController : TowerController
                 if (target.GetComponent<EnemyController>().slow == false)
                 {
                     target.GetComponent<EnemyController>().slow = true;
-                    target.GetComponent<EnemyController>().speed *= 0.5f;
+                    target.GetComponent<EnemyController>().speed *= 0.75f;
                 }
                 onCD = 1;
                 time = Time.time;
