@@ -1719,7 +1719,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 50
+  m_Value: 25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4708,7 +4708,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Places a defensive structure that deals Area of Effect damage
+  m_Text: Places a defensive structure that deals Area of Effect damage and slows
+    enemies
 --- !u!222 &1759210000
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5183,7 +5184,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 25
 --- !u!222 &1883589731
 CanvasRenderer:
   m_ObjectHideFlags: 0

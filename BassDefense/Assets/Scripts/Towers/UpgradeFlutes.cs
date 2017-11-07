@@ -25,8 +25,12 @@ public class UpgradeFlutes : MonoBehaviour
         Flutes = GameObject.FindGameObjectsWithTag("Flute");
         Tiles = GameObject.FindObjectsOfType(typeof(BuildTower)) as BuildTower[];
 
-
         Groups = new Vector2[Flutes.Length];
+        for (int i = 0; i < Flutes.Length; i++)
+        {
+            Groups[i] = new Vector2(999, 999);
+        }
+
         for (int i = 0; i < Flutes.Length; i++)
         {
             k = 0;
