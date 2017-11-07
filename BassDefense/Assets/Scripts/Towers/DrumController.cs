@@ -70,7 +70,7 @@ public class DrumController : TowerController
         {
             targets.Remove(other.gameObject);
             other.gameObject.GetComponent<EnemyController>().slow = false;
-            other.gameObject.GetComponent<EnemyController>().speed *= 2f;
+            other.gameObject.GetComponent<EnemyController>().speed *= 1.333f;
         }
 
     }
