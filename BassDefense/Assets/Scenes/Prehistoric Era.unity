@@ -6123,7 +6123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec71b4c0c6b78841a205350edabc026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeNextWave: 10
+  timeBeforeNextWave: 5
   onWaveStart:
     m_PersistentCalls:
       m_Calls: []
@@ -6153,7 +6153,7 @@ MonoBehaviour:
       enemyPrefab: {fileID: 114947510497162884, guid: ab6e2759b491c9243ba91e8ba1037603,
         type: 2}
   - enemies:
-    - numEnemy: 3
+    - numEnemy: 10
       timeBetweenEnemies: 3
       enemyPrefab: {fileID: 114765176845256748, guid: 6983228fc921eb342b6b7ba3f566dbed,
         type: 2}

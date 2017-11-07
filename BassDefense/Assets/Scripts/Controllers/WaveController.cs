@@ -7,18 +7,21 @@ using UnityEngine.Events;
 public class StartEvent : UnityEvent<float, Wave, Transform> { }
 
 [System.Serializable]
-public class EnemyGroup {
+public class EnemyGroup
+{
     public int numEnemy;
     public float timeBetweenEnemies;
     public EnemyController enemyPrefab;
 }
 
 [System.Serializable]
-public class Wave {
+public class Wave
+{
     public EnemyGroup[] enemies;
 }
 
-public class WaveController : MonoBehaviour {
+public class WaveController : MonoBehaviour
+{
     public float timeBeforeNextWave;
 
     //Events
@@ -36,11 +39,13 @@ public class WaveController : MonoBehaviour {
 
     bool gameEnd;
 
-    public void Initialize(Transform _home, List<EnemySpawner> spawners) {
+    public void Initialize(Transform _home, List<EnemySpawner> spawners)
+    {
         uiController = GetComponent<UIController>();
         home = _home;
 
-        foreach(EnemySpawner spawner in spawners) {
+        foreach (EnemySpawner spawner in spawners)
+        {
             onWaveStart.AddListener(spawner.StartSpawning);
             onWaveEnd.AddListener(spawner.StopSpawning);
         }
@@ -51,7 +56,8 @@ public class WaveController : MonoBehaviour {
         gameEnd = false;
     }
 
-    public void StartWaves() {
+    public void StartWaves()
+    {
         waveIdx = 0;
         numEnemies = GetNumEnemies(waves[0]);
         numKilled = 0;
@@ -60,22 +66,32 @@ public class WaveController : MonoBehaviour {
     }
 
 
-    void Update() {
-        if(waveIdx > -1 && !gameEnd) {
-            if(BaseController.hp <= 0 || PlayerController.health <= 0) {
+    void Update()
+    {
+        if (waveIdx > -1 && !gameEnd)
+        {
+            print("numwaves: " + numWaves);
+            print("numenemies: " + numEnemies);
+            print("numkilled: " + numKilled);
+            if (BaseController.hp <= 0 || PlayerController.health <= 0)
+            {
                 gameEnd = true;
                 uiController.LoseUI();
                 Time.timeScale = 0;
             }
-            if(waveIdx == numWaves) {
+            if (waveIdx == numWaves)
+            {
+                print("wat");
                 gameEnd = true;
                 uiController.WinUI();
                 Time.timeScale = 0;
             }
-            else if(numKilled >= numEnemies) {
+            else if (numKilled >= numEnemies)
+            {
                 waveIdx++;
                 numKilled = 0;
-                if(waveIdx < numWaves) {
+                if (waveIdx < numWaves)
+                {
                     numEnemies = GetNumEnemies(waves[waveIdx]);
                     onWaveStart.Invoke(timeBeforeNextWave, waves[waveIdx], home);
                     Invoke("UpdateWave", timeBeforeNextWave);
@@ -84,19 +100,23 @@ public class WaveController : MonoBehaviour {
         }
     }
 
-    int GetNumEnemies(Wave wave) {
+    int GetNumEnemies(Wave wave)
+    {
         int num = 0;
-        foreach(EnemyGroup enemyGroup in wave.enemies) {
+        foreach (EnemyGroup enemyGroup in wave.enemies)
+        {
             num += enemyGroup.numEnemy;
         }
-        return num * 2;
+        return num;
     }
 
-    void UpdateWave() {
+    void UpdateWave()
+    {
         uiController.UpdateWave(waveIdx + 1);
     }
 
-    public void UpdateNumKilled() {
+    public void UpdateNumKilled()
+    {
         numKilled++;
     }
 }
