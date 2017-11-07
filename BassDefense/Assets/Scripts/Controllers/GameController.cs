@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-
+        Time.timeScale = 1;
         // Get controllers
         WaveController waveController = GetComponent<WaveController>();
         UIController uiController = GetComponent<UIController>();
