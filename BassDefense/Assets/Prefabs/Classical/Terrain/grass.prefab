@@ -9,32 +9,32 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1223790300279768}
+  m_RootGameObject: {fileID: 1963736400169594}
   m_IsPrefabParent: 1
---- !u!1 &1223790300279768
+--- !u!1 &1963736400169594
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4520900260548202}
-  - component: {fileID: 212421790036495768}
-  - component: {fileID: 61131205413056860}
-  - component: {fileID: 114805060898720348}
-  m_Layer: 13
-  m_Name: Cobble Path
+  - component: {fileID: 4335222170452374}
+  - component: {fileID: 212621701474208496}
+  - component: {fileID: 61165168736470414}
+  - component: {fileID: 114657794816976702}
+  m_Layer: 9
+  m_Name: cobble foundation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4520900260548202
+--- !u!4 &4335222170452374
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223790300279768}
+  m_GameObject: {fileID: 1963736400169594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -42,12 +42,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61131205413056860
+--- !u!61 &61165168736470414
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223790300279768}
+  m_GameObject: {fileID: 1963736400169594}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -65,34 +65,33 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.899, y: 0.899}
+  m_Size: {x: 0.898, y: 0.898}
   m_EdgeRadius: 0
---- !u!114 &114805060898720348
+--- !u!114 &114657794816976702
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223790300279768}
+  m_GameObject: {fileID: 1963736400169594}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc62b670f2398944d9e39a7ed2ae41fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: {fileID: 4520900260548202}
+  t: {fileID: 4335222170452374}
   placed: 0
-  buildable: 0
+  buildable: 1
   cursor: {fileID: 2800000, guid: c081492c528c1cb42be49c77fd8af85e, type: 3}
   hcursor: {fileID: 2800000, guid: 9739b5f5a2c1be648be36cbadd7c1139, type: 3}
---- !u!212 &212421790036495768
+--- !u!212 &212621701474208496
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223790300279768}
+  m_GameObject: {fileID: 1963736400169594}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -108,7 +107,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -117,7 +115,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f10eeaa8bec8abe40bf78ced829289ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 073fae5c8d265284aa67119122a46034, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
