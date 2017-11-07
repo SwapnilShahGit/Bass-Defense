@@ -35,7 +35,7 @@ public class BulletBehaviour : MonoBehaviour
                         if (target.GetComponent<EnemyController>().slow == false)
                         {
                             target.GetComponent<EnemyController>().slow = true;
-                            target.GetComponent<EnemyController>().speed *= 0.5f;
+                            target.GetComponent<EnemyController>().speed *= 0.6f;
                         }
                     }
 
