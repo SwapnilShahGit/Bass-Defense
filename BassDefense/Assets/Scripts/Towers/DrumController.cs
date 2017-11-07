@@ -38,7 +38,8 @@ public class DrumController : TowerController
             foreach (GameObject target in targets)
             {
                 target.GetComponent<EnemyController>().hp -= damage;
-                if (target.GetComponent<EnemyController>().slow == false){
+                if (target.GetComponent<EnemyController>().slow == false)
+                {
                     target.GetComponent<EnemyController>().slow = true;
                     target.GetComponent<EnemyController>().speed *= 0.5f;
                 }
@@ -65,7 +66,7 @@ public class DrumController : TowerController
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag.Equals("enemy"))
+        if (other.gameObject.tag.Equals("enemy") && targets.Contains(other.gameObject))
         {
             targets.Remove(other.gameObject);
             other.gameObject.GetComponent<EnemyController>().slow = false;

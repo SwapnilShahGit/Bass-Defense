@@ -2176,6 +2176,7 @@ GameObject:
   - component: {fileID: 448830992}
   - component: {fileID: 448830991}
   - component: {fileID: 448830990}
+  - component: {fileID: 448830994}
   m_Layer: 13
   m_Name: cdtext
   m_TagString: Untagged
@@ -2223,11 +2224,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 448830988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad6aacc6a286c64eb732c0e8fe8f621, type: 3}
+  m_Script: {fileID: 11500000, guid: 00454f328b79fe940a6e4dec6bf3f482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rapid: {fileID: 0}
-  rapidimage: {fileID: 967288986}
+  overflow: {fileID: 448830994}
   t: {fileID: 448830992}
 --- !u!114 &448830992
 MonoBehaviour:
@@ -2268,6 +2268,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 448830988}
+--- !u!114 &448830994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 448830988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c546c31fdd8873409904bcd6296ef46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 0}
+  timeint: 0
+  cd: 0
 --- !u!1 &533522957
 GameObject:
   m_ObjectHideFlags: 0
@@ -3962,7 +3976,7 @@ MonoBehaviour:
   isTut: 0
   playerPrefab: {fileID: 1748399196551062, guid: 5d5836f35a3b96149ab859ff6076a884,
     type: 2}
-  basePrefab: {fileID: 1756896376898766, guid: 5c06eba588adf6a47918de9086ad0a4b, type: 2}
+  basePrefab: {fileID: 1756896376898766, guid: 23945fd3da4c07045881558367a5feb5, type: 2}
   grid: {fileID: 1061883576}
   levelStartDelay: 2
 --- !u!114 &900822201
@@ -4035,33 +4049,34 @@ MonoBehaviour:
   - enemies:
     - numEnemy: 2
       timeBetweenEnemies: 10
-      enemyPrefab: {fileID: 114691488201947722, guid: cd12f133386aa8a4faf9e6175f372a97,
-        type: 2}
-    - numEnemy: 3
-      timeBetweenEnemies: 15
-      enemyPrefab: {fileID: 114947510497162884, guid: 7b84c823497568e42a2a44fb6e0c3531,
-        type: 2}
-    - numEnemy: 15
-      timeBetweenEnemies: 5
       enemyPrefab: {fileID: 114765176845256748, guid: bdcd5728f294a414f93b6360f7704270,
         type: 2}
   - enemies:
-    - numEnemy: 3
+    - numEnemy: 5
       timeBetweenEnemies: 7
-      enemyPrefab: {fileID: 114765176845256748, guid: 6983228fc921eb342b6b7ba3f566dbed,
+      enemyPrefab: {fileID: 114765176845256748, guid: bdcd5728f294a414f93b6360f7704270,
         type: 2}
-    - numEnemy: 6
+    - numEnemy: 3
       timeBetweenEnemies: 10
-      enemyPrefab: {fileID: 114947510497162884, guid: ab6e2759b491c9243ba91e8ba1037603,
+      enemyPrefab: {fileID: 114947510497162884, guid: 7b84c823497568e42a2a44fb6e0c3531,
         type: 2}
   - enemies:
-    - numEnemy: 3
-      timeBetweenEnemies: 3
-      enemyPrefab: {fileID: 114765176845256748, guid: 6983228fc921eb342b6b7ba3f566dbed,
+    - numEnemy: 5
+      timeBetweenEnemies: 5
+      enemyPrefab: {fileID: 114765176845256748, guid: bdcd5728f294a414f93b6360f7704270,
+        type: 2}
+    - numEnemy: 4
+      timeBetweenEnemies: 7
+      enemyPrefab: {fileID: 114947510497162884, guid: 7b84c823497568e42a2a44fb6e0c3531,
+        type: 2}
+  - enemies:
+    - numEnemy: 6
+      timeBetweenEnemies: 6
+      enemyPrefab: {fileID: 114765176845256748, guid: bdcd5728f294a414f93b6360f7704270,
         type: 2}
     - numEnemy: 6
-      timeBetweenEnemies: 5
-      enemyPrefab: {fileID: 114947510497162884, guid: ab6e2759b491c9243ba91e8ba1037603,
+      timeBetweenEnemies: 6
+      enemyPrefab: {fileID: 114947510497162884, guid: 7b84c823497568e42a2a44fb6e0c3531,
         type: 2}
 --- !u!4 &900822205
 Transform:
@@ -4425,6 +4440,7 @@ GameObject:
   - component: {fileID: 967288989}
   - component: {fileID: 967288988}
   - component: {fileID: 967288987}
+  - component: {fileID: 967288991}
   m_Layer: 13
   m_Name: OverFlowPrice
   m_TagString: Untagged
@@ -4611,6 +4627,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 967288984}
+--- !u!114 &967288991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 967288984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611a7125bcd15a443b15986b61f78975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeint: 0
+  cd: 0
 --- !u!1 &1015792132
 GameObject:
   m_ObjectHideFlags: 0

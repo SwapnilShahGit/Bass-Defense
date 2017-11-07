@@ -44,7 +44,6 @@ public class Overflow: MonoBehaviour {
             sfx.Play();
             GameObject b = Instantiate((GameObject)Resources.Load("Overflow"));
             b.transform.position = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
-
             
             b.GetComponent<OverflowBehaviour>().target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             

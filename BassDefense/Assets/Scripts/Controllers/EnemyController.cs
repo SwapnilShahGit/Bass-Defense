@@ -1,10 +1,11 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour
+{
     // UI tingz
     public Image damageFlash;                                   // Reference to an image to flash on the screen on being hurt.
     public bool damaged = false;                                // True when the base gets damaged.
@@ -39,22 +40,25 @@ public class EnemyController : MonoBehaviour {
     Vector3[] path;
     int targetIndex;
 
-    private void Awake() {
+    private void Awake()
+    {
         animator = GetComponent<Animator>();
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         hpBar = transform.GetChild(0);
         maxhp = hp;
         damageFlash = GameObject.Find("DamageFlash").GetComponent<Image>();
         origscaley = hpBar.localScale.y;
         time = Time.time;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
         if (Vector2.Distance(gameObject.transform.position, PlayerController.player.GetComponent<Transform>().position) < 2f)
         {
             timeint = Time.time - time;
@@ -74,8 +78,8 @@ public class EnemyController : MonoBehaviour {
                 time = Time.time;
             }
         }
-        hpBar.localScale = new Vector3(2f,(origscaley*hp/maxhp), 1);
-        
+        hpBar.localScale = new Vector3(2f, (origscaley * hp / maxhp), 1);
+
         if (hp <= 0)
         {
             FloatingTextController.bounty(bounty, this.transform.position.x, this.transform.position.y);
@@ -83,64 +87,78 @@ public class EnemyController : MonoBehaviour {
             KillEnemy(enemy);
             PlayerController.flow += bounty;
         }
-	}
+    }
 
-    public void GoToTarget(Vector3 target) {
+    public void GoToTarget(Vector3 target)
+    {
         PathRequestManager.RequestPath(transform.position, target, OnPathFound, true);
     }
 
-    public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
-        if(pathSuccessful) {
+    public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
+    {
+        if (pathSuccessful)
+        {
             path = newPath;
-            if(this != null) {
+            if (this != null)
+            {
                 StopCoroutine("FollowPath");
                 StartCoroutine("FollowPath");
             }
         }
-        else {
+        else
+        {
             Debug.Log("Path unsuccessful");
         }
     }
 
-    
 
-    IEnumerator FollowPath() {
+
+    IEnumerator FollowPath()
+    {
         Vector3 currentWaypoint = path[0];
 
         Vector2 prevPos = transform.position;
         distanceTravelled = 0;
         pathLength = CalculatePathLength();
 
-        while(true) {
+        while (true)
+        {
             distanceTravelled += Vector2.Distance(prevPos, transform.position);
 
-            if(transform.position == currentWaypoint) {
+            if (transform.position == currentWaypoint)
+            {
                 targetIndex++;
-                if(targetIndex >= path.Length) {
+                if (targetIndex >= path.Length)
+                {
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
             }
-
-            if(transform.position.x < currentWaypoint.x) {
-                animator.SetInteger("Animstate", 0);
-                isLookingRight = true;
+            if (animator != null)
+            {
+                if (transform.position.x < currentWaypoint.x)
+                {
+                    animator.SetInteger("Animstate", 0);
+                    isLookingRight = true;
+                }
+                else if (transform.position.x > currentWaypoint.x)
+                {
+                    animator.SetInteger("Animstate", 1);
+                    isLookingRight = false;
+                }
             }
-            else if(transform.position.x > currentWaypoint.x) {
-                animator.SetInteger("Animstate", 1);
-                isLookingRight = false;
-            }
-
             transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
             yield return null;
         }
     }
 
-    float CalculatePathLength() {
+    float CalculatePathLength()
+    {
         Vector2 prevPos = transform.position;
         float pLength = 0;
 
-        for(int i = 0; i < path.Length; i++) {
+        for (int i = 0; i < path.Length; i++)
+        {
             pLength += Vector2.Distance(prevPos, path[i]);
             prevPos = path[i];
         }
@@ -148,7 +166,8 @@ public class EnemyController : MonoBehaviour {
         return pLength;
     }
 
-    public float GetDistanceTravelled() {
+    public float GetDistanceTravelled()
+    {
         return distanceTravelled;
     }
 
@@ -169,7 +188,8 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    public void KillEnemy(GameObject enemy) {
+    public void KillEnemy(GameObject enemy)
+    {
         Destroy(enemy);
         onDeath.Invoke();
     }

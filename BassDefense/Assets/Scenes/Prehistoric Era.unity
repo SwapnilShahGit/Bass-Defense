@@ -336,6 +336,8 @@ GameObject:
   - component: {fileID: 39168354}
   - component: {fileID: 39168353}
   - component: {fileID: 39168352}
+  - component: {fileID: 39168356}
+  - component: {fileID: 39168357}
   m_Layer: 13
   m_Name: cdtext
   m_TagString: Untagged
@@ -383,11 +385,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 39168350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad6aacc6a286c64eb732c0e8fe8f621, type: 3}
+  m_Script: {fileID: 11500000, guid: 00454f328b79fe940a6e4dec6bf3f482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rapid: {fileID: 0}
-  rapidimage: {fileID: 984316450}
+  overflow: {fileID: 39168357}
   t: {fileID: 39168354}
 --- !u!114 &39168354
 MonoBehaviour:
@@ -428,6 +429,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 39168350}
+--- !u!114 &39168356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39168350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c546c31fdd8873409904bcd6296ef46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 1514408607}
+  timeint: 0
+  cd: 0
+--- !u!114 &39168357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39168350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c546c31fdd8873409904bcd6296ef46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 1514408607}
+  timeint: 0
+  cd: 0
 --- !u!1 &45996038
 GameObject:
   m_ObjectHideFlags: 0
@@ -6062,7 +6091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTut: 0
-  playerPrefab: {fileID: 1748399196551062, guid: 5d5836f35a3b96149ab859ff6076a884,
+  playerPrefab: {fileID: 1748399196551062, guid: 9863d4b3bcf276d49ae647e7e7a8b5cc,
     type: 2}
   basePrefab: {fileID: 1756896376898766, guid: 5c06eba588adf6a47918de9086ad0a4b, type: 2}
   grid: {fileID: 1688535954}
@@ -6154,10 +6183,10 @@ MonoBehaviour:
         type: 2}
   - enemies:
     - numEnemy: 10
-      timeBetweenEnemies: 3
+      timeBetweenEnemies: 4
       enemyPrefab: {fileID: 114765176845256748, guid: 6983228fc921eb342b6b7ba3f566dbed,
         type: 2}
-    - numEnemy: 6
+    - numEnemy: 4
       timeBetweenEnemies: 5
       enemyPrefab: {fileID: 114947510497162884, guid: ab6e2759b491c9243ba91e8ba1037603,
         type: 2}

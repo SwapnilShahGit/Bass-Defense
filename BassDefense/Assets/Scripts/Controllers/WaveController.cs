@@ -32,7 +32,8 @@ public class WaveController : MonoBehaviour
     int waveIdx;
     int numWaves;
     int numEnemies;
-    int numKilled;
+    int numspawners;
+    public static int numKilled;
 
     UIController uiController;
     Transform home;
@@ -43,7 +44,7 @@ public class WaveController : MonoBehaviour
     {
         uiController = GetComponent<UIController>();
         home = _home;
-
+        numspawners = spawners.Count;
         foreach (EnemySpawner spawner in spawners)
         {
             onWaveStart.AddListener(spawner.StartSpawning);
@@ -70,21 +71,25 @@ public class WaveController : MonoBehaviour
     {
         if (waveIdx > -1 && !gameEnd)
         {
-            print("numwaves: " + numWaves);
-            print("numenemies: " + numEnemies);
-            print("numkilled: " + numKilled);
+            print("killed: " + numKilled);
+            print("enemies: " + numEnemies);
+            print("wave: " + (waveIdx + 1));
+            print("waves: " + numWaves);
+
             if (BaseController.hp <= 0 || PlayerController.health <= 0)
             {
                 gameEnd = true;
                 uiController.LoseUI();
                 Time.timeScale = 0;
             }
-            if (waveIdx == numWaves)
+            if (waveIdx >= numWaves)
             {
-                print("wat");
-                gameEnd = true;
-                uiController.WinUI();
-                Time.timeScale = 0;
+                if (GameObject.FindGameObjectsWithTag("enemy").Length == 0)
+                {
+                    gameEnd = true;
+                    uiController.WinUI();
+                    Time.timeScale = 0;
+                }
             }
             else if (numKilled >= numEnemies)
             {
@@ -107,7 +112,7 @@ public class WaveController : MonoBehaviour
         {
             num += enemyGroup.numEnemy;
         }
-        return num;
+        return num * numspawners;
     }
 
     void UpdateWave()
@@ -117,6 +122,7 @@ public class WaveController : MonoBehaviour
 
     public void UpdateNumKilled()
     {
+        print("wat");
         numKilled++;
     }
 }

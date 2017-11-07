@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RapidFireCooldown : MonoBehaviour
+public class OverflowCooldown : MonoBehaviour
 {
-    public RapidFire rapid;
-    public Image rapidimage;
+    public Overflow overflow;
     public Text t;
     // Use this for initialization
     void Start()
@@ -17,18 +16,13 @@ public class RapidFireCooldown : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (RapidFire.onCD == 1)
+        if (Overflow.onCD == 1)
         {
-            t.text = (Mathf.RoundToInt(Mathf.Abs(rapid.timeint - rapid.cd))).ToString() + "s";
+            t.text = (Mathf.RoundToInt(Mathf.Abs(overflow.timeint - overflow.cd))).ToString() + "s";
         }
         else
         {
             t.text = "";
         }
-        if (RapidFire.isActive)
-        {
-            t.text = "Active";
-        }
-
     }
 }

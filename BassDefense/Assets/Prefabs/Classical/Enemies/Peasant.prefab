@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 114765176845256748}
   - component: {fileID: 61853599635257148}
   - component: {fileID: 50509480682419122}
-  - component: {fileID: 95899883015249618}
   - component: {fileID: 212119620362162110}
   m_Layer: 11
   m_Name: Peasant
@@ -54,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1148131846045596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -27.27299, y: -0.8438423, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4964808838069586}
@@ -110,7 +109,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.68359375, y: 0.7324219}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 1.9531249, y: 1.171875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -119,23 +118,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!95 &95899883015249618
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1148131846045596}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5aadbe8ebb56edf42905606c6dd8231b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114765176845256748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: 1470481723
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 659e8485e4d73fc45bb42e1a26cfa0b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2642a8acd542c414d9bff6f53ea1b677, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

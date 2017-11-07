@@ -4837,8 +4837,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -50, y: -50}
+  m_SizeDelta: {x: 323.2, y: 156.8}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1797327275
 MonoBehaviour:
@@ -4872,10 +4872,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'RIGHT CLICK TO ATTACK ENEMIES
+  m_Text: 'right click to ATTACK ENEMIES AND GENERATE FLOW
 
 
-    LEFT CLICK TO PLACE SELECTED TOWER '
+    left click TO PLACE SELECTED TOWER '
 --- !u!222 &1797327276
 CanvasRenderer:
   m_ObjectHideFlags: 0
