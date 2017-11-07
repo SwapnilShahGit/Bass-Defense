@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Overflow: MonoBehaviour {
 
+    public AudioSource sfx;
     public static int onCD;
     static int cost;
     float dur;
@@ -27,7 +28,7 @@ public class Overflow: MonoBehaviour {
         if (Input.GetKeyDown("2"))
         {
             cast();
-
+            sfx.Play();
         }
 
         timeint = Time.time - time;
