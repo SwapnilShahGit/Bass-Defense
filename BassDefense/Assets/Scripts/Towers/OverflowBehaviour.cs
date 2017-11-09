@@ -10,7 +10,7 @@ public class OverflowBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        speed = 3f;
+        speed = 4f;
     }
 
     // Update is called once per frame
@@ -23,9 +23,9 @@ public class OverflowBehaviour : MonoBehaviour
  
         }
 
-        if (Vector2.Distance(this.gameObject.transform.position, target) < 0.5f)
+        if (Vector2.Distance(this.gameObject.transform.position, target) < 0.1f)
         {
-            Collider2D[] enemies = Physics2D.OverlapCircleAll(target, 10);
+            Collider2D[] enemies = Physics2D.OverlapCircleAll(target, 3);
             foreach (Collider2D enemycol in enemies)
             {
                 GameObject e = enemycol.gameObject;

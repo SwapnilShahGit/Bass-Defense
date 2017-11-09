@@ -13,7 +13,7 @@ public class BulletBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        speed = 8f;
+        speed = 6f;
     }
 
     // Update is called once per frame
@@ -30,7 +30,15 @@ public class BulletBehaviour : MonoBehaviour
                 if (target.GetComponent<EnemyController>() != null)
                 {
                     target.GetComponent<EnemyController>().hp -= dmg;
-           
+                    if (effect == "slow")
+                    {
+                        if (target.GetComponent<EnemyController>().slow == false)
+                        {
+                            target.GetComponent<EnemyController>().slow = true;
+                            target.GetComponent<EnemyController>().speed *= 0.6f;
+                        }
+                    }
+
                     Destroy(this.gameObject);
                 }
             }

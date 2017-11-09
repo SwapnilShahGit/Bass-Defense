@@ -23,8 +23,12 @@ public class UpgradeDrums : MonoBehaviour
         Drums = GameObject.FindGameObjectsWithTag("Drum");
         Tiles = GameObject.FindObjectsOfType(typeof(BuildTower)) as BuildTower[];
 
-
         Groups = new Vector2[Drums.Length];
+        for (int i = 0; i < Drums.Length; i++)
+        {
+            Groups[i] = new Vector2(999, 999);
+        }
+
         for (int i = 0; i < Drums.Length; i++)
         {
             k = 0;

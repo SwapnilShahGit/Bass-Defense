@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79180d2ac5b9464498025b30d941fbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealthText: {fileID: 0}
   damageFlash: {fileID: 0}
   damaged: 0
   flashSpeed: 100000
@@ -153,7 +152,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 711123a0c6a51c845a23b8f22db38dae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f5b52f8e6ed46a41a4f44b9ac04d880, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

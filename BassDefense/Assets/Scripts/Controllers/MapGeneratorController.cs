@@ -16,6 +16,8 @@ public class MapGeneratorController : MonoBehaviour {
     // Map variables
     public Texture2D mapSprite;
     public TileSprite[] tileSprites;
+    public float BaseLocationX;
+    public float BaseLocationY;
 
     Dictionary<Color32, GameObject[]> spriteDictionary;
     int width, height;
@@ -39,6 +41,7 @@ public class MapGeneratorController : MonoBehaviour {
         // Generate the map
         if(generateFromSprite && mapSprite != null && tileSprites != null) {
             GenerateMapFromSprite();
+            baseStart = new Vector2(-width / 2 + BaseLocationX - 0.5f, -height / 2 + BaseLocationY - 0.5f);
         }
         else {
             GenerateMapFromRandom();

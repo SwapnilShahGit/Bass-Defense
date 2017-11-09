@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour {
 
@@ -12,12 +13,13 @@ public class UIController : MonoBehaviour {
     public Text waveText;
     public GameObject buttons;
     public GameObject overlay;                          
-    public AudioSource gongeffect;                         
+    public AudioSource gongeffect;
+    private bool tut;
 
     public void Initialize(bool isTut, float levelStartDelay) {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
         buttons.SetActive(false);
-
+        tut = isTut;
         if(isTut) {
             OverlayText.text = "Defend Your Fire";
         }
@@ -37,11 +39,19 @@ public class UIController : MonoBehaviour {
     }
 
     public void WinUI() {
-        print("win");
-        OverlayText.text = "Congratulations, you win!";
-        overlay.SetActive(true);
-        buttons.SetActive(true);
-        gongeffect.Play();
+        if (tut)
+        {
+            print("tutwin");
+            SceneManager.LoadScene("Prehistoric Era");
+        }
+        else
+        {
+            print("win");
+            OverlayText.text = "Congratulations, you win!";
+            overlay.SetActive(true);
+            buttons.SetActive(true);
+            gongeffect.Play();
+        }
     }
 
     public void UpdateWave(int waveNum) {
