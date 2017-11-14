@@ -6172,17 +6172,17 @@ MonoBehaviour:
       enemyPrefab: {fileID: 114765176845256748, guid: 6983228fc921eb342b6b7ba3f566dbed,
         type: 2}
   - enemies:
-    - numEnemy: 7
-      timeBetweenEnemies: 4
+    - numEnemy: 6
+      timeBetweenEnemies: 6
       enemyPrefab: {fileID: 114947510497162884, guid: ab6e2759b491c9243ba91e8ba1037603,
         type: 2}
   - enemies:
-    - numEnemy: 10
+    - numEnemy: 6
       timeBetweenEnemies: 4
       enemyPrefab: {fileID: 114765176845256748, guid: 6983228fc921eb342b6b7ba3f566dbed,
         type: 2}
-    - numEnemy: 15
-      timeBetweenEnemies: 2
+    - numEnemy: 10
+      timeBetweenEnemies: 4
       enemyPrefab: {fileID: 114947510497162884, guid: ab6e2759b491c9243ba91e8ba1037603,
         type: 2}
 --- !u!114 &1985871455
