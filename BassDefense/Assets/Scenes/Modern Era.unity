@@ -3944,6 +3944,23 @@ MonoBehaviour:
       timeBetweenEnemies: 3
       enemyPrefab: {fileID: 114691488201947722, guid: c5b06b7926574c64698ffbc32f26ff24,
         type: 2}
+  - enemies:
+    - numEnemy: 20
+      timeBetweenEnemies: 3
+      enemyPrefab: {fileID: 114765176845256748, guid: 017e16789ef9a5b4793a9a13fa24476f,
+        type: 2}
+    - numEnemy: 5
+      timeBetweenEnemies: 6
+      enemyPrefab: {fileID: 114691488201947722, guid: ab210c72b32171045aa73bfa7e088bd6,
+        type: 2}
+    - numEnemy: 10
+      timeBetweenEnemies: 5
+      enemyPrefab: {fileID: 114691488201947722, guid: c5b06b7926574c64698ffbc32f26ff24,
+        type: 2}
+    - numEnemy: 1
+      timeBetweenEnemies: 1
+      enemyPrefab: {fileID: 114691488201947722, guid: c3ccfc9b98575f946a543dbf052169ea,
+        type: 2}
 --- !u!4 &900822205
 Transform:
   m_ObjectHideFlags: 0

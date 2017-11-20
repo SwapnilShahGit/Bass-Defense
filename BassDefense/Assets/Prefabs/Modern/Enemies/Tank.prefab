@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 95053695831662442}
   - component: {fileID: 212446445795445230}
   m_Layer: 11
-  m_Name: Communist
+  m_Name: Tank
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,12 +152,12 @@ MonoBehaviour:
   flashSpeed: 1e+13
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   slow: 0
-  hp: 250
+  hp: 30000
   scursor: {fileID: 2800000, guid: 73cb02fef45cc5e4ea0d8b8a3153b022, type: 3}
   cursor: {fileID: 2800000, guid: c081492c528c1cb42be49c77fd8af85e, type: 3}
   bounty: 2
-  speed: 0.8
-  damage: 15
+  speed: 0.5
+  damage: 100
   enemy: {fileID: 1405919643280930}
   pdmg: 10
   onDeath:
