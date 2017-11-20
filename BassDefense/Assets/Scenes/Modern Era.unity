@@ -3910,30 +3910,30 @@ MonoBehaviour:
       enemyPrefab: {fileID: 114765176845256748, guid: 017e16789ef9a5b4793a9a13fa24476f,
         type: 2}
   - enemies:
-    - numEnemy: 5
-      timeBetweenEnemies: 7
+    - numEnemy: 8
+      timeBetweenEnemies: 3
       enemyPrefab: {fileID: 114765176845256748, guid: 017e16789ef9a5b4793a9a13fa24476f,
         type: 2}
     - numEnemy: 1
-      timeBetweenEnemies: 10
-      enemyPrefab: {fileID: 114691488201947722, guid: ab210c72b32171045aa73bfa7e088bd6,
-        type: 2}
-  - enemies:
-    - numEnemy: 10
       timeBetweenEnemies: 5
-      enemyPrefab: {fileID: 114765176845256748, guid: 017e16789ef9a5b4793a9a13fa24476f,
-        type: 2}
-    - numEnemy: 3
-      timeBetweenEnemies: 7
       enemyPrefab: {fileID: 114691488201947722, guid: ab210c72b32171045aa73bfa7e088bd6,
         type: 2}
   - enemies:
     - numEnemy: 20
-      timeBetweenEnemies: 6
+      timeBetweenEnemies: 2
+      enemyPrefab: {fileID: 114765176845256748, guid: 017e16789ef9a5b4793a9a13fa24476f,
+        type: 2}
+    - numEnemy: 4
+      timeBetweenEnemies: 3
+      enemyPrefab: {fileID: 114691488201947722, guid: ab210c72b32171045aa73bfa7e088bd6,
+        type: 2}
+  - enemies:
+    - numEnemy: 40
+      timeBetweenEnemies: 1
       enemyPrefab: {fileID: 114765176845256748, guid: 017e16789ef9a5b4793a9a13fa24476f,
         type: 2}
     - numEnemy: 6
-      timeBetweenEnemies: 7
+      timeBetweenEnemies: 4
       enemyPrefab: {fileID: 114691488201947722, guid: ab210c72b32171045aa73bfa7e088bd6,
         type: 2}
 --- !u!4 &900822205
@@ -3978,7 +3978,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4282400832
     spriteArray:
-    - {fileID: 1303586144939944, guid: 40f187072a4711c40b3032872361decf, type: 2}
+    - {fileID: 1303586144939944, guid: 649f2dc32e0e1db47a77392d6c7b69df, type: 2}
   - color:
       serializedVersion: 2
       rgba: 4286611584
