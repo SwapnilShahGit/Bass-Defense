@@ -14,6 +14,7 @@ public class DrumController : TowerController
     // Use this for initialization
     void Start()
     {
+        ModernAudioController.activedrums++;
         AudioController.activedrums++;
         onCD = 0;
         timeint = 0;

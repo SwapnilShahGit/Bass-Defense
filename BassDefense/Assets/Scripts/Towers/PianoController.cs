@@ -17,6 +17,7 @@ public class PianoController : TowerController
     void Start()
     {
         burstcd = 1f;
+        ModernAudioController.activepianos++;
         ClassicalAudioController.activepianos++;
         onCD = 0;
         timeint = 0;
