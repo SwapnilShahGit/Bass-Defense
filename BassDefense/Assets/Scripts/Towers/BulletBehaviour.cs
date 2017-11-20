@@ -36,6 +36,7 @@ public class BulletBehaviour : MonoBehaviour
                         {
                             target.GetComponent<EnemyController>().slow = true;
                             target.GetComponent<EnemyController>().speed *= 0.6f;
+                            target.GetComponent<SpriteRenderer>().color = Color.blue;
                         }
                     }
 

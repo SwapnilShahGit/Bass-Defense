@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 30
   upgrade: 0
-  damage: 10
+  damage: 20
   level: 1
   cd: 0.1
   targets: []

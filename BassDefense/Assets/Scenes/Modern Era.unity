@@ -595,7 +595,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Harp
+  m_Text: Drum Kit
 --- !u!222 &139847557
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2537,8 +2537,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Places a defensive structure that deals reasonable single target damage
-    to multiple enemies
+  m_Text: Places a defensive structure that deals damage to multiple enemies at a
+    time
 --- !u!222 &657280854
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2978,7 +2978,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Trumpet
+  m_Text: Rapper
 --- !u!222 &755156902
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3941,6 +3941,23 @@ MonoBehaviour:
       timeBetweenEnemies: 3
       enemyPrefab: {fileID: 114691488201947722, guid: c5b06b7926574c64698ffbc32f26ff24,
         type: 2}
+  - enemies:
+    - numEnemy: 20
+      timeBetweenEnemies: 3
+      enemyPrefab: {fileID: 114765176845256748, guid: 017e16789ef9a5b4793a9a13fa24476f,
+        type: 2}
+    - numEnemy: 5
+      timeBetweenEnemies: 6
+      enemyPrefab: {fileID: 114691488201947722, guid: ab210c72b32171045aa73bfa7e088bd6,
+        type: 2}
+    - numEnemy: 10
+      timeBetweenEnemies: 5
+      enemyPrefab: {fileID: 114691488201947722, guid: c5b06b7926574c64698ffbc32f26ff24,
+        type: 2}
+    - numEnemy: 1
+      timeBetweenEnemies: 1
+      enemyPrefab: {fileID: 114691488201947722, guid: c3ccfc9b98575f946a543dbf052169ea,
+        type: 2}
 --- !u!4 &900822205
 Transform:
   m_ObjectHideFlags: 0
@@ -4095,7 +4112,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Places a defensive structure that deals reasonable single target damage
+  m_Text: Places a defensive battle rapper that deals stacks of single target damage
 --- !u!222 &903749856
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5966,8 +5983,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Places a defensive structure that deals massive single target damage at
-    a slow rate
+  m_Text: Places a defensive structure that deals area of effect damage and slows
+    enemies
 --- !u!222 &1435949137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6441,7 +6458,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Piano
+  m_Text: Synth
 --- !u!222 &1553419542
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6850,7 +6867,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Violin
+  m_Text: Electric Guitar
 --- !u!222 &1778660323
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7101,8 +7118,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Places a defensive structure that deals focused single target damage at
-    a quick rate
+  m_Text: Places a defensive structure that deals focused single target damage and
+    slows enemies
 --- !u!222 &1800845345
 CanvasRenderer:
   m_ObjectHideFlags: 0
