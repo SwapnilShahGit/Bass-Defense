@@ -81,7 +81,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PeasantLeft
+  m_Name: Rapper Left
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -94,7 +94,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4f04316b883983f45a50abbe46e56585, type: 2}
+  m_Motion: {fileID: 7400000, guid: c632fbd3c10c5ce4ca7ac9c66dc9cf9e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -105,7 +105,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PeasantRight
+  m_Name: Rapper Right
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -118,7 +118,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b1581a9386f957d49bfb32b51b40b3f6, type: 2}
+  m_Motion: {fileID: 7400000, guid: 40d117d4dfd78bf4dbca75548210a17a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
