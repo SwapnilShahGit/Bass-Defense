@@ -4006,6 +4006,7 @@ MonoBehaviour:
       rgba: 4286611584
     spriteArray:
     - {fileID: 1255494758305630, guid: b134cd042750c4940bca48f8a651df08, type: 2}
+    - {fileID: 1568444533326240, guid: 44c7d7831015aeb42b9fcecc10a15bee, type: 2}
   - color:
       serializedVersion: 2
       rgba: 4278217471
