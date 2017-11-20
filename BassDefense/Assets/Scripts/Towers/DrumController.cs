@@ -43,6 +43,8 @@ public class DrumController : TowerController
                 {
                     target.GetComponent<EnemyController>().slow = true;
                     target.GetComponent<EnemyController>().speed *= 0.75f;
+                    target.GetComponent<SpriteRenderer>().color = Color.blue;
+
                 }
                 onCD = 1;
                 time = Time.time;
@@ -72,6 +74,7 @@ public class DrumController : TowerController
             targets.Remove(other.gameObject);
             other.gameObject.GetComponent<EnemyController>().slow = false;
             other.gameObject.GetComponent<EnemyController>().speed *= 1.333f;
+            other.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
     }
