@@ -101,13 +101,14 @@ public class MenuNavigation : MonoBehaviour
 
     public void SelectModern()
     {
+        PlayerController.era = "modern";
         currentLevelSelected.levelSummary.SetActive(false);
         currentLevelSelected.arrow.gameObject.SetActive(false);
 
         currentLevelSelected = gameLevels[2];
         currentLevelSelected.levelSummary.SetActive(true);
         currentLevelSelected.arrow.gameObject.SetActive(true);
-        playButton.gameObject.SetActive(false);
+        playButton.gameObject.SetActive(true);
     }
 
     public void SelectPlay()
