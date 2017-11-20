@@ -75,6 +75,7 @@ MonoBehaviour:
   cd: 0.3
   targets: []
   pinrange: 0
+  isSynth: 1
   burstnum: 3
   burstcd: 0.1
 --- !u!212 &212918521065569858

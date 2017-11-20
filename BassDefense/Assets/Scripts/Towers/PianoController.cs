@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PianoController : TowerController
 {
-
+    public bool isSynth = false;
     List<GameObject> bullets;
     float timeint;
     float time;
@@ -97,7 +97,15 @@ public class PianoController : TowerController
 
     void shoot(GameObject enemy)
     {
-        GameObject b = Instantiate((GameObject)Resources.Load("PianoBullet"));
+        GameObject b;
+        if (!isSynth)
+        {
+            b = Instantiate((GameObject)Resources.Load("PianoBullet"));
+        }
+        else
+        {
+            b = Instantiate((GameObject)Resources.Load("SynthBullet"));
+        }
         b.transform.position = this.gameObject.transform.position;
         if (b.GetComponent<BulletBehaviour>() != null && enemy != null)
         {

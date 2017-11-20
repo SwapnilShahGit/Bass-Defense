@@ -70,11 +70,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 30
   upgrade: 0
-  damage: 3
+  damage: 10
   level: 1
-  cd: 0.008
+  cd: 0.1
   targets: []
   pinrange: 0
+  isGuitar: 1
 --- !u!212 &212918521065569858
 SpriteRenderer:
   m_ObjectHideFlags: 1
