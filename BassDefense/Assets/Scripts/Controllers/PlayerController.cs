@@ -25,13 +25,14 @@ public class PlayerController : MonoBehaviour
     public static EnemyController attacking;
     private Vector3 position;
     public static GameObject tower;
+    public static GameObject basebuilding;
     public static int moving;
     private bool superHealing;
     public static int health;
     public static int flow;
     public static string mode = "Slashy";
     public static float speed;
-
+    public static int flowregen;
 
     Animator animator;
     bool isLookingRight = true;
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
         moving = 0;
         superHealing = false;
 
+        flowregen = 1;
         health = 100;
         flow = 25;
 
@@ -369,7 +371,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(5);
             if (flow < 100)
             {
-                flow++;
+                flow+=flowregen;
             }
         }
     }
@@ -464,6 +466,15 @@ public class PlayerController : MonoBehaviour
         {
             mode = "Build";
             tower = (GameObject)Resources.Load("Synthesizer");
+        }
+    }
+
+    public void gramophonebutton()
+    {
+        if (flow >= 40)
+        {
+            mode = "Build";
+            basebuilding = (GameObject)Resources.Load("Gramophone");
         }
     }
 }
