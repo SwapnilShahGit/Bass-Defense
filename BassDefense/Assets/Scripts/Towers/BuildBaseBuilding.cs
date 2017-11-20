@@ -19,7 +19,7 @@ public class BuildBaseBuilding : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        old = this.gameObject.GetComponent<SpriteRenderer>().color;
     }
 
     // Update is called once per frame
@@ -42,7 +42,6 @@ public class BuildBaseBuilding : MonoBehaviour
 
     void OnMouseEnter()
     {
-        old = this.gameObject.GetComponent<SpriteRenderer>().color;
         if (PlayerController.mode == "Build")
         {
             Cursor.SetCursor(hcursor, Vector2.zero, CursorMode.Auto);
