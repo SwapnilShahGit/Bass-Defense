@@ -71,10 +71,10 @@ public class WaveController : MonoBehaviour
     {
         if (waveIdx > -1 && !gameEnd)
         {
-            print("killed: " + numKilled);
-            print("enemies: " + numEnemies);
-            print("wave: " + (waveIdx + 1));
-            print("waves: " + numWaves);
+            //print("killed: " + numKilled);
+            //print("enemies: " + numEnemies);
+            //print("wave: " + (waveIdx + 1));
+            //print("waves: " + numWaves);
 
             if (BaseController.hp <= 0 || PlayerController.health <= 0)
             {
@@ -122,7 +122,7 @@ public class WaveController : MonoBehaviour
 
     public void UpdateNumKilled()
     {
-        print("wat");
+        //print("wat");
         numKilled++;
     }
 }
