@@ -12,6 +12,7 @@ public class ViolinController : TowerController
     // Use this for initialization
     void Start()
     {
+        ModernAudioController.activeviolins++;
         ClassicalAudioController.activeviolins++;
         onCD = 0;
         timeint = 0;

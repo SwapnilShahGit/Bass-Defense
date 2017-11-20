@@ -12,6 +12,7 @@ public class FluteController : TowerController
     // Use this for initialization
     void Start()
     {
+        ModernAudioController.activeflutes++;
         AudioController.activeflutes++;
         onCD = 0;
         timeint = 0;

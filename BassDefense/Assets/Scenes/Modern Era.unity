@@ -774,115 +774,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 155506238}
---- !u!1 &175294616
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 175294617}
-  - component: {fileID: 175294618}
-  m_Layer: 0
-  m_Name: Trumpet2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &175294617
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 175294616}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 874435439}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &175294618
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 175294616}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6fe788b88c885ef48978a21da4ff0dba, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.916
-  m_Pitch: 1
-  Loop: 1
-  Mute: 1
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 0
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: -0.08
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0.578
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &193545113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +1870,7 @@ GameObject:
   - component: {fileID: 439850312}
   - component: {fileID: 439850313}
   m_Layer: 0
-  m_Name: Violin
+  m_Name: Guitar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1996,7 +1887,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 874435439}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &439850313
 AudioSource:
@@ -2007,7 +1898,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5ee83550b19fc4348a674bfe8e58fcb8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ea346b5bf5345124982c88d41d909248, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2295,7 +2186,7 @@ GameObject:
   - component: {fileID: 533522958}
   - component: {fileID: 533522959}
   m_Layer: 0
-  m_Name: Piano
+  m_Name: Synthesizer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2312,7 +2203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 874435439}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &533522959
 AudioSource:
@@ -2323,7 +2214,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ec35ab5ef0d72d444844888ee7f9424b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 97322afdf338806469cc7ad64b9c629f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3271,7 +3162,7 @@ GameObject:
   - component: {fileID: 805822399}
   - component: {fileID: 805822400}
   m_Layer: 0
-  m_Name: Harp
+  m_Name: Drumset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3288,7 +3179,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 874435439}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &805822400
 AudioSource:
@@ -3299,7 +3190,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4e942ed2d7847b44bb99a74c9cb04abe, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c243bd9df1f1d174d8a41eba55ff8123, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3899,11 +3790,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 874435438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 493.03525, y: 304.4858, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1295155117}
-  - {fileID: 175294617}
   - {fileID: 439850312}
   - {fileID: 533522958}
   - {fileID: 805822399}
@@ -3918,15 +3808,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 874435438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d407a7a02e2b2744beb45d1eb22f77e, type: 3}
+  m_Script: {fileID: 11500000, guid: 08f0c9df382c0924fbb469692991b54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sources:
-  - {fileID: 805822400}
   - {fileID: 1295155118}
-  - {fileID: 175294618}
-  - {fileID: 533522959}
   - {fileID: 439850313}
+  - {fileID: 533522959}
+  - {fileID: 805822400}
 --- !u!1 &900822198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5329,7 +5218,7 @@ GameObject:
   - component: {fileID: 1295155117}
   - component: {fileID: 1295155118}
   m_Layer: 0
-  m_Name: Trumpet1
+  m_Name: Bass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5357,9 +5246,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: eb5c1198356f757499a0546c8e6669b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 95044daa4272fa44c95bf0c4d56ddd5b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.86
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 1
