@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: 77b163618f1e1a441b1b522bef32745d
-timeCreated: 1511207282
+guid: 87997479e081965469e3c79623b72b79
+timeCreated: 1511212277
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
+  externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -54,7 +55,16 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  platformSettings: []
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
