@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Classical Era.unity
     guid: bca6bc5b19098724e981465ceb9b314f
+  - enabled: 1
+    path: Assets/Scenes/Modern Era.unity
+    guid: 06fbde2993e992346bc7e13fcc27792c
