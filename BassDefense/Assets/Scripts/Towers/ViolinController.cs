@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ViolinController : TowerController
 {
-
+    public bool isGuitar = false;
     List<GameObject> bullets;
     float timeint;
     float time;
@@ -64,7 +64,15 @@ public class ViolinController : TowerController
 
     void shoot(GameObject enemy)
     {
-        GameObject b = Instantiate((GameObject)Resources.Load("ViolinBullet"));
+        GameObject b;
+        if (!isGuitar)
+        {
+            b = Instantiate((GameObject)Resources.Load("ViolinBullet"));
+        }
+        else
+        {
+            b = Instantiate((GameObject)Resources.Load("GuitarBullet"));
+        }
         b.transform.position = this.gameObject.transform.position;
         if (b.GetComponent<BulletBehaviour>() != null && enemy != null)
         {
