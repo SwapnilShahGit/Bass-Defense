@@ -142,7 +142,8 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyDown("r"))
             {
-                if (flow >= 30){
+                if (flow >= 30)
+                {
                     mode = "Build";
                     tower = (GameObject)Resources.Load("Violin");
                 }
@@ -155,6 +156,46 @@ public class PlayerController : MonoBehaviour
                     tower = (GameObject)Resources.Load("Piano");
                 }
             }
+        }
+
+
+        else if (era == "modern")
+        {
+            if (Input.GetKeyDown("e"))
+            {
+                if (flow >= 10)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Drumset");
+                }
+
+            }
+            if (Input.GetKeyDown("q"))
+            {
+                if (flow >= 20)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Rapper");
+                }
+
+            }
+            if (Input.GetKeyDown("r"))
+            {
+                if (flow >= 30)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Guitar");
+                }
+            }
+            if (Input.GetKeyDown("f"))
+            {
+                if (flow >= 50)
+                {
+                    mode = "Build";
+                    tower = (GameObject)Resources.Load("Synthesizer");
+                }
+            }
+
         }
          
         if (moving == 2)
