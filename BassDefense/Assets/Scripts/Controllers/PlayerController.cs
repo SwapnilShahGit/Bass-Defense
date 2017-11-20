@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 position;
     public static GameObject tower;
     public static int moving;
+    private bool superHealing;
     public static int health;
     public static int flow;
     public static string mode = "Slashy";
@@ -42,12 +43,13 @@ public class PlayerController : MonoBehaviour
 
 
     void Start()
-    {   
+    {
         player = gameObject;
         speed = 2.0f;
         time = Time.time;
         moving = 0;
-        
+        superHealing = false;
+
         health = 100;
         flow = 25;
 
@@ -197,7 +199,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-         
+
         if (moving == 2)
         {
             this.transform.position = Vector2.MoveTowards(this.transform.position, target, speed * Time.deltaTime);
@@ -279,7 +281,7 @@ public class PlayerController : MonoBehaviour
         if (mode == "Slashy")
         {
 
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
             {
                 moving = 1;
                 if (attacking != null)
@@ -290,22 +292,26 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 target = Input.mousePosition;
-                
-            }
 
-            if (Input.GetMouseButton(0))
-            {
-
-                //cast(activeAbility);
             }
         }
+
+        bool baseHealRange = Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Base").transform.position) < 4f;
+        if (baseHealRange && !superHealing)
+        {
+            superHealing = true;
+            StartCoroutine("regenhpBase");
+        }
+        if (!baseHealRange)
+        {
+            StopCoroutine("regenhpBase");
+            superHealing = false;
+        }
+
         else if (mode == "Build" || mode == "Ability")
         {
             if (Input.GetMouseButton(0))
-            {
-
-
-            }
+            { }
 
             else if (Input.GetMouseButton(1))
             {
@@ -342,6 +348,20 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    IEnumerator regenhpBase()
+    {
+        while (health >= 0)
+        {
+            yield return new WaitForSeconds(1);
+            if (health < 99)
+            {
+                print("SUPAHEAL");
+                health += 2;
+            }
+        }
+    }
+
     IEnumerator regenflow()
     {
         while (true)
@@ -373,7 +393,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
+
 
     public void harpbutton()
     {
@@ -446,5 +466,4 @@ public class PlayerController : MonoBehaviour
             tower = (GameObject)Resources.Load("Synthesizer");
         }
     }
-
 }

@@ -10,6 +10,7 @@ public class BuildTower : MonoBehaviour
     public bool buildable;
     Color old;
     int i;
+    private GameObject radius;
 
     public Texture2D cursor;
     public Texture2D hcursor;
@@ -45,6 +46,11 @@ public class BuildTower : MonoBehaviour
         if (PlayerController.mode == "Build")
         {
             Cursor.SetCursor(hcursor, Vector2.zero, CursorMode.Auto);
+
+            float towersRadius = PlayerController.tower.GetComponent<CircleCollider2D>().radius;
+            radius = Instantiate((GameObject)Resources.Load("Radius"), this.transform);
+            radius.transform.localScale = new Vector3(towersRadius, towersRadius, 0);
+
             if (buildable)
             {
                 this.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
@@ -59,12 +65,14 @@ public class BuildTower : MonoBehaviour
     void OnMouseExit()
     {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+        Destroy(radius);
         this.gameObject.GetComponent<SpriteRenderer>().color = old;
     }
 
     void OnMouseUp()
     {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+        Destroy(radius);
         if (PlayerController.mode == "Build" && placed == 0 && buildable)
         {
             PlayerController.target = this.gameObject.transform.position;
