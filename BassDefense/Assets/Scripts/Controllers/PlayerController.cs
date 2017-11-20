@@ -370,5 +370,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void rapperbutton()
+    {
+        if (flow >= 20)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Rapper");
+        }
+    }
+
+    public void drumsetbutton()
+    {
+        if (flow >= 10)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Drumset");
+        }
+    }
+
+    public void guitarbutton()
+    {
+        if (flow >= 30)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Guitar");
+        }
+    }
+
+    public void synthesizerbutton()
+    {
+        if (flow >= 50)
+        {
+            mode = "Build";
+            tower = (GameObject)Resources.Load("Synthesizer");
+        }
+    }
 
 }

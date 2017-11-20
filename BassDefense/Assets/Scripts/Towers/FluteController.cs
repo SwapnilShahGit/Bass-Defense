@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FluteController : TowerController
 {
-
+    public bool isRapper = false;
     List<GameObject> bullets;
     float timeint;
     float time;
@@ -74,7 +74,15 @@ public class FluteController : TowerController
 
     void shoot(GameObject enemy)
     {
-        GameObject b = Instantiate((GameObject)Resources.Load("Bullet"));
+        GameObject b;
+        if (!isRapper)
+        {
+            b = Instantiate((GameObject)Resources.Load("Bullet"));
+        }
+        else
+        {
+            b = Instantiate((GameObject)Resources.Load("Money"));
+        }
         b.transform.position = this.gameObject.transform.position;
         if (b.GetComponent<BulletBehaviour>() != null && enemy != null)
         {
