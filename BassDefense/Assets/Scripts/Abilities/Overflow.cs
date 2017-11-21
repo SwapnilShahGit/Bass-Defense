@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Overflow: MonoBehaviour {
-
+    public Texture2D ocursor;
+    public Texture2D cursor;
     public AudioSource sfx;
     public static int onCD;
     static int cost;
@@ -12,9 +13,11 @@ public class Overflow: MonoBehaviour {
     public static float time;
     public float timeint;
     public float cd;
+    public bool isCasting;
     // Use this for initialization
     void Start()
     {
+        isCasting = false;
         onCD = 0;
         cost = 10;
         cd = 10;
@@ -25,9 +28,14 @@ public class Overflow: MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("2"))
+        if (isCasting)
+        {
+            Cursor.SetCursor(ocursor, Vector2.zero, CursorMode.Auto);
+        }
+        if (Input.GetKeyDown("2") || (isCasting && (Input.GetMouseButton(0) || Input.GetMouseButton(1))) )
         {
             cast();
+            
         }
 
         timeint = Time.time - time;
@@ -50,10 +58,20 @@ public class Overflow: MonoBehaviour {
             PlayerController.flow -= cost;
             onCD = 1;
             time = Time.time;
+            Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+            isCasting = false;
         }
         else
         {
             //on cooldown sound
+        }
+    }
+    public void overflowbutton()
+    {
+        PlayerController.moving = 0;
+        if (PlayerController.flow >= cost && onCD == 0)
+        {
+            isCasting = true;
         }
     }
     
