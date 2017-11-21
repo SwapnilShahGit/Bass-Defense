@@ -199,6 +199,14 @@ public class PlayerController : MonoBehaviour
                     tower = (GameObject)Resources.Load("Synthesizer");
                 }
             }
+            if (Input.GetKeyDown("t"))
+            {
+                if (flow >= 40)
+                {
+                    mode = "Build";
+                    basebuilding = (GameObject)Resources.Load("Gramophone");
+                }
+            }
 
         }
 

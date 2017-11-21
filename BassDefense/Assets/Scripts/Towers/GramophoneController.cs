@@ -7,7 +7,7 @@ public class GramophoneController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         PlayerController.flow -= 40;
-        PlayerController.flowregen += 5;
+        PlayerController.flowregen += 3;
 	}
 	
 	// Update is called once per frame

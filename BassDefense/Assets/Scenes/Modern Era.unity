@@ -1225,7 +1225,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Synth
+  m_Text: Turntable
 --- !u!222 &300757550
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6415,8 +6415,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Places a defensive structure that deals damage to multiple enemies at a
-    time
+  m_Text: Places a base structure which generates massive flow periodically
 --- !u!222 &1397087292
 CanvasRenderer:
   m_ObjectHideFlags: 0
