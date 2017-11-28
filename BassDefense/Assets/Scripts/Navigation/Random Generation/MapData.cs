@@ -12,4 +12,6 @@ public static class MapData {
     public static float BaseLocationX;
 
     public static float BaseLocationY;
+
+    public static int Era;
 }
