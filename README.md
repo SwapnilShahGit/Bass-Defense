@@ -1,8 +1,8 @@
 Contributers: 
-https://github.com/filipfabiszak
-https://github.com/TNavick
-https://github.com/jawsxxx
-https://github.com/SwapnilShahGit
+https://github.com/filipfabiszak <br />
+https://github.com/TNavick <br />
+https://github.com/jawsxxx <br />
+https://github.com/SwapnilShahGit <br />
 
 [Link to Alpha/Beta Trailer](https://youtu.be/mL_yEtKeKn0)
 
