@@ -34,7 +34,9 @@ public class MenuNavigation : MonoBehaviour
     public ProceduralGenerator gen;
     public Slider[] sliders;
     public GameObject cover;
+    public Text textField;
     System.Random rng;
+    string era;
 
     // Quit pannel variables
     public GameObject panel;
@@ -146,6 +148,8 @@ public class MenuNavigation : MonoBehaviour
         gen.MaxPathLength = (int)sliders[2].value;
         gen.percentObstacles = sliders[3].value;
         gen.mapSeed = (int)sliders[4].value;
+        MapData.Era = (int)sliders[5].value;
+        era = textField.text;
 
         if (gen.minPathLength > gen.MaxPathLength)
         {
@@ -165,13 +169,14 @@ public class MenuNavigation : MonoBehaviour
         sliders[2].value = rng.Next(gen.minPathLength, 40);
         sliders[3].value = (float)(rng.NextDouble() * (0.8));
         sliders[4].value = rng.Next(1, 1001);
+        sliders[5].value = rng.Next(1, 4);
 
         GeneratePredefinedPreview();
     }
 
     public void PlayRandom()
     {
-        SceneManager.LoadScene("Random Map");
+        SceneManager.LoadScene("Random Map " + era);
     }
 
 
