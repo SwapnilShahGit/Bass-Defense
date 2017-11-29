@@ -1,4 +1,4 @@
-## Contributers <br />
+## Members <br />
 https://github.com/filipfabiszak <br />
 https://github.com/TNavick <br />
 https://github.com/jawsxxx <br />
